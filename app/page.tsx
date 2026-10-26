@@ -14,11 +14,12 @@ import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-con
 import { homeFaq, homeHeroSlides, homeModule } from '@/lib/site-content/home'
 import { pageCopy } from '@/lib/site-content/page'
 import type { Metadata } from 'next'
+import { requestLocale } from '@/lib/i18n'
 
 export const revalidate = 60
 const fallbackMetadata = pageMetadata({ path: '/', title: 'MICONG industrial lubricants and metalworking fluids', description: 'Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination.' })
 export async function generateMetadata(): Promise<Metadata> {
-  const managed = await siteContentMetadata('/', 'en')
+  const managed = await siteContentMetadata('/', await requestLocale())
   const title = managed.title || fallbackMetadata.title
   const description = managed.description || fallbackMetadata.description
   return {
@@ -29,14 +30,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const snapshot = await getSiteContent('en')
+  const locale = await requestLocale()
+  const snapshot = await getSiteContent(locale)
   const slides = homeHeroSlides(homeModule(snapshot, 'hero'))
   const faq = homeFaq(homeModule(snapshot, 'faq'))
   const copy=pageCopy(snapshot,'/')
   if (snapshot && (!slides || !faq)) throw new Error('Published homepage content is incomplete')
   return (
     <div {...(snapshot && slides && faq ? { 'data-hq-content-version': snapshot.version } : {})}>
-      <JsonLd data={[organizationSchema(), websiteSchema()]} />
+      <JsonLd data={[organizationSchema(), websiteSchema(locale)]} />
       <HeroCarousel slides={slides || undefined} styles={homeModule(snapshot,'hero')?.styles} />
       <FamilySelector copy={copy} />
       <Pathways copy={copy} />

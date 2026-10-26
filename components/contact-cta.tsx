@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { company } from '@/lib/site-config'

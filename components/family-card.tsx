@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ArrowUpRight } from 'lucide-react'
 import { ProductTile } from '@/components/product-tile'
 import { Reveal } from '@/components/reveal'

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
+import { requestLocale } from '@/lib/i18n'
 import { pageMetadata } from '@/lib/seo'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ArrowRight } from 'lucide-react'
 import { ContactCta } from '@/components/contact-cta'
 import { Marker } from '@/components/marker'
@@ -12,10 +13,10 @@ import { pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { managedApplicationAreas } from '@/lib/site-content/collections'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points.' })
-export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/applications','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/applications',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 export default async function ApplicationsPage() {
-  const [fallbackAreas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent('en')])
+  const [fallbackAreas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent(await requestLocale())])
   const areas=managedApplicationAreas(snapshot,families)??fallbackAreas
   const hero = pageHero(snapshot, '/applications')
   const copy=pageCopy(snapshot,'/applications')

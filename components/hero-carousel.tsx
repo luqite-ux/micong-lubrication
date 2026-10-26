@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { heroSlides as defaultHeroSlides, type HeroSlide } from '@/lib/hero-slides'

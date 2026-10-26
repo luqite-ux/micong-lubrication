@@ -9,9 +9,10 @@ import { company } from '@/lib/site-config'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { managedTextRows } from '@/lib/site-content/collections'
+import { requestLocale } from '@/lib/i18n'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/contact', title: 'Contact MICONG', description: 'Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email.' })
-export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/contact','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/contact',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 type ContactPageProps = {
   searchParams: Promise<{ family?: string; grade?: string; topic?: string }>
@@ -25,7 +26,7 @@ const nextSteps = [
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const { family, grade, topic } = await searchParams
-  const [families,snapshot] = await Promise.all([getProductFamilies(),getSiteContent('en')])
+  const [families,snapshot] = await Promise.all([getProductFamilies(),getSiteContent(await requestLocale())])
   const hero = pageHero(snapshot, '/contact')
   const copy=pageCopy(snapshot,'/contact')
   const visibleSteps=managedTextRows(snapshot,'/contact','next_steps')?.map(row=>row.body)??nextSteps

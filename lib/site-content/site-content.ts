@@ -3,6 +3,8 @@ import { cache } from 'react'
 import { cookies } from 'next/headers'
 import { loadSiteSnapshot, type AdapterConfig } from './transport'
 import { PREVIEW_COOKIE } from './preview-cookie'
+import { activeSiteLocales, localePath } from '@/lib/i18n'
+import { siteUrl } from '@/lib/site-url'
 
 export { PREVIEW_COOKIE }
 export function adapterConfig(): AdapterConfig {
@@ -22,9 +24,13 @@ export async function siteContentMetadata(path: string, locale: string) {
   const page = snapshot?.pages.find(page => page.path === path)
   const seo = page?.modules.find(module => module.type === 'seo')?.values
   const preview = Boolean((await cookies()).get(PREVIEW_COOKIE)?.value)
+  const locales = await activeSiteLocales()
+  const languages = Object.fromEntries(locales.map(language => [language, siteUrl(localePath(path, language))]))
+  if (locales.length > 1) languages['x-default'] = siteUrl(path)
   return {
     ...(typeof seo?.title === 'string' && seo.title ? { title: seo.title } : {}),
     ...(typeof seo?.description === 'string' && seo.description ? { description: seo.description } : {}),
+    ...(locales.length > 1 ? { alternates: { canonical: siteUrl(localePath(path, locale)), languages } } : {}),
     ...(preview ? { robots: { index: false, follow: false } } : {}),
   }
 }

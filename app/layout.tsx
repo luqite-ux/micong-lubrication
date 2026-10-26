@@ -5,6 +5,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { siteUrl } from '@/lib/site-url'
 import { cookies } from 'next/headers'
 import { PREVIEW_COOKIE } from '@/lib/site-content/preview-cookie'
+import { requestLocale } from '@/lib/i18n'
 import './globals.css'
 
 const archivo = Archivo({
@@ -39,8 +40,9 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const preview = (await cookies()).has(PREVIEW_COOKIE)
+  const locale = await requestLocale()
   return (
-    <html lang="en" className={`${archivo.variable} ${plex.variable} bg-background`}>
+    <html lang={locale} className={`${archivo.variable} ${plex.variable} bg-background`}>
       <body className="font-sans antialiased">
         <a
           href="#main"

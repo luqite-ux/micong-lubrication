@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/seo'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { Newspaper } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
 import { NewsCard } from '@/components/news/news-card'
@@ -8,14 +8,15 @@ import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTi
 import { getNewsArticles } from '@/lib/data/repository'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
+import { requestLocale } from '@/lib/i18n'
 
 export const revalidate = 60
 const fallbackMetadata: Metadata = pageMetadata({ path: '/news', title: 'MICONG news', description: 'Company and product news from MICONG.' })
-export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/news','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/news',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 export default async function NewsPage() {
-  const [allArticles,snapshot] = await Promise.all([getNewsArticles(), getSiteContent('en')])
-  const articles = allArticles.toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+  const [allArticles,snapshot] = await Promise.all([getNewsArticles(), getSiteContent(await requestLocale())])
+  const articles = allArticles
   const hero = pageHero(snapshot, '/news')
   const copy=pageCopy(snapshot,'/news')
 

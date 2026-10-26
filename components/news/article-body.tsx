@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { text } from '@/lib/data/repository'

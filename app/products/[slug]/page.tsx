@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, FileText, Mail, PackageCheck, Phone } from 'lucide-react'
 import { Marker } from '@/components/marker'
@@ -19,6 +19,7 @@ import { pageMetadata } from '@/lib/seo'
 import { JsonLd } from '@/components/json-ld'
 import { breadcrumbSchema, organizationId } from '@/lib/schema'
 import { siteUrl } from '@/lib/site-url'
+import { localePath, requestLocale } from '@/lib/i18n'
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>
@@ -30,7 +31,7 @@ export const dynamicParams = true
 export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
-  const families = await getProductFamilies()
+  const families = await getProductFamilies('en')
   return families.map((family) => ({ slug: family.slug }))
 }
 
@@ -38,7 +39,8 @@ export async function generateMetadata({ params }: Pick<ProductPageProps, 'param
   const { slug } = await params
   const family = await getProductFamilyBySlug(slug)
   if (!family) return { title: 'Product not found' }
-  return pageMetadata({ path: `/products/${slug}`, title: family.seoTitle ? text(family.seoTitle) : `${text(family.name)} | MICONG`, description: family.seoDescription ? text(family.seoDescription) : text(family.summary) })
+  const locale = await requestLocale()
+  return pageMetadata({ path: `/products/${slug}`, title: family.seoTitle ? text(family.seoTitle, locale) : `${text(family.name)} | MICONG`, description: family.seoDescription ? text(family.seoDescription, locale) : text(family.summary) })
 }
 
 const requestChecklist = [
@@ -53,6 +55,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
   const { grade } = await searchParams
   const family = await getProductFamilyBySlug(slug)
   if (!family) notFound()
+  const locale = await requestLocale()
 
   const [families, categories, applications] = await Promise.all([
     getProductFamilies(),
@@ -79,8 +82,8 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
   return (
     <>
       <JsonLd data={[
-        breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Products', path: '/products' }, { name, path: `/products/${slug}` }]),
-        { '@context': 'https://schema.org', '@type': 'Product', '@id': `${siteUrl(`/products/${slug}`)}#product`, name, description: text(family.description || family.summary), url: siteUrl(`/products/${slug}`), brand: { '@id': organizationId } },
+        breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Products', path: '/products' }, { name, path: `/products/${slug}` }], locale),
+        { '@context': 'https://schema.org', '@type': 'Product', '@id': `${siteUrl(localePath(`/products/${slug}`,locale))}#product`, name, description: text(family.description || family.summary), url: siteUrl(localePath(`/products/${slug}`,locale)), brand: { '@id': organizationId } },
       ]} />
       <PageHero
         eyebrow={category ? text(category.name) : 'Products'}

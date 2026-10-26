@@ -1,13 +1,14 @@
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 import { getProductFamilies, text } from '@/lib/data/repository'
 import { company, mainNav } from '@/lib/site-config'
 import { getSiteContent } from '@/lib/site-content/site-content'
 import { homeModule, siteNavigation } from '@/lib/site-content/home'
+import { requestLocale } from '@/lib/i18n'
 
 export async function SiteFooter() {
-  const [families, snapshot] = await Promise.all([getProductFamilies(), getSiteContent('en')])
+  const [families, snapshot] = await Promise.all([getProductFamilies(), getSiteContent(await requestLocale())])
   const navigation = siteNavigation(homeModule(snapshot, 'navigation')) ?? mainNav
   if (snapshot && navigation === mainNav) throw new Error('Published footer navigation content is incomplete')
 

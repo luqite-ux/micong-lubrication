@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { Reveal } from '@/components/reveal'
 import { Marker } from '@/components/marker'
 import { text } from '@/lib/data/repository'

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { Mail, Phone } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 import { DesktopNav, MobileNav } from '@/components/header-nav'
@@ -6,9 +6,11 @@ import { getProductFamilies, text } from '@/lib/data/repository'
 import { company } from '@/lib/site-config'
 import { getSiteContent } from '@/lib/site-content/site-content'
 import { homeModule, siteNavigation } from '@/lib/site-content/home'
+import { activeSiteLocales, requestLocale } from '@/lib/i18n'
+import { LanguageSwitch } from '@/components/language-switch'
 
 export async function SiteHeader() {
-  const [families, snapshot] = await Promise.all([getProductFamilies(), getSiteContent('en')])
+  const [families, snapshot, locales] = await Promise.all([getProductFamilies(), getSiteContent(await requestLocale()), activeSiteLocales()])
   const navigation = siteNavigation(homeModule(snapshot, 'navigation')) ?? undefined
   const navigationStyles = homeModule(snapshot,'navigation')?.styles
   if (snapshot && !navigation) throw new Error('Published navigation content is incomplete')
@@ -41,6 +43,7 @@ export async function SiteHeader() {
           <BrandLogo />
           <DesktopNav families={navFamilies} navigation={navigation} styles={navigationStyles} />
           <div className="flex items-center gap-3">
+            <LanguageSwitch locales={locales} />
             <Link
               href="/contact#rfq"
               className="hidden h-11 items-center rounded-md bg-brand-red px-5 text-sm font-semibold text-white transition-colors hover:bg-brand-red-deep sm:inline-flex"

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { FaqList } from '@/components/faq-list'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'

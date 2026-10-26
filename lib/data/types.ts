@@ -1,7 +1,7 @@
-export type Locale = 'en' | 'zh'
+export type Locale = string
 
 /** Locale-aware text. `en` is required; `zh` is filled by the future bilingual phase. */
-export type LocalizedText = { en: string; zh?: string }
+export type LocalizedText = { en: string; [locale: string]: string | undefined }
 
 export type ProductCategoryId = 'industrial-lubricants' | 'metalworking-fluids'
 

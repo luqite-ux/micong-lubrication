@@ -7,6 +7,7 @@ import { pageMetadata } from '@/lib/seo'
 import { JsonLd } from '@/components/json-ld'
 import { breadcrumbSchema, organizationId } from '@/lib/schema'
 import { siteUrl } from '@/lib/site-url'
+import { localePath, requestLocale } from '@/lib/i18n'
 
 type NewsArticlePageProps = { params: Promise<{ slug: string }> }
 
@@ -15,7 +16,7 @@ export const dynamicParams = true
 export const dynamic = 'force-dynamic'
 
 export async function generateStaticParams() {
-  const articles = await getNewsArticles()
+  const articles = await getNewsArticles('en')
   return articles.map((article) => ({ slug: article.slug }))
 }
 
@@ -30,12 +31,13 @@ export default async function NewsArticlePage({ params }: NewsArticlePageProps) 
   const { slug } = await params
   const article = await getNewsArticleBySlug(slug)
   if (!article) notFound()
+  const locale = await requestLocale()
 
   return (
     <>
       <JsonLd data={[
-        breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'News', path: '/news' }, { name: text(article.title), path: `/news/${slug}` }]),
-        { '@context': 'https://schema.org', '@type': 'Article', '@id': `${siteUrl(`/news/${slug}`)}#article`, headline: text(article.title), description: text(article.excerpt), datePublished: article.publishedAt, dateModified: article.updatedAt || article.publishedAt, author: { '@id': organizationId }, publisher: { '@id': organizationId }, mainEntityOfPage: siteUrl(`/news/${slug}`), ...(article.cover ? { image: article.cover.src } : {}) },
+        breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'News', path: '/news' }, { name: text(article.title), path: `/news/${slug}` }], locale),
+        { '@context': 'https://schema.org', '@type': 'Article', '@id': `${siteUrl(localePath(`/news/${slug}`,locale))}#article`, headline: text(article.title), description: text(article.excerpt), datePublished: article.publishedAt, dateModified: article.updatedAt || article.publishedAt, author: { '@id': organizationId }, publisher: { '@id': organizationId }, mainEntityOfPage: siteUrl(localePath(`/news/${slug}`,locale)), ...(article.cover ? { image: article.cover.src } : {}) },
       ]} />
       <PageHero
         eyebrow="News"

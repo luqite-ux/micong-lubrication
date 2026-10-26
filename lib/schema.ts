@@ -1,5 +1,6 @@
 import { company } from '@/lib/site-config'
 import { siteUrl } from '@/lib/site-url'
+import { localePath } from '@/lib/i18n'
 
 export const organizationId = `${siteUrl('/')}#organization`
 export const websiteId = `${siteUrl('/')}#website`
@@ -19,10 +20,10 @@ export function organizationSchema() {
   }
 }
 
-export function websiteSchema() {
-  return { '@context': 'https://schema.org', '@type': 'WebSite', '@id': websiteId, url: siteUrl('/'), name: company.brand, publisher: { '@id': organizationId }, inLanguage: 'en' }
+export function websiteSchema(locale = 'en') {
+  return { '@context': 'https://schema.org', '@type': 'WebSite', '@id': websiteId, url: siteUrl(localePath('/', locale)), name: company.brand, publisher: { '@id': organizationId }, inLanguage: locale }
 }
 
-export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
-  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, item: siteUrl(item.path) })) }
+export function breadcrumbSchema(items: Array<{ name: string; path: string }>, locale = 'en') {
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, item: siteUrl(localePath(item.path, locale)) })) }
 }

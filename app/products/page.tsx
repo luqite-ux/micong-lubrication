@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ContactCta } from '@/components/contact-cta'
 import { FamilyCard } from '@/components/family-card'
 import { PageHero } from '@/components/page-hero'
@@ -11,9 +11,10 @@ import { cn } from '@/lib/utils'
 import { pageMetadata } from '@/lib/seo'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
+import { requestLocale } from '@/lib/i18n'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each.' })
-export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/products','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/products',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 type ProductsPageProps = {
   searchParams: Promise<{ category?: string }>
@@ -21,7 +22,7 @@ type ProductsPageProps = {
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const { category } = await searchParams
-  const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent('en')])
+  const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent(await requestLocale())])
   const hero = pageHero(snapshot, '/products')
   const copy=pageCopy(snapshot,'/products'), sharedCopy=pageCopy(snapshot,'/')
   const active = categories.find((item) => item.id === category)

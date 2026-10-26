@@ -22,6 +22,7 @@ import type {
   ProductFamily,
 } from './types'
 import { getSupabaseClient, tenantId } from '@/lib/supabase'
+import { requestLocale } from '@/lib/i18n'
 
 type ProductRow = {
   id: string
@@ -57,6 +58,7 @@ type ArticleRow = {
   published_at: string | null
   created_at: string
   updated_at: string | null
+  sort_order: number | null
 }
 
 function selectLocale(value: Record<string, string> | null, fallback: string, locale: Locale = 'en') {
@@ -72,10 +74,11 @@ function productSummary(description: string): string {
 }
 
 export function text(value: LocalizedText, locale: Locale = 'en'): string {
-  return value[locale] ?? value.en
+  return value[locale]?.trim() || value.en?.trim() || Object.values(value).find(item => typeof item === 'string' && item.trim()) || ''
 }
 
-export async function getProductCategories(locale: Locale = 'en'): Promise<ProductCategory[]> {
+export async function getProductCategories(locale?: Locale): Promise<ProductCategory[]> {
+  const requestedLocale = locale ?? await requestLocale()
   const db = getSupabaseClient()
   const tenant = tenantId()
   if (!db || !tenant) return productCategories
@@ -88,8 +91,8 @@ export async function getProductCategories(locale: Locale = 'en'): Promise<Produ
     if(row.slug!=='industrial-lubricants'&&row.slug!=='metalworking-fluids')return []
     return [{
       id:row.slug,
-      name:{en:selectLocale(row.name_i18n,row.name,locale)},
-      description:{en:selectLocale(row.description_i18n,row.description||'',locale)},
+      name:{en:selectLocale(row.name_i18n,row.name,requestedLocale)},
+      description:{en:selectLocale(row.description_i18n,row.description||'',requestedLocale)},
     } satisfies ProductCategory]
   })
 }
@@ -114,7 +117,8 @@ function withSourceFacts(family: ProductFamily): ProductFamily {
   }
 }
 
-export async function getProductFamilies(locale: Locale = 'en'): Promise<ProductFamily[]> {
+export async function getProductFamilies(locale?: Locale): Promise<ProductFamily[]> {
+  const requestedLocale = locale ?? await requestLocale()
   const db = getSupabaseClient()
   const tenant = tenantId()
   if (!db || !tenant) return productFamilies.map(withSourceFacts)
@@ -128,10 +132,10 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
     return {
       id: row.id,
       slug: row.slug,
-      name: { en: selectLocale(row.name_i18n, row.name, locale), zh: row.name_i18n?.zh },
+      name: { ...row.name_i18n, en: selectLocale(row.name_i18n, row.name, requestedLocale) },
       category: row.category_slug === 'metalworking-fluids' ? 'metalworking-fluids' : 'industrial-lubricants',
-      summary: { en: productSummary(selectLocale(row.description_i18n, row.description || '', locale)) },
-      description: { en: selectLocale(row.description_i18n, row.description || '', locale), zh: row.description_i18n?.zh },
+      summary: { en: productSummary(selectLocale(row.description_i18n, row.description || '', requestedLocale)) },
+      description: { ...row.description_i18n, en: selectLocale(row.description_i18n, row.description || '', requestedLocale) },
       icon: original?.icon || 'hydraulic',
       grades: grades?.length ? grades : null,
       minimumOrder: typeof row.extra_data?.minimum_order === 'string' ? row.extra_data.minimum_order : undefined,
@@ -140,15 +144,15 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
         : undefined,
       applicationIds: original?.applicationIds || [],
       updatedAt: row.updated_at || undefined,
-      seoTitle: typeof (row.extra_data?.seo_title_i18n as Record<string, unknown> | undefined)?.en === 'string'
-        ? { en: (row.extra_data!.seo_title_i18n as Record<string, string>).en } : undefined,
-      seoDescription: typeof (row.extra_data?.seo_description_i18n as Record<string, unknown> | undefined)?.en === 'string'
-        ? { en: (row.extra_data!.seo_description_i18n as Record<string, string>).en } : undefined,
+      seoTitle: row.extra_data?.seo_title_i18n && typeof row.extra_data.seo_title_i18n === 'object'
+        ? row.extra_data.seo_title_i18n as LocalizedText : undefined,
+      seoDescription: row.extra_data?.seo_description_i18n && typeof row.extra_data.seo_description_i18n === 'object'
+        ? row.extra_data.seo_description_i18n as LocalizedText : undefined,
     } satisfies ProductFamily
   })
 }
 
-export async function getProductFamilyBySlug(slug: string, locale: Locale = 'en'): Promise<ProductFamily | null> {
+export async function getProductFamilyBySlug(slug: string, locale?: Locale): Promise<ProductFamily | null> {
   return (await getProductFamilies(locale)).find((family) => family.slug === slug) ?? null
 }
 
@@ -164,18 +168,22 @@ export async function getFaqItems(): Promise<FaqItem[]> {
   return faqItems
 }
 
-export async function getNewsArticles(locale: Locale = 'en'): Promise<NewsArticle[]> {
+export async function getNewsArticles(locale?: Locale): Promise<NewsArticle[]> {
+  const requestedLocale = locale ?? await requestLocale()
   const db = getSupabaseClient()
   const tenant = tenantId()
   if (!db || !tenant) return []
   const { data, error } = await db.from('articles')
-    .select('id,slug,title,title_i18n,excerpt,excerpt_i18n,content,content_i18n,featured_image,published_at,created_at,updated_at')
-    .eq('tenant_id', tenant).eq('is_published', true).order('published_at', { ascending: false })
+    .select('id,slug,title,title_i18n,excerpt,excerpt_i18n,content,content_i18n,featured_image,published_at,created_at,updated_at,sort_order')
+    .eq('tenant_id', tenant).eq('is_published', true)
+    .order('sort_order', { ascending: true })
+    .order('published_at', { ascending: false, nullsFirst: false })
+    .order('id', { ascending: true })
   if (error) return []
   return ((data ?? []) as ArticleRow[]).map(row => {
-    const title = selectLocale(row.title_i18n, row.title, locale)
-    const excerpt = selectLocale(row.excerpt_i18n, row.excerpt || '', locale)
-    const content = selectLocale(row.content_i18n, row.content || '', locale)
+    const title = selectLocale(row.title_i18n, row.title, requestedLocale)
+    const excerpt = selectLocale(row.excerpt_i18n, row.excerpt || '', requestedLocale)
+    const content = selectLocale(row.content_i18n, row.content || '', requestedLocale)
     return {
       id: row.id,
       slug: row.slug,
@@ -189,6 +197,6 @@ export async function getNewsArticles(locale: Locale = 'en'): Promise<NewsArticl
   })
 }
 
-export async function getNewsArticleBySlug(slug: string, locale: Locale = 'en'): Promise<NewsArticle | null> {
+export async function getNewsArticleBySlug(slug: string, locale?: Locale): Promise<NewsArticle | null> {
   return (await getNewsArticles(locale)).find((article) => article.slug === slug) ?? null
 }

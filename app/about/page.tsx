@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
+import { requestLocale } from '@/lib/i18n'
 import { pageMetadata } from '@/lib/seo'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from '@/components/localized-link'
 import { ArrowRight } from 'lucide-react'
 import { ContactCta } from '@/components/contact-cta'
 import { FaqSection } from '@/components/home/faq-section'
@@ -18,7 +19,7 @@ import { homeFaq, homeModule } from '@/lib/site-content/home'
 import { managedImage, managedTextRows, managedTitledRows } from '@/lib/site-content/collections'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/about', title: 'About MICONG', description: 'Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry.' })
-export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/about','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/about',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 const ways = [
   { icon: 'sample', title: 'Samples', body: 'Samples can be requested. Sample shipping is at the customer cost.' },
@@ -37,7 +38,7 @@ const inquiryChecklist = [
 ]
 
 export default async function AboutPage() {
-  const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent('en')])
+  const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent(await requestLocale())])
   const hero = pageHero(snapshot, '/about')
   const copy=pageCopy(snapshot,'/about'), sharedCopy=pageCopy(snapshot,'/')
   const faq=homeFaq(homeModule(snapshot,'faq'))
