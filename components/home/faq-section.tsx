@@ -7,7 +7,7 @@ import type { FaqItem } from '@/lib/data/types'
 import { siteTypographyStyle } from '@/lib/site-content/typography'
 import type { SiteSnapshot } from '@/lib/site-content/transport'
 
-export async function FaqSection({ items: suppliedItems, title = 'Questions buyers ask first', description = 'Source-checked answers on product fit, packaging, samples, pricing, timing and inspection.', styles }: { items?: FaqItem[]; title?: string; description?: string; styles?: SiteSnapshot['pages'][number]['modules'][number]['styles'] }) {
+export async function FaqSection({ items: suppliedItems, title = 'Questions buyers ask first', description = 'Answers on product fit, packaging, samples, pricing, timing and inspection.', styles }: { items?: FaqItem[]; title?: string; description?: string; styles?: SiteSnapshot['pages'][number]['modules'][number]['styles'] }) {
   const items = suppliedItems ?? await getFaqItems()
 
   return (

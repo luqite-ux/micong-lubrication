@@ -41,7 +41,7 @@ export function CompanyIntro({copy,snapshot}:{copy?:Record<string,string>|null;s
               </div>
             </dl>
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-white/70">
-              {copyValue(copy,'company_boundary','Certificates, facility details and capacity figures are not published here until MICONG supplies and verifies them. The banner scenes on this site are illustrative imagery.')}
+              {copyValue(copy,'company_boundary','Tell us what product details or documents you need for your evaluation. Banner scenes on this site are illustrative imagery.')}
             </p>
             <Link
               href="/about"
