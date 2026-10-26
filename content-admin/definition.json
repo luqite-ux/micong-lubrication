@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -296,7 +296,7 @@
               "type": "repeat",
               "label": "问答列表",
               "required": true,
-              "maxItems": 20,
+              "maxItems": 40,
               "fields": [
                 {
                   "key": "question",
