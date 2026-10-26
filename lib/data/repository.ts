@@ -101,7 +101,7 @@ const sourceMinimumOrderSlugs = new Set([
 
 function sourceNotes(slug: string): string[] | undefined {
   return slug === 'anti-wear-hydraulic-oil' ? [
-    'The source lists a cylindrical drum as 60 × 90 without stating the unit. Confirm dimensions and pack capacity before ordering.',
+    'A cylindrical drum is listed as 60 × 90 without units. Please confirm dimensions and pack capacity before ordering.',
     'The standard oil is described as slightly yellow; the high-pressure, high-cleanness type is described as transparent.',
   ] : undefined
 }
