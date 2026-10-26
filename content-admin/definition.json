@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -615,6 +615,54 @@
               "maxLength": 1200
             }
           ]
+        },
+        {
+          "key": "process_steps",
+          "type": "process_steps",
+          "label": "采购合作步骤",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "步骤",
+              "required": true,
+              "maxItems": 10,
+              "fields": [
+                {
+                  "key": "icon",
+                  "type": "text",
+                  "label": "图标键",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "title",
+                  "type": "text",
+                  "label": "标题",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "description",
+                  "type": "textarea",
+                  "label": "说明",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 1000
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -971,6 +1019,74 @@
               "localized": true,
               "required": true,
               "maxLength": 1200
+            }
+          ]
+        },
+        {
+          "key": "areas",
+          "type": "areas",
+          "label": "应用领域",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "应用",
+              "required": true,
+              "maxItems": 20,
+              "fields": [
+                {
+                  "key": "icon",
+                  "type": "text",
+                  "label": "图标键",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "name",
+                  "type": "text",
+                  "label": "名称",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "summary",
+                  "type": "textarea",
+                  "label": "说明",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 1000
+                },
+                {
+                  "key": "product_1",
+                  "type": "product",
+                  "label": "关联产品 1"
+                },
+                {
+                  "key": "product_2",
+                  "type": "product",
+                  "label": "关联产品 2"
+                },
+                {
+                  "key": "product_3",
+                  "type": "product",
+                  "label": "关联产品 3"
+                },
+                {
+                  "key": "product_4",
+                  "type": "product",
+                  "label": "关联产品 4"
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
             }
           ]
         }

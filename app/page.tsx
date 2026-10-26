@@ -40,9 +40,9 @@ export default async function HomePage() {
       <HeroCarousel slides={slides || undefined} styles={homeModule(snapshot,'hero')?.styles} />
       <FamilySelector copy={copy} />
       <Pathways copy={copy} />
-      <ApplicationPicker copy={copy} />
+      <ApplicationPicker copy={copy} snapshot={snapshot} />
       <PackagingSection copy={copy} />
-      <CooperationPath copy={copy} />
+      <CooperationPath copy={copy} snapshot={snapshot} />
       <CompanyIntro copy={copy} />
       <FaqSection {...(faq || {})} styles={homeModule(snapshot,'faq')?.styles} />
       <ContactCta copy={copy} />

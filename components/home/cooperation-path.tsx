@@ -7,9 +7,11 @@ import { SectionHeading } from '@/components/section-heading'
 import { getCooperationSteps, text } from '@/lib/data/repository'
 import { cn } from '@/lib/utils'
 import { copyValue } from '@/lib/site-content/page'
+import { managedCooperationSteps } from '@/lib/site-content/collections'
+import type { SiteSnapshot } from '@/lib/site-content/transport'
 
-export async function CooperationPath({copy}:{copy?:Record<string,string>|null}) {
-  const steps = await getCooperationSteps()
+export async function CooperationPath({copy,snapshot}:{copy?:Record<string,string>|null;snapshot?:SiteSnapshot|null}) {
+  const steps = managedCooperationSteps(snapshot||null)??await getCooperationSteps()
 
   return (
     <section id="process" aria-labelledby="process-title" className="bg-white py-20 md:py-24">

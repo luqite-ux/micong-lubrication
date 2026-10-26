@@ -6,9 +6,12 @@ import { stagger } from '@/lib/motion'
 import { SectionHeading } from '@/components/section-heading'
 import { getApplicationAreas, getProductFamilies, text } from '@/lib/data/repository'
 import { copyValue } from '@/lib/site-content/page'
+import { managedApplicationAreas } from '@/lib/site-content/collections'
+import type { SiteSnapshot } from '@/lib/site-content/transport'
 
-export async function ApplicationPicker({copy}:{copy?:Record<string,string>|null}) {
-  const [areas, families] = await Promise.all([getApplicationAreas(), getProductFamilies()])
+export async function ApplicationPicker({copy,snapshot}:{copy?:Record<string,string>|null;snapshot?:SiteSnapshot|null}) {
+  const [fallbackAreas, families] = await Promise.all([getApplicationAreas(), getProductFamilies()])
+  const areas=managedApplicationAreas(snapshot||null,families)??fallbackAreas
   const nameBySlug = new Map(families.map((family) => [family.slug, text(family.name)]))
 
   return (

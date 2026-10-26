@@ -9,12 +9,14 @@ import { Reveal } from '@/components/reveal'
 import { getApplicationAreas, getProductFamilies, text } from '@/lib/data/repository'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
+import { managedApplicationAreas } from '@/lib/site-content/collections'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/applications','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 export default async function ApplicationsPage() {
-  const [areas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent('en')])
+  const [fallbackAreas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent('en')])
+  const areas=managedApplicationAreas(snapshot,families)??fallbackAreas
   const hero = pageHero(snapshot, '/applications')
   const copy=pageCopy(snapshot,'/applications')
 

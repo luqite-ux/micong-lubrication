@@ -24,6 +24,8 @@
     "products.copy",
     "applications.copy",
     "news.copy",
-    "contact.copy"
+    "contact.copy",
+    "home.process_steps",
+    "applications.areas"
   ]
 }

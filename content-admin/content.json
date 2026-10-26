@@ -6,7 +6,8 @@
         "navigation",
         "faq",
         "seo",
-        "copy"
+        "copy",
+        "process_steps"
       ],
       "modules": {
         "hero": {
@@ -369,6 +370,78 @@
               "en": "Request a quote"
             }
           }
+        },
+        "process_steps": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "requirement",
+                "icon": {
+                  "en": "requirement"
+                },
+                "title": {
+                  "en": "Share your requirement"
+                },
+                "description": {
+                  "en": "Product family, application or equipment, grade, quantity and destination."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "document",
+                "icon": {
+                  "en": "document"
+                },
+                "title": {
+                  "en": "Request a data sheet"
+                },
+                "description": {
+                  "en": "Ask for the technical data sheet, or raise OEM and packaging needs."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "sample",
+                "icon": {
+                  "en": "sample"
+                },
+                "title": {
+                  "en": "Evaluate a sample"
+                },
+                "description": {
+                  "en": "Samples can be requested. Sample shipping is at the customer cost."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "quote",
+                "icon": {
+                  "en": "quote"
+                },
+                "title": {
+                  "en": "Agree quote and timing"
+                },
+                "description": {
+                  "en": "Lead time depends on order size and is discussed per inquiry."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "inspection",
+                "icon": {
+                  "en": "inspection"
+                },
+                "title": {
+                  "en": "Inspection if needed"
+                },
+                "description": {
+                  "en": "Third-party inspection can be discussed on request."
+                },
+                "is_visible": true
+              }
+            ]
+          }
         }
       }
     },
@@ -499,7 +572,8 @@
       "order": [
         "page_hero",
         "seo",
-        "copy"
+        "copy",
+        "areas"
       ],
       "modules": {
         "page_hero": {
@@ -536,6 +610,128 @@
             "cta_description": {
               "en": "Describe the machine, the process and the fluid you use now. We will tell you which family we can discuss."
             }
+          }
+        },
+        "areas": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "hydraulic-equipment",
+                "icon": {
+                  "en": "hydraulic"
+                },
+                "name": {
+                  "en": "Hydraulic equipment"
+                },
+                "summary": {
+                  "en": "Systems driven by hydraulic fluid. Share the equipment type and operating conditions to confirm the grade."
+                },
+                "is_visible": true,
+                "product_1": "065aeb28-a285-4be8-9689-ccb0528eb8d6"
+              },
+              {
+                "id": "machine-tool-slideways",
+                "icon": {
+                  "en": "slideway"
+                },
+                "name": {
+                  "en": "Machine-tool slideways"
+                },
+                "summary": {
+                  "en": "Sliding guideways on machine tools. Tell us the machine and the grade you currently use."
+                },
+                "is_visible": true,
+                "product_1": "21e04a71-a21a-4f3c-8e4b-c0aa4bea4655"
+              },
+              {
+                "id": "cnc-machining",
+                "icon": {
+                  "en": "cutting"
+                },
+                "name": {
+                  "en": "CNC machining and metal cutting"
+                },
+                "summary": {
+                  "en": "Choose between water-miscible fluids (fully synthetic, semi-synthetic, micro-emulsion) and cutting oil."
+                },
+                "is_visible": true,
+                "product_1": "4e79fedb-46ee-4007-98fc-d76f209901fd",
+                "product_2": "a45d3a68-bb48-4c2e-bfd8-fc1481ba6bfd",
+                "product_3": "6b6f4f8a-68e3-42e4-b7a4-19180072a37b",
+                "product_4": "62b13c78-1e36-4ac3-9fa8-b4314868f863"
+              },
+              {
+                "id": "gearboxes",
+                "icon": {
+                  "en": "gear"
+                },
+                "name": {
+                  "en": "Gearboxes"
+                },
+                "summary": {
+                  "en": "Geared drives and gearboxes. Include the gearbox type and current oil in your inquiry."
+                },
+                "is_visible": true,
+                "product_1": "ef66fb5e-90d8-40dd-b265-033d8c909874"
+              },
+              {
+                "id": "vacuum-pumps",
+                "icon": {
+                  "en": "vacuum"
+                },
+                "name": {
+                  "en": "Vacuum pumps"
+                },
+                "summary": {
+                  "en": "Vacuum pump lubrication. Name the pump model so the right oil can be discussed."
+                },
+                "is_visible": true,
+                "product_1": "b41a774a-ba5f-4c7a-996a-d4fec05aca7b"
+              },
+              {
+                "id": "engines",
+                "icon": {
+                  "en": "engine"
+                },
+                "name": {
+                  "en": "Engines"
+                },
+                "summary": {
+                  "en": "Automotive engines. Send the engine details and the oil specification you need."
+                },
+                "is_visible": true,
+                "product_1": "c7cf5b75-89a4-4341-b7b2-b2ce8d37bd92"
+              },
+              {
+                "id": "grease-points",
+                "icon": {
+                  "en": "grease"
+                },
+                "name": {
+                  "en": "Grease-lubricated points"
+                },
+                "summary": {
+                  "en": "Bearings and other points lubricated with grease. Describe the point and operating conditions."
+                },
+                "is_visible": true,
+                "product_1": "7dcefa48-534e-40d3-80f4-fac603de8085"
+              },
+              {
+                "id": "other-industrial",
+                "icon": {
+                  "en": "white"
+                },
+                "name": {
+                  "en": "Other industrial uses"
+                },
+                "summary": {
+                  "en": "Industrial white oil and uses not listed here. Describe your process and we will point to a family."
+                },
+                "is_visible": true,
+                "product_1": "ea9a59fb-87e5-432b-a2bb-d19b185c19e3"
+              }
+            ]
           }
         }
       }
