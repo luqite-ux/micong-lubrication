@@ -64,6 +64,13 @@ function selectLocale(value: Record<string, string> | null, fallback: string, lo
   return valid[locale] || valid.en || Object.values(valid).find(item => typeof item === 'string' && item.trim()) || fallback
 }
 
+function productSummary(description: string): string {
+  const normalized = description.replace(/\s+/g, ' ').trim()
+  if (normalized.length <= 130) return normalized
+  const preview = normalized.slice(0, 127).replace(/\s+\S*$/, '').trimEnd()
+  return `${preview}…`
+}
+
 export function text(value: LocalizedText, locale: Locale = 'en'): string {
   return value[locale] ?? value.en
 }
@@ -123,7 +130,7 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
       slug: row.slug,
       name: { en: selectLocale(row.name_i18n, row.name, locale), zh: row.name_i18n?.zh },
       category: row.category_slug === 'metalworking-fluids' ? 'metalworking-fluids' : 'industrial-lubricants',
-      summary: { en: selectLocale(row.description_i18n, row.description || '', locale).slice(0, 180) },
+      summary: { en: productSummary(selectLocale(row.description_i18n, row.description || '', locale)) },
       description: { en: selectLocale(row.description_i18n, row.description || '', locale), zh: row.description_i18n?.zh },
       icon: original?.icon || 'hydraulic',
       grades: grades?.length ? grades : null,
