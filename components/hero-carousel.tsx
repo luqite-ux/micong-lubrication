@@ -5,12 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { heroSlides } from '@/lib/hero-slides'
+import { heroSlides as defaultHeroSlides, type HeroSlide } from '@/lib/hero-slides'
 
 const INTERVAL = 8000
 const SWIPE_DISTANCE = 48
 
-export function HeroCarousel() {
+export function HeroCarousel({ slides = defaultHeroSlides }: { slides?: HeroSlide[] }) {
   const [index, setIndex] = useState(0)
   const [userPlaying, setUserPlaying] = useState(true)
   const [reducedMotion, setReducedMotion] = useState(false)
@@ -21,6 +21,7 @@ export function HeroCarousel() {
   const rootRef = useRef<HTMLElement>(null)
   const touchStart = useRef<{ x: number; y: number } | null>(null)
 
+  const heroSlides = slides.length ? slides : defaultHeroSlides
   const count = heroSlides.length
   const go = useCallback((next: number) => setIndex((next + count) % count), [count])
 
@@ -137,9 +138,17 @@ export function HeroCarousel() {
                   alt={slide.alt}
                   fill
                   priority={i === 0}
-                  sizes="(min-width: 1280px) 100vw, 100vw"
-                  className="hero-img object-cover"
+                  sizes="100vw"
+                  className={cn('hero-img object-cover', slide.mobileSrc && 'hidden xl:block')}
                 />
+                {slide.mobileSrc ? <Image
+                  src={slide.mobileSrc}
+                  alt={slide.mobileAlt || slide.alt}
+                  fill
+                  priority={i === 0}
+                  sizes="100vw"
+                  className="hero-img object-cover xl:hidden"
+                /> : null}
               </div>
 
               <div

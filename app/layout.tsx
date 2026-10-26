@@ -3,6 +3,8 @@ import { Archivo, IBM_Plex_Sans } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { siteUrl } from '@/lib/site-url'
+import { cookies } from 'next/headers'
+import { PREVIEW_COOKIE } from '@/lib/site-content/preview-cookie'
 import './globals.css'
 
 const archivo = Archivo({
@@ -35,7 +37,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const preview = (await cookies()).has(PREVIEW_COOKIE)
   return (
     <html lang="en" className={`${archivo.variable} ${plex.variable} bg-background`}>
       <body className="font-sans antialiased">
@@ -45,6 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        {preview ? <div role="status" className="flex items-center justify-center gap-4 bg-brand-yellow px-4 py-2 text-sm font-semibold text-charcoal">
+          Preview draft · changes are not public
+          <form method="post" action="/api/site-content/exit-preview"><button type="submit" className="underline underline-offset-2">Exit preview</button></form>
+        </div> : null}
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

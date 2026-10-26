@@ -1,0 +1,13 @@
+{
+  "domain": "micong-lubrication-huanqiu.vercel.app",
+  "adapterVersion": "1",
+  "capabilities": [
+    "preview"
+  ],
+  "modules": [
+    "home.hero",
+    "home.navigation",
+    "home.faq",
+    "home.seo"
+  ]
+}

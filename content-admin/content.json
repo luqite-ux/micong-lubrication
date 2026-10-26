@@ -1,0 +1,271 @@
+{
+  "pages": {
+    "home": {
+      "order": [
+        "hero",
+        "navigation",
+        "faq",
+        "seo"
+      ],
+      "modules": {
+        "hero": {
+          "hidden": false,
+          "values": {
+            "slides": [
+              {
+                "id": "range",
+                "scene_label": {
+                  "en": "Product range"
+                },
+                "desktop_image": {
+                  "assetId": "d11703be-b06e-48bb-8c9f-c07fda303c5a",
+                  "alt": {
+                    "en": "Illustrative scene: red and orange drums, clear jugs, black canisters and small pails in a dark industrial hall beside filtration equipment."
+                  }
+                },
+                "mobile_image": {
+                  "assetId": "d11703be-b06e-48bb-8c9f-c07fda303c5a",
+                  "alt": {
+                    "en": "Illustrative scene: red and orange drums, clear jugs, black canisters and small pails in a dark industrial hall beside filtration equipment."
+                  }
+                },
+                "eyebrow": {
+                  "en": "Industrial lubricants and metalworking fluids"
+                },
+                "title": {
+                  "en": "Eleven product families. One request for quotation."
+                },
+                "body": {
+                  "en": "From anti-wear hydraulic oil to cutting oil. Choose a family, pick a grade where one is listed, and ask for a data sheet or sample."
+                },
+                "primary_label": {
+                  "en": "Browse products"
+                },
+                "primary_href": "/products",
+                "secondary_label": {
+                  "en": "Request a quote"
+                },
+                "secondary_href": "/contact#rfq"
+              },
+              {
+                "id": "packaging",
+                "scene_label": {
+                  "en": "Packaging and OEM"
+                },
+                "desktop_image": {
+                  "assetId": "b307ffb0-1729-449f-a854-ae1a6b53cbec",
+                  "alt": {
+                    "en": "Illustrative scene: stainless steel process tanks, a bottle filling line and a robotic arm, with red pails, bottles and small tubs in the foreground."
+                  }
+                },
+                "mobile_image": {
+                  "assetId": "b307ffb0-1729-449f-a854-ae1a6b53cbec",
+                  "alt": {
+                    "en": "Illustrative scene: stainless steel process tanks, a bottle filling line and a robotic arm, with red pails, bottles and small tubs in the foreground."
+                  }
+                },
+                "eyebrow": {
+                  "en": "Packaging and OEM"
+                },
+                "title": {
+                  "en": "Raise packaging and OEM needs in your first inquiry."
+                },
+                "body": {
+                  "en": "Packaging customization and OEM cooperation can be discussed. Tell us the pack type, quantity and destination."
+                },
+                "primary_label": {
+                  "en": "See packaging options"
+                },
+                "primary_href": "/#packaging",
+                "secondary_label": {
+                  "en": "Ask about OEM"
+                },
+                "secondary_href": "/contact?topic=oem#rfq"
+              },
+              {
+                "id": "inquiry",
+                "scene_label": {
+                  "en": "Technical inquiry"
+                },
+                "desktop_image": {
+                  "assetId": "f8e99eb9-5afb-4e24-94f5-d2da84d8bf8e",
+                  "alt": {
+                    "en": "Illustrative dusk scene: a modern glass office building with red and amber edge lighting and a long industrial building with storage tanks."
+                  }
+                },
+                "mobile_image": {
+                  "assetId": "f8e99eb9-5afb-4e24-94f5-d2da84d8bf8e",
+                  "alt": {
+                    "en": "Illustrative dusk scene: a modern glass office building with red and amber edge lighting and a long industrial building with storage tanks."
+                  }
+                },
+                "eyebrow": {
+                  "en": "Technical inquiry from Shanghai"
+                },
+                "title": {
+                  "en": "Send the equipment and grade. We reply with next steps."
+                },
+                "body": {
+                  "en": "MICONG is based in Pudong New Area, Shanghai. Share your application, quantity and destination, and ask for a technical data sheet."
+                },
+                "primary_label": {
+                  "en": "Send an inquiry"
+                },
+                "primary_href": "/contact#rfq",
+                "secondary_label": {
+                  "en": "View applications"
+                },
+                "secondary_href": "/applications"
+              }
+            ]
+          }
+        },
+        "navigation": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "nav-0",
+                "label": {
+                  "en": "Home"
+                },
+                "href": "/"
+              },
+              {
+                "id": "nav-1",
+                "label": {
+                  "en": "About"
+                },
+                "href": "/about"
+              },
+              {
+                "id": "nav-2",
+                "label": {
+                  "en": "Products"
+                },
+                "href": "/products"
+              },
+              {
+                "id": "nav-3",
+                "label": {
+                  "en": "Applications"
+                },
+                "href": "/applications"
+              },
+              {
+                "id": "nav-4",
+                "label": {
+                  "en": "News"
+                },
+                "href": "/news"
+              },
+              {
+                "id": "nav-5",
+                "label": {
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              }
+            ]
+          }
+        },
+        "faq": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "Questions buyers ask first"
+            },
+            "description": {
+              "en": "Short answers on packaging, samples, data sheets, OEM, shipping, lead time and inspection."
+            },
+            "items": [
+              {
+                "id": "packaging",
+                "question": {
+                  "en": "Can packaging be customized?"
+                },
+                "answer": {
+                  "en": "Packaging customization can be discussed. State the pack type you need and your destination in the request form, and we will reply with what can be arranged for your order."
+                }
+              },
+              {
+                "id": "samples",
+                "question": {
+                  "en": "Can I request a sample?"
+                },
+                "answer": {
+                  "en": "Samples can be requested through the quote form. Name the product family, the grade if one is listed, and your destination."
+                }
+              },
+              {
+                "id": "tds",
+                "question": {
+                  "en": "Can I get a technical data sheet?"
+                },
+                "answer": {
+                  "en": "Yes, technical data sheets can be requested. Tell us the family and grade you are considering, using the form or by email."
+                }
+              },
+              {
+                "id": "applications",
+                "question": {
+                  "en": "Do you supply for hydraulic and CNC applications?"
+                },
+                "answer": {
+                  "en": "MICONG lists Anti-wear Hydraulic Oil for hydraulic equipment and cutting fluids for CNC and metal cutting work. Send the equipment and operating details so the right family and grade can be discussed."
+                }
+              },
+              {
+                "id": "oem",
+                "question": {
+                  "en": "Is OEM cooperation possible?"
+                },
+                "answer": {
+                  "en": "OEM cooperation can be discussed. Describe your brand, the product family and your pack requirements in the message field."
+                }
+              },
+              {
+                "id": "sample-shipping",
+                "question": {
+                  "en": "Who pays for sample shipping?"
+                },
+                "answer": {
+                  "en": "Sample shipping is at the customer cost. Include your destination in the request so shipping can be discussed."
+                }
+              },
+              {
+                "id": "lead-time",
+                "question": {
+                  "en": "How long does delivery take?"
+                },
+                "answer": {
+                  "en": "Lead time depends on order size and is discussed for each inquiry. Include quantity and destination so timing can be discussed."
+                }
+              },
+              {
+                "id": "inspection",
+                "question": {
+                  "en": "Can a third party inspect the goods?"
+                },
+                "answer": {
+                  "en": "Third-party inspection can be discussed on request. Mention it in your inquiry together with what you want checked."
+                }
+              }
+            ]
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "MICONG industrial lubricants and metalworking fluids"
+            },
+            "description": {
+              "en": "Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination."
+            }
+          }
+        }
+      }
+    }
+  }
+}

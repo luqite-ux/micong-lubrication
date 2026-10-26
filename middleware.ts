@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { SESSION_COOKIE } from '@/lib/admin-session'
+import { PREVIEW_COOKIE } from '@/lib/site-content/preview-cookie'
+import { protectPreviewResponse } from '@/lib/site-content/preview-protection'
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -10,7 +12,9 @@ export function middleware(request: NextRequest) {
     url.searchParams.set('reason', 'unauthorized')
     return NextResponse.redirect(url)
   }
-  return NextResponse.next()
+  const response = NextResponse.next()
+  protectPreviewResponse(response.headers, request.cookies.has(PREVIEW_COOKIE))
+  return response
 }
 
-export const config = { matcher: ['/admin/:path*'] }
+export const config = { matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'] }

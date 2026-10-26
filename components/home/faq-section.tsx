@@ -3,9 +3,10 @@ import { FaqList } from '@/components/faq-list'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { getFaqItems } from '@/lib/data/repository'
+import type { FaqItem } from '@/lib/data/types'
 
-export async function FaqSection() {
-  const items = await getFaqItems()
+export async function FaqSection({ items: suppliedItems, title = 'Questions buyers ask first', description = 'Short answers on packaging, samples, data sheets, OEM, shipping, lead time and inspection.' }: { items?: FaqItem[]; title?: string; description?: string }) {
+  const items = suppliedItems ?? await getFaqItems()
 
   return (
     <section id="faq" aria-labelledby="faq-title" className="bg-paper py-20 md:py-24">
@@ -14,8 +15,8 @@ export async function FaqSection() {
           <SectionHeading
             id="faq-title"
             eyebrow="FAQ"
-            title="Questions buyers ask first"
-            description="Short answers on packaging, samples, data sheets, OEM, shipping, lead time and inspection."
+            title={title}
+            description={description}
           />
           <Reveal delay={90}>
             <p className="mt-6 text-sm text-ink-soft">

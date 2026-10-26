@@ -3,6 +3,8 @@ export type HeroSlide = {
   sceneLabel: string
   src: string
   alt: string
+  mobileSrc?: string
+  mobileAlt?: string
   eyebrow: string
   title: string
   body: string

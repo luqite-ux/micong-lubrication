@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "fontFamilies": [
+    {
+      "key": "site-sans",
+      "label": "IBM Plex Sans"
+    },
+    {
+      "key": "site-display",
+      "label": "Archivo"
+    }
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "label": "首页",
+      "modules": [
+        {
+          "key": "hero",
+          "type": "hero",
+          "label": "首屏轮播",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "slides",
+              "type": "repeat",
+              "label": "Banner 场景",
+              "required": true,
+              "maxItems": 3,
+              "fields": [
+                {
+                  "key": "scene_label",
+                  "type": "text",
+                  "label": "场景标签",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "desktop_image",
+                  "type": "image",
+                  "label": "桌面 Banner 图",
+                  "required": true
+                },
+                {
+                  "key": "mobile_image",
+                  "type": "image",
+                  "label": "手机 Banner 图",
+                  "required": true
+                },
+                {
+                  "key": "eyebrow",
+                  "type": "text",
+                  "label": "眉题",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "title",
+                  "type": "text",
+                  "label": "主标题",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "body",
+                  "type": "textarea",
+                  "label": "说明",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 1000
+                },
+                {
+                  "key": "primary_label",
+                  "type": "text",
+                  "label": "主按钮文字",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "primary_href",
+                  "type": "link",
+                  "label": "主按钮地址",
+                  "required": true
+                },
+                {
+                  "key": "secondary_label",
+                  "type": "text",
+                  "label": "次按钮文字",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "secondary_href",
+                  "type": "link",
+                  "label": "次按钮地址",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "navigation",
+          "type": "navigation",
+          "label": "导航文字组",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "导航链接",
+              "required": true,
+              "maxItems": 6,
+              "fields": [
+                {
+                  "key": "label",
+                  "type": "text",
+                  "label": "文字",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "href",
+                  "type": "link",
+                  "label": "地址",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "faq",
+          "type": "faq",
+          "label": "常见问题",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "说明",
+              "localized": true,
+              "required": true,
+              "maxLength": 600
+            },
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "问答列表",
+              "required": true,
+              "maxItems": 20,
+              "fields": [
+                {
+                  "key": "question",
+                  "type": "text",
+                  "label": "问题",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "answer",
+                  "type": "textarea",
+                  "label": "回答",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 2000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "首页 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "页面标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "页面描述",
+              "localized": true,
+              "required": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -25,7 +25,7 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-export function DesktopNav({ families }: { families: NavFamily[] }) {
+export function DesktopNav({ families, navigation = mainNav }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}> }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -40,7 +40,7 @@ export function DesktopNav({ families }: { families: NavFamily[] }) {
   return (
     <nav aria-label="Primary" className="hidden self-stretch lg:block">
       <ul className="flex h-full items-center gap-1">
-        {mainNav.map((item) => {
+        {navigation.map((item) => {
           const active = isActive(pathname, item.href)
           const linkClass = cn(
             'relative inline-flex h-11 items-center px-3 text-[15px] font-medium text-ink transition-colors hover:text-brand-red',
@@ -151,7 +151,7 @@ export function DesktopNav({ families }: { families: NavFamily[] }) {
   )
 }
 
-export function MobileNav({ families }: { families: NavFamily[] }) {
+export function MobileNav({ families, navigation = mainNav }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}> }) {
   const pathname = usePathname()
   return (
     <Sheet>
@@ -167,7 +167,7 @@ export function MobileNav({ families }: { families: NavFamily[] }) {
         </SheetHeader>
         <nav aria-label="Mobile" className="px-5 py-4">
           <ul className="grid">
-            {mainNav.map((item) => {
+            {navigation.map((item) => {
               const active = isActive(pathname, item.href)
               return (
                 <li key={item.href} className="border-b border-paper-line last:border-0">

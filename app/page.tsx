@@ -10,23 +10,40 @@ import { HeroCarousel } from '@/components/hero-carousel'
 import { pageMetadata } from '@/lib/seo'
 import { JsonLd } from '@/components/json-ld'
 import { organizationSchema, websiteSchema } from '@/lib/schema'
+import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
+import { homeFaq, homeHeroSlides, homeModule } from '@/lib/site-content/home'
+import type { Metadata } from 'next'
 
 export const revalidate = 60
-export const metadata = pageMetadata({ path: '/', title: 'MICONG industrial lubricants and metalworking fluids', description: 'Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination.' })
+const fallbackMetadata = pageMetadata({ path: '/', title: 'MICONG industrial lubricants and metalworking fluids', description: 'Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination.' })
+export async function generateMetadata(): Promise<Metadata> {
+  const managed = await siteContentMetadata('/', 'en')
+  const title = managed.title || fallbackMetadata.title
+  const description = managed.description || fallbackMetadata.description
+  return {
+    ...fallbackMetadata, ...managed, title, description,
+    openGraph: { ...fallbackMetadata.openGraph, title: typeof title === 'string' ? title : undefined, description: typeof description === 'string' ? description : undefined },
+    twitter: { ...fallbackMetadata.twitter, title: typeof title === 'string' ? title : undefined, description: typeof description === 'string' ? description : undefined },
+  }
+}
 
-export default function HomePage() {
+export default async function HomePage() {
+  const snapshot = await getSiteContent('en')
+  const slides = homeHeroSlides(homeModule(snapshot, 'hero'))
+  const faq = homeFaq(homeModule(snapshot, 'faq'))
+  if (snapshot && (!slides || !faq)) throw new Error('Published homepage content is incomplete')
   return (
-    <>
+    <div {...(snapshot && slides && faq ? { 'data-hq-content-version': snapshot.version } : {})}>
       <JsonLd data={[organizationSchema(), websiteSchema()]} />
-      <HeroCarousel />
+      <HeroCarousel slides={slides || undefined} />
       <FamilySelector />
       <Pathways />
       <ApplicationPicker />
       <PackagingSection />
       <CooperationPath />
       <CompanyIntro />
-      <FaqSection />
+      <FaqSection {...(faq || {})} />
       <ContactCta />
-    </>
+    </div>
   )
 }
