@@ -190,7 +190,7 @@
                   "en": "Can packaging be customized?"
                 },
                 "answer": {
-                  "en": "The customer worksheet confirms packaging customization. Tell us the pack type and your requirements so we can confirm the options for your order."
+                  "en": "Packaging customization can be discussed. Tell us the pack type and your requirements so we can confirm the options for your order."
                 }
               },
               {
@@ -217,7 +217,7 @@
                   "en": "Which applications do you cover?"
                 },
                 "answer": {
-                  "en": "The customer worksheet names hydraulic equipment and CNC equipment. Describe your machine and operating conditions so we can discuss the relevant family."
+                  "en": "Our listed families include products for hydraulic equipment and CNC machining. Describe your machine and operating conditions so we can discuss the relevant family."
                 }
               },
               {
@@ -235,7 +235,7 @@
                   "en": "Does a quoted price include packaging, tax and shipping?"
                 },
                 "answer": {
-                  "en": "The customer worksheet states that packaging and tax are included, while shipping is excluded. Confirm the scope on the specific quotation."
+                  "en": "Packaging and tax are included; shipping is excluded. Confirm the scope on the specific quotation."
                 }
               },
               {
@@ -253,7 +253,7 @@
                   "en": "Can prices change with oil prices or exchange rates?"
                 },
                 "answer": {
-                  "en": "The customer worksheet says industrial-oil prices may change with international oil-price movements. Request a current quotation for your order."
+                  "en": "Industrial-oil prices may change with international oil-price movements. Request a current quotation for your order."
                 }
               },
               {
@@ -271,7 +271,7 @@
                   "en": "Are samples charged or refundable?"
                 },
                 "answer": {
-                  "en": "The worksheet says small samples may be free, larger samples are charged, samples are non-refundable, and shipping is excluded. Confirm the sample size and charges before dispatch."
+                  "en": "Small samples may be free; larger samples are charged. Samples are non-refundable, and shipping is excluded. Confirm the sample size and charges before dispatch."
                 }
               },
               {
@@ -280,7 +280,7 @@
                   "en": "How long does a sample take?"
                 },
                 "answer": {
-                  "en": "The worksheet lists approximately one week for sample preparation. Confirm the timing for the requested product and destination."
+                  "en": "Sample preparation is listed at approximately one week. Confirm the timing for the requested product and destination."
                 }
               },
               {
@@ -289,7 +289,7 @@
                   "en": "Can a sample be approved before a larger order?"
                 },
                 "answer": {
-                  "en": "Yes. The worksheet supports sample confirmation before a larger production order; discuss the approval steps in your inquiry."
+                  "en": "Yes. Sample confirmation before a larger order can be discussed; include the approval steps you need in your inquiry."
                 }
               },
               {
@@ -316,7 +316,7 @@
                   "en": "Is bulk-order delivery timing stable?"
                 },
                 "answer": {
-                  "en": "The worksheet says it is generally stable. Confirm the schedule for the actual quantity and order."
+                  "en": "It is generally stable, but the schedule should be confirmed for the actual quantity and order."
                 }
               },
               {
@@ -343,7 +343,7 @@
                   "en": "Can I get production progress updates?"
                 },
                 "answer": {
-                  "en": "The worksheet says progress can be communicated by phone. Agree the update contact and timing with the team."
+                  "en": "Progress can be communicated by phone. Agree the update contact and timing with the team."
                 }
               },
               {
@@ -352,7 +352,7 @@
                   "en": "Is there a quality-control process?"
                 },
                 "answer": {
-                  "en": "The customer worksheet confirms that a quality-control process exists. Request the inspection details relevant to your product and order."
+                  "en": "Yes. Request the inspection details relevant to your product and order."
                 }
               },
               {
@@ -370,7 +370,7 @@
                   "en": "Can inspection or quality reports be provided?"
                 },
                 "answer": {
-                  "en": "The worksheet says reports can be provided. Request the specific report for your product and order."
+                  "en": "Reports can be provided. Request the specific report for your product and order."
                 }
               }
             ]
