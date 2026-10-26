@@ -123,7 +123,7 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
       slug: row.slug,
       name: { en: selectLocale(row.name_i18n, row.name, locale), zh: row.name_i18n?.zh },
       category: row.category_slug === 'metalworking-fluids' ? 'metalworking-fluids' : 'industrial-lubricants',
-      summary: original?.summary || { en: selectLocale(row.description_i18n, row.description || '', locale).slice(0, 180) },
+      summary: { en: selectLocale(row.description_i18n, row.description || '', locale).slice(0, 180) },
       description: { en: selectLocale(row.description_i18n, row.description || '', locale), zh: row.description_i18n?.zh },
       icon: original?.icon || 'hydraulic',
       grades: grades?.length ? grades : null,
