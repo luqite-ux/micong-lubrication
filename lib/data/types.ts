@@ -25,6 +25,8 @@ export type ProductFamily = {
    * `null` means the source has a name only and grades are handled by inquiry.
    */
   grades: string[] | null
+  minimumOrder?: string
+  sourceNotes?: string[]
   applicationIds: string[]
   updatedAt?: string
   seoTitle?: LocalizedText

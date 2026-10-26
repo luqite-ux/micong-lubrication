@@ -87,14 +87,34 @@ export async function getProductCategories(locale: Locale = 'en'): Promise<Produ
   })
 }
 
+const sourceMinimumOrderSlugs = new Set([
+  'anti-wear-hydraulic-oil', 'slideway-oil', 'fully-synthetic-cutting-fluid',
+  'semi-synthetic-cutting-fluid', 'micro-emulsion-cutting-fluid',
+])
+
+function sourceNotes(slug: string): string[] | undefined {
+  return slug === 'anti-wear-hydraulic-oil' ? [
+    'The source lists a cylindrical drum as 60 × 90 without stating the unit. Confirm dimensions and pack capacity before ordering.',
+    'The standard oil is described as slightly yellow; the high-pressure, high-cleanness type is described as transparent.',
+  ] : undefined
+}
+
+function withSourceFacts(family: ProductFamily): ProductFamily {
+  return {
+    ...family,
+    minimumOrder: sourceMinimumOrderSlugs.has(family.slug) ? 'One metric ton or 5 drums' : undefined,
+    sourceNotes: sourceNotes(family.slug),
+  }
+}
+
 export async function getProductFamilies(locale: Locale = 'en'): Promise<ProductFamily[]> {
   const db = getSupabaseClient()
   const tenant = tenantId()
-  if (!db || !tenant) return productFamilies
+  if (!db || !tenant) return productFamilies.map(withSourceFacts)
   const { data, error } = await db.from('products')
     .select('id,slug,name,name_i18n,description,description_i18n,category_slug,specs,sort_order,updated_at,extra_data')
     .eq('tenant_id', tenant).eq('is_active', true).order('sort_order', { ascending: true })
-  if (error) return productFamilies
+  if (error) return productFamilies.map(withSourceFacts)
   return ((data ?? []) as ProductRow[]).map(row => {
     const original = productFamilies.find(item => item.slug === row.slug)
     const grades = Array.isArray(row.specs?.listed_grades) ? row.specs.listed_grades.filter((item): item is string => typeof item === 'string') : null
@@ -107,6 +127,8 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
       description: { en: selectLocale(row.description_i18n, row.description || '', locale), zh: row.description_i18n?.zh },
       icon: original?.icon || 'hydraulic',
       grades: grades?.length ? grades : null,
+      minimumOrder: typeof row.extra_data?.minimum_order === 'string' ? row.extra_data.minimum_order : undefined,
+      sourceNotes: sourceNotes(row.slug),
       applicationIds: original?.applicationIds || [],
       updatedAt: row.updated_at || undefined,
       seoTitle: typeof (row.extra_data?.seo_title_i18n as Record<string, unknown> | undefined)?.en === 'string'

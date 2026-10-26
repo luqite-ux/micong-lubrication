@@ -113,6 +113,16 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
             </section>
           ) : null}
 
+          {(family.minimumOrder || family.sourceNotes?.length) ? (
+            <section aria-labelledby="source-details-title">
+              <Reveal>
+                <h2 id="source-details-title" className="text-2xl font-bold text-ink">Order and product details</h2>
+                {family.minimumOrder ? <p className="mt-5 text-base leading-relaxed text-ink-soft"><strong className="text-ink">Listed minimum order:</strong> {family.minimumOrder}. Confirm pack size and order terms with MICONG.</p> : null}
+                {family.sourceNotes?.map((note) => <p key={note} className="mt-3 max-w-[74ch] text-sm leading-relaxed text-ink-soft">{note}</p>)}
+              </Reveal>
+            </section>
+          ) : null}
+
           <section aria-labelledby="grades-title">
             <Reveal>
               <h2 id="grades-title" className="text-2xl font-bold text-ink">
