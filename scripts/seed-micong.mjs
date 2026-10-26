@@ -16,7 +16,7 @@ const need = (key) => {
 }
 const db = createClient(need('NEXT_PUBLIC_SUPABASE_URL'), need('SUPABASE_SERVICE_ROLE_KEY'), { auth: { persistSession: false } })
 const companyName = settings.tenant.display_name
-const temporaryDomain = 'micong-lubrication.vercel.app'
+const temporaryDomain = new URL(need('NEXT_PUBLIC_SITE_URL')).hostname
 const adminEmail = settings.tenant.contact_email
 
 async function expect(query, label) {
@@ -71,7 +71,15 @@ async function main() {
     console.log(JSON.stringify({ result: 'PASS', existingTenantId: existing.tenant?.id ?? null, existingDomain: existing.tenant?.domain ?? null, adminEmailAvailable: !existing.admin || existing.admin.tenant_id === existing.tenant?.id, productCount: content.items.length }))
     return
   }
-  if (process.argv[2] !== 'seed') throw new Error('Use preflight or seed')
+  if (process.argv[2] === 'update-domain') {
+    if (!existing.tenant) throw new Error('Existing tenant missing')
+    await expect(db.from('tenants').update({ domain: temporaryDomain }).eq('id', existing.tenant.id), 'tenant domain update')
+    const updated = await expect(db.from('tenants').select('id,domain').eq('id', existing.tenant.id).single(), 'tenant domain readback')
+    if (updated.domain !== temporaryDomain) throw new Error('Tenant domain readback mismatch')
+    console.log(JSON.stringify({ result: 'PASS', tenantId: updated.id, domain: updated.domain }))
+    return
+  }
+  if (process.argv[2] !== 'seed') throw new Error('Use preflight, update-domain or seed')
   const initialPassword = await readInitialPassword()
   const tenantId = existing.tenant?.id ?? randomUUID()
   const now = new Date().toISOString()
@@ -109,7 +117,7 @@ async function main() {
       site_assets: { banners: assets.filter(item => item.role === 'customer-designated-banner').map(item => item.url) },
     },
   }
-  await expect(db.from('tenants').upsert(tenant, { onConflict: 'domain' }), 'tenant upsert')
+  await expect(existing.tenant ? db.from('tenants').update(tenant).eq('id', tenantId) : db.from('tenants').insert(tenant), 'tenant write')
   for (const [index, category] of categoryRows.entries()) {
     const row = { tenant_id: tenantId, slug: category.slug, name: category.name.en, name_en: category.name.en, name_i18n: category.name, description: category.name.en, description_en: category.name.en, description_i18n: category.name, sort_order: index + 1, is_active: true }
     const old = await expect(db.from('product_categories').select('id').eq('tenant_id', tenantId).eq('slug', category.slug).maybeSingle(), 'category lookup')
