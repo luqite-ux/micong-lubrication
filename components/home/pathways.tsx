@@ -16,7 +16,7 @@ const pathways = [
     steps: [
       {
         title: 'Pick the family',
-        body: 'Hydraulic, slideway, engine, gear, vacuum pump, grease or industrial white oil.',
+        body: 'Hydraulic, slideway, engine, gear, vacuum pump or grease.',
       },
       {
         title: 'Choose a grade where one is listed',
@@ -41,7 +41,7 @@ const pathways = [
     steps: [
       {
         title: 'Choose the fluid type',
-        body: 'Fully synthetic, semi-synthetic or micro-emulsion cutting fluid, or cutting oil.',
+        body: 'Fully synthetic, semi-synthetic or micro-emulsion cutting fluid, industrial white oil, or cutting oil.',
       },
       {
         title: 'Describe the machining',

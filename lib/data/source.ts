@@ -22,14 +22,14 @@ export const productCategories: ProductCategory[] = [
     id: 'industrial-lubricants',
     name: { en: 'Industrial lubricants' },
     description: {
-      en: 'Hydraulic, slideway, engine, gear and vacuum pump oils, grease and industrial white oil.',
+      en: 'Hydraulic, slideway, engine, gear and vacuum pump oils, and grease.',
     },
   },
   {
     id: 'metalworking-fluids',
     name: { en: 'Metalworking fluids' },
     description: {
-      en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids, plus cutting oil.',
+      en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids, industrial white oil, and cutting oil.',
     },
   },
 ]
@@ -101,7 +101,7 @@ export const productFamilies: ProductFamily[] = [
     id: 'pf-white-oil',
     slug: 'industrial-white-oil',
     name: { en: 'Industrial White Oil' },
-    category: 'industrial-lubricants',
+    category: 'metalworking-fluids',
     summary: { en: 'Industrial white oil family. Describe your use in the inquiry to discuss the right grade.' },
     icon: 'white',
     grades: null,
