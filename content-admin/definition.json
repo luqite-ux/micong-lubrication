@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -322,6 +322,331 @@
           "key": "seo",
           "type": "seo",
           "label": "首页 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "页面标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "页面描述",
+              "localized": true,
+              "required": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "about",
+      "path": "/about",
+      "label": "关于我们",
+      "modules": [
+        {
+          "key": "page_hero",
+          "type": "page_hero",
+          "label": "页面首屏",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "eyebrow",
+              "type": "text",
+              "label": "眉题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "title",
+              "type": "text",
+              "label": "主标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "说明",
+              "localized": true,
+              "required": true,
+              "maxLength": 1000
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "页面 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "页面标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "页面描述",
+              "localized": true,
+              "required": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "products",
+      "path": "/products",
+      "label": "产品列表",
+      "modules": [
+        {
+          "key": "page_hero",
+          "type": "page_hero",
+          "label": "页面首屏",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "eyebrow",
+              "type": "text",
+              "label": "眉题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "title",
+              "type": "text",
+              "label": "主标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "说明",
+              "localized": true,
+              "required": true,
+              "maxLength": 1000
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "页面 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "页面标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "页面描述",
+              "localized": true,
+              "required": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "applications",
+      "path": "/applications",
+      "label": "应用领域",
+      "modules": [
+        {
+          "key": "page_hero",
+          "type": "page_hero",
+          "label": "页面首屏",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "eyebrow",
+              "type": "text",
+              "label": "眉题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "title",
+              "type": "text",
+              "label": "主标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "说明",
+              "localized": true,
+              "required": true,
+              "maxLength": 1000
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "页面 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "页面标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "页面描述",
+              "localized": true,
+              "required": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "news",
+      "path": "/news",
+      "label": "新闻列表",
+      "modules": [
+        {
+          "key": "page_hero",
+          "type": "page_hero",
+          "label": "页面首屏",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "eyebrow",
+              "type": "text",
+              "label": "眉题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "title",
+              "type": "text",
+              "label": "主标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "说明",
+              "localized": true,
+              "required": true,
+              "maxLength": 1000
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "页面 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "页面标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "页面描述",
+              "localized": true,
+              "required": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "contact",
+      "path": "/contact",
+      "label": "联系我们",
+      "modules": [
+        {
+          "key": "page_hero",
+          "type": "page_hero",
+          "label": "页面首屏",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "eyebrow",
+              "type": "text",
+              "label": "眉题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "title",
+              "type": "text",
+              "label": "主标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 300
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "说明",
+              "localized": true,
+              "required": true,
+              "maxLength": 1000
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "页面 SEO",
           "canHide": false,
           "canReorder": false,
           "fields": [

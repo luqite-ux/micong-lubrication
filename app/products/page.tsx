@@ -9,8 +9,11 @@ import { SectionHeading } from '@/components/section-heading'
 import { getProductCategories, getProductFamilies, text } from '@/lib/data/repository'
 import { cn } from '@/lib/utils'
 import { pageMetadata } from '@/lib/seo'
+import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
+import { pageHero, pageVersion } from '@/lib/site-content/page'
 
-export const metadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each.' })
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/products','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 type ProductsPageProps = {
   searchParams: Promise<{ category?: string }>
@@ -18,7 +21,8 @@ type ProductsPageProps = {
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const { category } = await searchParams
-  const [categories, families] = await Promise.all([getProductCategories(), getProductFamilies()])
+  const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent('en')])
+  const hero = pageHero(snapshot, '/products')
   const active = categories.find((item) => item.id === category)
   const visible = active ? categories.filter((item) => item.id === active.id) : categories
 
@@ -33,11 +37,11 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   ]
 
   return (
-    <>
+    <div {...pageVersion(snapshot, '/products')}>
       <PageHero
-        eyebrow="Products"
-        title="Eleven product families, two ways to choose."
-        description="MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request."
+        eyebrow={hero?.eyebrow || 'Products'}
+        title={hero?.title || 'Eleven product families, two ways to choose.'}
+        description={hero?.description || 'MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request.'}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
       />
 
@@ -118,6 +122,6 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       </section>
 
       <ContactCta />
-    </>
+    </div>
   )
 }

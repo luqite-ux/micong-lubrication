@@ -266,6 +266,171 @@
           }
         }
       }
+    },
+    "about": {
+      "order": [
+        "page_hero",
+        "seo"
+      ],
+      "modules": {
+        "page_hero": {
+          "hidden": false,
+          "values": {
+            "eyebrow": {
+              "en": "About MICONG"
+            },
+            "title": {
+              "en": "Industrial lubricants and metalworking fluids, handled by inquiry."
+            },
+            "description": {
+              "en": "Shanghai Micong Lubrication Technology Co., Ltd. (上海米丛润滑技术有限公司) trades as MICONG / 米丛."
+            }
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "About MICONG"
+            },
+            "description": {
+              "en": "Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry."
+            }
+          }
+        }
+      }
+    },
+    "products": {
+      "order": [
+        "page_hero",
+        "seo"
+      ],
+      "modules": {
+        "page_hero": {
+          "hidden": false,
+          "values": {
+            "eyebrow": {
+              "en": "Products"
+            },
+            "title": {
+              "en": "Eleven product families, two ways to choose."
+            },
+            "description": {
+              "en": "MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request."
+            }
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "MICONG products"
+            },
+            "description": {
+              "en": "Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each."
+            }
+          }
+        }
+      }
+    },
+    "applications": {
+      "order": [
+        "page_hero",
+        "seo"
+      ],
+      "modules": {
+        "page_hero": {
+          "hidden": false,
+          "values": {
+            "eyebrow": {
+              "en": "Applications"
+            },
+            "title": {
+              "en": "Start from what you need to lubricate or cut."
+            },
+            "description": {
+              "en": "Pick the equipment or process and see which MICONG families are listed for it. Then send the details and we confirm the right grade."
+            }
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "MICONG applications"
+            },
+            "description": {
+              "en": "Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points."
+            }
+          }
+        }
+      }
+    },
+    "news": {
+      "order": [
+        "page_hero",
+        "seo"
+      ],
+      "modules": {
+        "page_hero": {
+          "hidden": false,
+          "values": {
+            "eyebrow": {
+              "en": "News"
+            },
+            "title": {
+              "en": "Company and product news."
+            },
+            "description": {
+              "en": "Announcements from MICONG will be published here."
+            }
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "MICONG news"
+            },
+            "description": {
+              "en": "Company and product news from MICONG."
+            }
+          }
+        }
+      }
+    },
+    "contact": {
+      "order": [
+        "page_hero",
+        "seo"
+      ],
+      "modules": {
+        "page_hero": {
+          "hidden": false,
+          "values": {
+            "eyebrow": {
+              "en": "Contact"
+            },
+            "title": {
+              "en": "Send your requirement. We reply with next steps."
+            },
+            "description": {
+              "en": "Use the form for a quote, a sample or a technical data sheet, or contact MICONG directly."
+            }
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "Contact MICONG"
+            },
+            "description": {
+              "en": "Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email."
+            }
+          }
+        }
+      }
     }
   }
 }

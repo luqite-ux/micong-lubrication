@@ -12,8 +12,11 @@ import { stagger } from '@/lib/motion'
 import { SectionHeading } from '@/components/section-heading'
 import { getProductCategories, getProductFamilies, text } from '@/lib/data/repository'
 import { company, illustrativeNote } from '@/lib/site-config'
+import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
+import { pageHero, pageVersion } from '@/lib/site-content/page'
 
-export const metadata: Metadata = pageMetadata({ path: '/about', title: 'About MICONG', description: 'Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/about', title: 'About MICONG', description: 'Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry.' })
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/about','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 const ways = [
   { icon: 'sample', title: 'Samples', body: 'Samples can be requested. Sample shipping is at the customer cost.' },
@@ -32,14 +35,15 @@ const notPublished = [
 ]
 
 export default async function AboutPage() {
-  const [categories, families] = await Promise.all([getProductCategories(), getProductFamilies()])
+  const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent('en')])
+  const hero = pageHero(snapshot, '/about')
 
   return (
-    <>
+    <div {...pageVersion(snapshot, '/about')}>
       <PageHero
-        eyebrow="About MICONG"
-        title="Industrial lubricants and metalworking fluids, handled by inquiry."
-        description={`${company.legalName} (${company.legalNameZh}) trades as ${company.brand} / ${company.brandZh}.`}
+        eyebrow={hero?.eyebrow || 'About MICONG'}
+        title={hero?.title || 'Industrial lubricants and metalworking fluids, handled by inquiry.'}
+        description={hero?.description || `${company.legalName} (${company.legalNameZh}) trades as ${company.brand} / ${company.brandZh}.`}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
@@ -149,6 +153,6 @@ export default async function AboutPage() {
 
       <FaqSection />
       <ContactCta />
-    </>
+    </div>
   )
 }

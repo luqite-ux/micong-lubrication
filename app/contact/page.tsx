@@ -6,8 +6,11 @@ import { Reveal } from '@/components/reveal'
 import { RfqForm, type RfqFamilyOption } from '@/components/rfq-form'
 import { getProductFamilies, text } from '@/lib/data/repository'
 import { company } from '@/lib/site-config'
+import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
+import { pageHero, pageVersion } from '@/lib/site-content/page'
 
-export const metadata: Metadata = pageMetadata({ path: '/contact', title: 'Contact MICONG', description: 'Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/contact', title: 'Contact MICONG', description: 'Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email.' })
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/contact','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 type ContactPageProps = {
   searchParams: Promise<{ family?: string; grade?: string; topic?: string }>
@@ -21,7 +24,8 @@ const nextSteps = [
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const { family, grade, topic } = await searchParams
-  const families = await getProductFamilies()
+  const [families,snapshot] = await Promise.all([getProductFamilies(),getSiteContent('en')])
+  const hero = pageHero(snapshot, '/contact')
   const options: RfqFamilyOption[] = families.map((item) => ({
     slug: item.slug,
     name: text(item.name),
@@ -30,11 +34,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   }))
 
   return (
-    <>
+    <div {...pageVersion(snapshot, '/contact')}>
       <PageHero
-        eyebrow="Contact"
-        title="Send your requirement. We reply with next steps."
-        description="Use the form for a quote, a sample or a technical data sheet, or contact MICONG directly."
+        eyebrow={hero?.eyebrow || 'Contact'}
+        title={hero?.title || 'Send your requirement. We reply with next steps.'}
+        description={hero?.description || 'Use the form for a quote, a sample or a technical data sheet, or contact MICONG directly.'}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
       />
 
@@ -110,6 +114,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           </Reveal>
         </section>
       </div>
-    </>
+    </div>
   )
 }

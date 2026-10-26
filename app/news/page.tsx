@@ -6,19 +6,24 @@ import { PageHero } from '@/components/page-hero'
 import { NewsCard } from '@/components/news/news-card'
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 import { getNewsArticles } from '@/lib/data/repository'
+import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
+import { pageHero, pageVersion } from '@/lib/site-content/page'
 
 export const revalidate = 60
-export const metadata: Metadata = pageMetadata({ path: '/news', title: 'MICONG news', description: 'Company and product news from MICONG.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/news', title: 'MICONG news', description: 'Company and product news from MICONG.' })
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/news','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 export default async function NewsPage() {
-  const articles = (await getNewsArticles()).toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+  const [allArticles,snapshot] = await Promise.all([getNewsArticles(), getSiteContent('en')])
+  const articles = allArticles.toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+  const hero = pageHero(snapshot, '/news')
 
   return (
-    <>
+    <div {...pageVersion(snapshot, '/news')}>
       <PageHero
-        eyebrow="News"
-        title="Company and product news."
-        description="Announcements from MICONG will be published here."
+        eyebrow={hero?.eyebrow || 'News'}
+        title={hero?.title || 'Company and product news.'}
+        description={hero?.description || 'Announcements from MICONG will be published here.'}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'News' }]}
       />
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
@@ -58,6 +63,6 @@ export default async function NewsPage() {
           </Empty>
         )}
       </div>
-    </>
+    </div>
   )
 }

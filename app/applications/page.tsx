@@ -7,18 +7,22 @@ import { Marker } from '@/components/marker'
 import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { getApplicationAreas, getProductFamilies, text } from '@/lib/data/repository'
+import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
+import { pageHero, pageVersion } from '@/lib/site-content/page'
 
-export const metadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points.' })
+export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/applications','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 export default async function ApplicationsPage() {
-  const [areas, families] = await Promise.all([getApplicationAreas(), getProductFamilies()])
+  const [areas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent('en')])
+  const hero = pageHero(snapshot, '/applications')
 
   return (
-    <>
+    <div {...pageVersion(snapshot, '/applications')}>
       <PageHero
-        eyebrow="Applications"
-        title="Start from what you need to lubricate or cut."
-        description="Pick the equipment or process and see which MICONG families are listed for it. Then send the details and we confirm the right grade."
+        eyebrow={hero?.eyebrow || 'Applications'}
+        title={hero?.title || 'Start from what you need to lubricate or cut.'}
+        description={hero?.description || 'Pick the equipment or process and see which MICONG families are listed for it. Then send the details and we confirm the right grade.'}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Applications' }]}
       />
 
@@ -103,6 +107,6 @@ export default async function ApplicationsPage() {
         title="Your equipment is not listed here?"
         description="Describe the machine, the process and the fluid you use now. We will tell you which family we can discuss."
       />
-    </>
+    </div>
   )
 }

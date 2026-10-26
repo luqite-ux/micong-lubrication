@@ -8,6 +8,16 @@
     "home.hero",
     "home.navigation",
     "home.faq",
-    "home.seo"
+    "home.seo",
+    "about.page_hero",
+    "about.seo",
+    "products.page_hero",
+    "products.seo",
+    "applications.page_hero",
+    "applications.seo",
+    "news.page_hero",
+    "news.seo",
+    "contact.page_hero",
+    "contact.seo"
   ]
 }
