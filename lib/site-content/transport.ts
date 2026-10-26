@@ -18,7 +18,7 @@ function endpoint(config: AdapterConfig, suffix = '') {
 export async function loadSiteSnapshot(config: AdapterConfig, locale: string, previewSession: string | null, fetcher: Fetcher = fetch): Promise<SiteSnapshot | null> {
   const response = previewSession
     ? await fetcher(endpoint(config, '/preview-session'), { method: 'POST', cache: 'no-store', redirect: 'error', headers: { 'Content-Type': 'application/json', 'X-Site-Content-Key': config.integrationKey }, body: JSON.stringify({ domain: config.domain, session: previewSession, locale }) })
-    : await fetcher(`${endpoint(config)}?locale=${encodeURIComponent(locale)}`, { cache: 'no-store', redirect: 'error' })
+    : await fetcher(`${endpoint(config)}?locale=${encodeURIComponent(locale)}&refresh=${Math.floor(Date.now() / 60000)}`, { cache: 'no-store', redirect: 'error' })
   if (!previewSession && response.status === 404) return null
   if (!response.ok) throw new Error(previewSession ? 'Site preview denied or expired; exit preview to view the public site.' : 'Site content unavailable')
   const payload = await response.json()
