@@ -16,6 +16,7 @@ import type {
   ProductCategory,
   ProductFamily,
 } from './types'
+import sourcedFaq from '@/data/faq-source.json'
 
 export const productCategories: ProductCategory[] = [
   {
@@ -246,64 +247,7 @@ export const cooperationSteps: CooperationStep[] = [
   },
 ]
 
-export const faqItems: FaqItem[] = [
-  {
-    id: 'packaging',
-    question: { en: 'Can packaging be customized?' },
-    answer: {
-      en: 'Packaging customization can be discussed. State the pack type you need and your destination in the request form, and we will reply with what can be arranged for your order.',
-    },
-  },
-  {
-    id: 'samples',
-    question: { en: 'Can I request a sample?' },
-    answer: {
-      en: 'Samples can be requested through the quote form. Name the product family, the grade if one is listed, and your destination.',
-    },
-  },
-  {
-    id: 'tds',
-    question: { en: 'Can I get a technical data sheet?' },
-    answer: {
-      en: 'Yes, technical data sheets can be requested. Tell us the family and grade you are considering, using the form or by email.',
-    },
-  },
-  {
-    id: 'applications',
-    question: { en: 'Do you supply for hydraulic and CNC applications?' },
-    answer: {
-      en: 'MICONG lists Anti-wear Hydraulic Oil for hydraulic equipment and cutting fluids for CNC and metal cutting work. Send the equipment and operating details so the right family and grade can be discussed.',
-    },
-  },
-  {
-    id: 'oem',
-    question: { en: 'Is OEM cooperation possible?' },
-    answer: {
-      en: 'OEM cooperation can be discussed. Describe your brand, the product family and your pack requirements in the message field.',
-    },
-  },
-  {
-    id: 'sample-shipping',
-    question: { en: 'Who pays for sample shipping?' },
-    answer: {
-      en: 'Sample shipping is at the customer cost. Include your destination in the request so shipping can be discussed.',
-    },
-  },
-  {
-    id: 'lead-time',
-    question: { en: 'How long does delivery take?' },
-    answer: {
-      en: 'Lead time depends on order size and is discussed for each inquiry. Include quantity and destination so timing can be discussed.',
-    },
-  },
-  {
-    id: 'inspection',
-    question: { en: 'Can a third party inspect the goods?' },
-    answer: {
-      en: 'Third-party inspection can be discussed on request. Mention it in your inquiry together with what you want checked.',
-    },
-  },
-]
+export const faqItems: FaqItem[] = sourcedFaq
 
 /** No real news articles were supplied. The list stays empty until the admin phase. */
 export const newsArticles: NewsArticle[] = []

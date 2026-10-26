@@ -7,12 +7,12 @@ import type { FaqItem } from '@/lib/data/types'
 import { siteTypographyStyle } from '@/lib/site-content/typography'
 import type { SiteSnapshot } from '@/lib/site-content/transport'
 
-export async function FaqSection({ items: suppliedItems, title = 'Questions buyers ask first', description = 'Short answers on packaging, samples, data sheets, OEM, shipping, lead time and inspection.', styles }: { items?: FaqItem[]; title?: string; description?: string; styles?: SiteSnapshot['pages'][number]['modules'][number]['styles'] }) {
+export async function FaqSection({ items: suppliedItems, title = 'Questions buyers ask first', description = 'Source-checked answers on product fit, packaging, samples, pricing, timing and inspection.', styles }: { items?: FaqItem[]; title?: string; description?: string; styles?: SiteSnapshot['pages'][number]['modules'][number]['styles'] }) {
   const items = suppliedItems ?? await getFaqItems()
 
   return (
     <section id="faq" aria-labelledby="faq-title" className="bg-paper py-20 md:py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.55fr_1.45fr]">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionHeading
             id="faq-title"

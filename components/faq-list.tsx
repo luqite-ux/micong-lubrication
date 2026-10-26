@@ -4,20 +4,35 @@ import { text } from '@/lib/data/repository'
 import type { FaqItem } from '@/lib/data/types'
 
 export function FaqList({ items }: { items: FaqItem[] }) {
+  const sections = [
+    { title: 'Products and cooperation', ids: ['faq-5', 'faq-6', 'faq-7', 'faq-8', 'faq-9'] },
+    { title: 'Pricing and samples', ids: ['faq-13', 'faq-14', 'faq-15', 'faq-16', 'faq-17', 'faq-18', 'faq-19'] },
+    { title: 'Timing and delivery', ids: ['faq-21', 'faq-22', 'faq-23', 'faq-24', 'faq-25'] },
+    { title: 'Inspection and reports', ids: ['faq-26', 'faq-27', 'faq-28'] },
+  ]
+  const assigned = new Set(sections.flatMap(section => section.ids))
+  const groups = [
+    ...sections.map(section => ({ title: section.title, items: section.ids.flatMap(id => items.filter(item => item.id === id)) })),
+    { title: 'More questions', items: items.filter(item => !assigned.has(item.id)) },
+  ].filter(group => group.items.length)
+
   return (
-    <Reveal delay={80}>
-      <Accordion type="single" collapsible className="border-t border-paper-line">
-        {items.map((item) => (
-          <AccordionItem key={item.id} value={item.id} className="border-paper-line">
-            <AccordionTrigger className="py-5 text-left text-base font-semibold text-ink hover:no-underline">
-              {text(item.question)}
-            </AccordionTrigger>
-            <AccordionContent className="text-base leading-relaxed text-ink-soft">
-              {text(item.answer)}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+    <Reveal delay={80} className="grid gap-8 md:grid-cols-2">
+      {groups.map(group => <div key={group.title}>
+        <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-brand-red">{group.title}</h3>
+        <Accordion type="single" collapsible className="border-t border-paper-line">
+          {group.items.map((item) => (
+            <AccordionItem key={item.id} value={item.id} className="border-paper-line">
+              <AccordionTrigger className="py-4 text-left text-sm font-semibold leading-snug text-ink hover:no-underline">
+                {text(item.question)}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-ink-soft">
+                {text(item.answer)}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>)}
     </Reveal>
   )
 }
