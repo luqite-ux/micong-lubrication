@@ -1,0 +1,50 @@
+import {
+  ArrowLeftRight,
+  Beaker,
+  Boxes,
+  Car,
+  ClipboardCheck,
+  ClipboardList,
+  Cog,
+  Disc3,
+  Drill,
+  Droplet,
+  Droplets,
+  Fan,
+  FileText,
+  FlaskConical,
+  Gauge,
+  Handshake,
+  Package,
+  PackageCheck,
+  Search,
+  Truck,
+  type LucideIcon,
+} from 'lucide-react'
+
+const icons: Record<string, LucideIcon> = {
+  hydraulic: Gauge,
+  slideway: ArrowLeftRight,
+  engine: Car,
+  gear: Cog,
+  vacuum: Fan,
+  grease: Disc3,
+  synthetic: Droplets,
+  semi: Droplet,
+  micro: FlaskConical,
+  white: Beaker,
+  cutting: Drill,
+  requirement: ClipboardList,
+  document: FileText,
+  sample: PackageCheck,
+  quote: Handshake,
+  inspection: ClipboardCheck,
+  shipping: Truck,
+  packaging: Package,
+  stock: Boxes,
+  search: Search,
+}
+
+export function getIcon(key: string): LucideIcon {
+  return icons[key] ?? Boxes
+}

@@ -1,0 +1,34 @@
+import Link from 'next/link'
+import { FaqList } from '@/components/faq-list'
+import { Reveal } from '@/components/reveal'
+import { SectionHeading } from '@/components/section-heading'
+import { getFaqItems } from '@/lib/data/repository'
+
+export async function FaqSection() {
+  const items = await getFaqItems()
+
+  return (
+    <section id="faq" aria-labelledby="faq-title" className="bg-paper py-20 md:py-24">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeading
+            id="faq-title"
+            eyebrow="FAQ"
+            title="Questions buyers ask first"
+            description="Short answers on packaging, samples, data sheets, OEM, shipping, lead time and inspection."
+          />
+          <Reveal delay={90}>
+            <p className="mt-6 text-sm text-ink-soft">
+              Something else?{' '}
+              <Link href="/contact#rfq" className="font-semibold text-brand-red underline underline-offset-4">
+                Send your question with the request form
+              </Link>
+              .
+            </p>
+          </Reveal>
+        </div>
+        <FaqList items={items} />
+      </div>
+    </section>
+  )
+}

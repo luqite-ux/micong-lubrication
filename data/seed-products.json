@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "customer": "上海米丛润滑技术有限公司",
+  "sourceSha256": "6fb5f7814e712de7da6adc7b970d3d782bcaff9abddea777e5e0f03c310d52f6",
+  "reviewedAt": "2026-10-26T08:03:33.386Z",
+  "productCount": 11,
+  "items": [
+    {
+      "slug": "anti-wear-hydraulic-oil",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Anti-wear Hydraulic Oil",
+        "zh": "抗磨液压油"
+      },
+      "description_i18n": {
+        "en": "Anti-wear hydraulic oil is blended from refined base oil and multi-functional additives including anti-wear, anti-oxidation, anti-rust and anti-foam agents. It is suitable for medium and high-pressure hydraulic systems of injection molding machines, CNC machine tools and construction machinery. It can transfer hydraulic power stably and form a strong oil film on pumps, valves and cylinders to reduce wear under high pressure and extend component life. It has good oxidation resistance and is not easy to degrade at high temperature. Excellent anti-foam and air release properties ensure stable pressure and prevent cavitation. It provides reliable anti-rust protection even when equipment stops. It has slightly yellow standard grade and transparent high-pressure high-cleanness grade, with viscosity grades 32#, 46#, 68#, suitable for various working conditions to cut maintenance costs.",
+        "zh": "抗磨液压油是以精制基础油添加抗磨、抗氧化、防锈、抗泡等多功能添加剂调配而成，适用于注塑机、数控机床、工程机械等中高压液压系统。油品可稳定传递液压动力，在泵、阀、油缸表面形成高强度油膜，减少高压下元件磨损，延长设备寿命。抗氧化性能优良，高温工况不易老化变质。具备良好抗泡、空气释放性，保障压力平稳，防止气蚀。防锈防腐效果可靠，停机时亦可保护金属部件。分为普通微黄型与高压高清洁透明型，拥有32#、46#、68#等粘度规格，适配多种工况，降低设备维护成本。"
+      },
+      "grades": [
+        "32",
+        "46",
+        "68"
+      ],
+      "company_overview_variant_pending_review": null,
+      "minimum_order": "One metric ton or 5 drums",
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "产品信息!D4",
+          "产品信息!E4",
+          "产品信息!F4",
+          "产品信息!I4"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "H4 gives only packaging/appearance context"
+    },
+    {
+      "slug": "slideway-oil",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Slideway Oil",
+        "zh": "导轨油"
+      },
+      "description_i18n": {
+        "en": "Slide way oil is a special lubricant for machine tool guide rails, used for lathes, milling machines, grinders and other processing equipment. It is formulated with refined base oil and additives of anti-wear, anti-stick slip, anti-rust and anti-emulsification. With strong adhesion, it forms stable oil film on sliding surfaces to eliminate crawling and jitter at low feed speed and improve machining accuracy. It reduces friction and wear of guide rails and slides to extend service life. It has great demulsibility and will not easily fail when mixed with cutting fluid. Good oxidation resistance prevents oil deterioration. It offers anti-rust protection during equipment shutdown. Available in 32#, 46#, 68# grades for precision machine tools to reduce breakdowns and maintenance cost.",
+        "zh": "导轨油是机床导轨专用润滑油，适用于车床、铣床、磨床等加工设备。由精制基础油搭配抗磨、防爬行、防锈、抗乳化添加剂调配。油品附着力强，可在导轨滑动面形成稳定油膜，消除低速进给时工作台爬行抖动，提升加工精度。有效降低导轨与滑块摩擦磨损，延长导轨使用寿命。具备优良抗乳化性能，接触切削液不易乳化失效；抗氧化性好，不易变质。可在停机状态下对金属导轨提供防锈保护。常见牌号32#、46#、68#，适配各类精密机床，减少设备故障，降低维护成本。"
+      },
+      "grades": [
+        "32",
+        "46",
+        "68"
+      ],
+      "company_overview_variant_pending_review": "100# listed in 企业资料 C8 but not in 产品信息 A5/F5",
+      "minimum_order": "One metric ton or 5 drums",
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "产品信息!D5",
+          "产品信息!E5",
+          "产品信息!F5",
+          "产品信息!I5",
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "H5–H8 repeats hydraulic-oil text and is excluded"
+    },
+    {
+      "slug": "fully-synthetic-cutting-fluid",
+      "category": "Metalworking Fluids",
+      "name_i18n": {
+        "en": "Fully Synthetic Cutting Fluid",
+        "zh": "全合成切削液"
+      },
+      "description_i18n": {
+        "en": "Fully synthetic cutting fluid contains no mineral oil and is formulated with water-soluble additives. It features excellent cooling and cleaning performance to remove cutting heat and metal chips rapidly. It provides good rust protection for workpieces and machines. The low-foam formula suits high-pressure supply systems. With great chemical stability, it resists odor and deterioration for long service life. Suitable for turning, milling and grinding of carbon steel, cast iron and aluminum alloy. Use after dilution for easy maintenance.",
+        "zh": "全合成切削液不含矿物油，由水溶性添加剂调配而成。具备优异冷却、清洗性能，快速带走切削热量，冲净金属碎屑。拥有良好防锈能力，保护工件与机床。低泡配方，适合高压供液系统。化学稳定性强，不易腐败发臭，使用寿命长。适用于碳钢、铸铁、铝合金等材料的车、铣、磨加工，稀释后使用，方便维护。"
+      },
+      "grades": [],
+      "company_overview_variant_pending_review": null,
+      "minimum_order": "One metric ton or 5 drums",
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "产品信息!D6",
+          "产品信息!E6",
+          "产品信息!F6",
+          "产品信息!I6"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "H5–H8 repeats hydraulic-oil text and is excluded"
+    },
+    {
+      "slug": "semi-synthetic-cutting-fluid",
+      "category": "Metalworking Fluids",
+      "name_i18n": {
+        "en": "Semi-synthetic Cutting Fluid",
+        "zh": "半合成切削液"
+      },
+      "description_i18n": {
+        "en": "Semi-synthetic cutting fluid contains a small amount of mineral oil, balancing lubrication and cooling. It reduces tool wear and improves workpiece surface finish, while dissipating heat and flushing chips. It offers good inter-process rust protection and excellent hard water resistance with low foaming. Stable and less prone to spoilage. Dilute with water before use. Widely used for turning, milling and drilling of carbon steel, cast iron and aluminum alloy.",
+        "zh": "半合成切削液含有少量矿物油，兼具润滑与冷却能力。能有效减少刀具磨损，提升工件表面光洁度，同时快速散热、冲洗切屑。具备良好工序间防锈效果，抗硬水性能较好，不易起泡。稳定性佳，不易变质发臭，使用寿命适中。兑水稀释使用，适用于碳钢、铸铁、铝合金等多种金属的车、铣、钻加工，通用性强。"
+      },
+      "grades": [],
+      "company_overview_variant_pending_review": null,
+      "minimum_order": "One metric ton or 5 drums",
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "产品信息!D7",
+          "产品信息!E7",
+          "产品信息!F7",
+          "产品信息!I7"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "H5–H8 repeats hydraulic-oil text and is excluded"
+    },
+    {
+      "slug": "micro-emulsion-cutting-fluid",
+      "category": "Metalworking Fluids",
+      "name_i18n": {
+        "en": "Micro-emulsion Cutting Fluid",
+        "zh": "微乳切削液"
+      },
+      "description_i18n": {
+        "en": "Micro-emulsion cutting fluid belongs to semi-synthetic type. Base oil disperses in water as tiny particles, and the diluted liquid is translucent. It has better lubrication than fully synthetic fluid, with good cooling and cleaning performance. It reduces tool wear and improves workpiece finish. It features good rust protection and hard water stability, resistant to spoilage. Low foam, suitable for high-pressure supply systems. Dilute with water. Widely used for turning, milling and drilling of carbon steel, cast iron and aluminum alloy.",
+        "zh": "微乳切削液属于半合成类，基础油以微小颗粒分散水中，稀释液呈半透明状。润滑性能优于全合成，冷却清洗效果良好，有效降低刀具损耗，提升工件光洁度。防锈性佳，抗硬水稳定，不易腐败发臭。低泡沫，适配高压供液系统。兑水稀释使用，通用性强，适合碳钢、铸铁、铝合金等材料车、铣、钻加工。"
+      },
+      "grades": [],
+      "company_overview_variant_pending_review": null,
+      "minimum_order": "One metric ton or 5 drums",
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "产品信息!D8",
+          "产品信息!E8",
+          "产品信息!F8",
+          "产品信息!I8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "H5–H8 repeats hydraulic-oil text and is excluded"
+    },
+    {
+      "slug": "automotive-engine-oil",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Automotive Engine Oil",
+        "zh": "车用机油"
+      },
+      "description_i18n": {
+        "en": "",
+        "zh": ""
+      },
+      "grades": [],
+      "minimum_order": null,
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "Name-only source; request actual grades, application and datasheet from customer rather than inventing details."
+    },
+    {
+      "slug": "gear-oil",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Gear Oil",
+        "zh": "齿轮油"
+      },
+      "description_i18n": {
+        "en": "",
+        "zh": ""
+      },
+      "grades": [],
+      "minimum_order": null,
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "Name-only source; request actual grades, application and datasheet from customer rather than inventing details."
+    },
+    {
+      "slug": "vacuum-pump-oil",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Vacuum Pump Oil",
+        "zh": "真空泵油"
+      },
+      "description_i18n": {
+        "en": "",
+        "zh": ""
+      },
+      "grades": [],
+      "minimum_order": null,
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "Name-only source; request actual grades, application and datasheet from customer rather than inventing details."
+    },
+    {
+      "slug": "lubricating-grease",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Lubricating Grease",
+        "zh": "润滑脂"
+      },
+      "description_i18n": {
+        "en": "",
+        "zh": ""
+      },
+      "grades": [],
+      "minimum_order": null,
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "Name-only source; request actual grades, application and datasheet from customer rather than inventing details."
+    },
+    {
+      "slug": "industrial-white-oil",
+      "category": "Industrial Lubricants",
+      "name_i18n": {
+        "en": "Industrial White Oil",
+        "zh": "工业白油"
+      },
+      "description_i18n": {
+        "en": "",
+        "zh": ""
+      },
+      "grades": [],
+      "minimum_order": null,
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "Name-only source; request actual grades, application and datasheet from customer rather than inventing details."
+    },
+    {
+      "slug": "cutting-oil",
+      "category": "Metalworking Fluids",
+      "name_i18n": {
+        "en": "Cutting Oil",
+        "zh": "切削油"
+      },
+      "description_i18n": {
+        "en": "",
+        "zh": ""
+      },
+      "grades": [],
+      "minimum_order": null,
+      "source": {
+        "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+        "cells": [
+          "企业资料!C8"
+        ]
+      },
+      "image_status": "no_product_specific_image",
+      "specifications_note": "Name-only source; request actual grades, application and datasheet from customer rather than inventing details."
+    }
+  ],
+  "excluded": [
+    "产品信息!H5:H8 repeated hydraulic-oil appearance text",
+    "Excel embedded third-party licence and signed-site photos",
+    "unmapped branded packaging pictures"
+  ],
+  "remarks": "Descriptions are customer-provided claims and still need prohibited-word, translation and public-content review before publication."
+}

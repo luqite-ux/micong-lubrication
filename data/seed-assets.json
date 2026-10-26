@@ -1,0 +1,32 @@
+[
+  {
+    "role": "official-logo",
+    "url": "https://pub-c7a22068052144a5805830c30d280128.r2.dev/site-assets/micong-lubrication/v0-input/01-9f227a699eba.jpg",
+    "publicUse": true
+  },
+  {
+    "role": "customer-designated-banner",
+    "url": "https://pub-c7a22068052144a5805830c30d280128.r2.dev/site-assets/micong-lubrication/v0-input/02-d3ff184fab41.jpg",
+    "publicUse": true
+  },
+  {
+    "role": "customer-designated-banner",
+    "url": "https://pub-c7a22068052144a5805830c30d280128.r2.dev/site-assets/micong-lubrication/v0-input/03-152d14917485.jpg",
+    "publicUse": true
+  },
+  {
+    "role": "customer-designated-banner",
+    "url": "https://pub-c7a22068052144a5805830c30d280128.r2.dev/site-assets/micong-lubrication/v0-input/04-0e7609095e29.jpg",
+    "publicUse": true
+  },
+  {
+    "role": "packaging-form-reference-only",
+    "url": "https://pub-c7a22068052144a5805830c30d280128.r2.dev/site-assets/micong-lubrication/v0-input/05-743282ee2d48.jpg",
+    "publicUse": false
+  },
+  {
+    "role": "packaging-form-reference-only",
+    "url": "https://pub-c7a22068052144a5805830c30d280128.r2.dev/site-assets/micong-lubrication/v0-input/06-b747440020d6.jpg",
+    "publicUse": false
+  }
+]

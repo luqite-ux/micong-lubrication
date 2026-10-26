@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "customer": "上海米丛润滑技术有限公司",
+  "status": "source_reviewed_pending_tenant_write",
+  "source": {
+    "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",
+    "companyCells": [
+      "C3",
+      "C4",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "C11",
+      "C15"
+    ],
+    "logo": "LOGO.jpg"
+  },
+  "tenant": {
+    "display_name": "上海米丛润滑技术有限公司",
+    "admin_group": 2,
+    "default_language": "en",
+    "supported_languages": [
+      "en"
+    ],
+    "site_title_i18n": {
+      "en": "MICONG | Industrial Lubricants and Metalworking Fluids"
+    },
+    "site_tagline_i18n": {
+      "en": "Industrial lubricants and metalworking fluids for equipment and machining needs"
+    },
+    "site_description_i18n": {
+      "en": "Explore MICONG's source-listed hydraulic oils, slideway oils and metalworking fluids. Contact the team to discuss equipment, grade and order requirements."
+    },
+    "contact_email": "13858962788@139.com",
+    "contact_phone": "13858962788",
+    "contact_whatsapp": null,
+    "contact_address_short": "No. 2218 Hunan Road, Pudong New Area, Shanghai, China",
+    "contact_address_i18n": {
+      "en": "No. 2218 Hunan Road, Pudong New Area, Shanghai, China",
+      "zh": "上海市浦东新区沪南路2218号"
+    },
+    "social_links": {},
+    "seo_title_i18n": {
+      "en": "MICONG Industrial Lubricants and Cutting Fluids"
+    },
+    "seo_description_i18n": {
+      "en": "Browse MICONG's industrial lubricant and metalworking-fluid families, then request product information for your equipment and process."
+    },
+    "seo_keywords_i18n": {
+      "en": "industrial lubricants, anti-wear hydraulic oil, slideway oil, cutting fluid, metalworking fluid"
+    },
+    "google_analytics_id": null,
+    "google_tag_manager_id": null,
+    "domain": null,
+    "logo_url": "R2_UPLOAD_PENDING",
+    "favicon_url": "R2_UPLOAD_PENDING",
+    "extra_settings": {
+      "translation_profile": {
+        "industry": "Industrial lubricants and metalworking fluids",
+        "company_summary": "Shanghai Micong Lubrication Technology Co., Ltd. lists industrial lubricants, metalworking fluids and source-described lubrication support services.",
+        "main_products": [
+          "Anti-wear hydraulic oil",
+          "Slideway oil",
+          "Fully synthetic cutting fluid",
+          "Semi-synthetic cutting fluid",
+          "Micro-emulsion cutting fluid",
+          "Automotive engine oil",
+          "Gear oil",
+          "Vacuum pump oil",
+          "Lubricating grease",
+          "Industrial white oil",
+          "Cutting oil"
+        ],
+        "target_markets": [],
+        "glossary": {
+          "米丛": "MICONG",
+          "抗磨液压油": "Anti-wear hydraulic oil",
+          "导轨油": "Slideway oil",
+          "全合成切削液": "Fully synthetic cutting fluid",
+          "半合成切削液": "Semi-synthetic cutting fluid",
+          "微乳切削液": "Micro-emulsion cutting fluid"
+        }
+      },
+      "site_settings_provenance": {
+        "status": "customer_workbook_derived_plan",
+        "note": "This plan is not a database readback and must be reconciled with tenant record after write."
+      }
+    }
+  },
+  "legal_name": {
+    "official_customer_supplied_en": "ShangHai Micong Lubrication Technology Co.,Ltd",
+    "display_normalized_en": "Shanghai Micong Lubrication Technology Co., Ltd.",
+    "status": "customer_supplied_spelling_normalized",
+    "source_cell": "企业资料!C3 and C11"
+  },
+  "pending": [
+    "formal_domain",
+    "site_email_alignment_after_domain",
+    "tenant_id",
+    "R2_logo_url",
+    "R2_favicon_url",
+    "database_readback"
+  ]
+}
