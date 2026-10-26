@@ -35,6 +35,13 @@ type ProductRow = {
   sort_order: number | null
   updated_at: string | null
 }
+type ProductCategoryRow = {
+  slug: string
+  name: string
+  name_i18n: Record<string,string> | null
+  description: string | null
+  description_i18n: Record<string,string> | null
+}
 
 type ArticleRow = {
   id: string
@@ -60,8 +67,23 @@ export function text(value: LocalizedText, locale: Locale = 'en'): string {
   return value[locale] ?? value.en
 }
 
-export async function getProductCategories(_locale: Locale = 'en'): Promise<ProductCategory[]> {
-  return productCategories
+export async function getProductCategories(locale: Locale = 'en'): Promise<ProductCategory[]> {
+  const db = getSupabaseClient()
+  const tenant = tenantId()
+  if (!db || !tenant) return productCategories
+  const {data,error}=await db.from('product_categories')
+    .select('slug,name,name_i18n,description,description_i18n')
+    .eq('tenant_id',tenant).eq('is_active',true).is('parent_id',null)
+    .order('sort_order',{ascending:true})
+  if(error) return productCategories
+  return ((data??[]) as ProductCategoryRow[]).flatMap(row=>{
+    if(row.slug!=='industrial-lubricants'&&row.slug!=='metalworking-fluids')return []
+    return [{
+      id:row.slug,
+      name:{en:selectLocale(row.name_i18n,row.name,locale)},
+      description:{en:selectLocale(row.description_i18n,row.description||'',locale)},
+    } satisfies ProductCategory]
+  })
 }
 
 export async function getProductFamilies(locale: Locale = 'en'): Promise<ProductFamily[]> {

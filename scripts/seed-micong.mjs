@@ -36,8 +36,8 @@ async function preflight() {
 }
 
 const categoryRows = [
-  { slug: 'industrial-lubricants', name: { en: 'Industrial Lubricants', zh: '工业润滑油脂' } },
-  { slug: 'metalworking-fluids', name: { en: 'Metalworking Fluids', zh: '金属加工液' } },
+  { slug: 'industrial-lubricants', name: { en: 'Industrial Lubricants', zh: '工业润滑油脂' }, description: { en: 'Hydraulic, slideway, engine, gear and vacuum pump oils, grease and industrial white oil.' } },
+  { slug: 'metalworking-fluids', name: { en: 'Metalworking Fluids', zh: '金属加工液' }, description: { en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids, plus cutting oil.' } },
 ]
 const categorySlug = (category) => category === 'Metalworking Fluids' ? 'metalworking-fluids' : 'industrial-lubricants'
 
@@ -119,7 +119,7 @@ async function main() {
   }
   await expect(existing.tenant ? db.from('tenants').update(tenant).eq('id', tenantId) : db.from('tenants').insert(tenant), 'tenant write')
   for (const [index, category] of categoryRows.entries()) {
-    const row = { tenant_id: tenantId, slug: category.slug, name: category.name.en, name_en: category.name.en, name_i18n: category.name, description: category.name.en, description_en: category.name.en, description_i18n: category.name, sort_order: index + 1, is_active: true }
+    const row = { tenant_id: tenantId, slug: category.slug, name: category.name.en, name_en: category.name.en, name_i18n: category.name, description: category.description.en, description_en: category.description.en, description_i18n: category.description, sort_order: index + 1, is_active: true }
     const old = await expect(db.from('product_categories').select('id').eq('tenant_id', tenantId).eq('slug', category.slug).maybeSingle(), 'category lookup')
     await expect(old ? db.from('product_categories').update(row).eq('tenant_id', tenantId).eq('id', old.id) : db.from('product_categories').insert(row), 'category write')
   }
