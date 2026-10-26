@@ -27,6 +27,8 @@ export type ProductFamily = {
   grades: string[] | null
   applicationIds: string[]
   updatedAt?: string
+  seoTitle?: LocalizedText
+  seoDescription?: LocalizedText
 }
 
 export type ApplicationArea = {

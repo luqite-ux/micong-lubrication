@@ -89,9 +89,7 @@ export async function SiteFooter() {
       </div>
       <div className="border-t border-charcoal-line">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs text-white/60 sm:px-6 md:flex-row md:justify-between">
-          <p>
-            &copy; {new Date().getFullYear()} {company.legalName.replace(/[.;:!?。；：！？\s]+$/u, '')}. All rights reserved.
-          </p>
+          <p>{`© ${new Date().getFullYear()} ${company.legalName.replace(/[.;:!?。；：！？\s]+$/u, '')}. All rights reserved.`}</p>
           <p>Factory, equipment and packaging scenes on this site are illustrative imagery.</p>
         </div>
       </div>

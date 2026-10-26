@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Pick<ProductPageProps, 'param
   const { slug } = await params
   const family = await getProductFamilyBySlug(slug)
   if (!family) return { title: 'Product not found' }
-  return pageMetadata({ path: `/products/${slug}`, title: `${text(family.name)} | MICONG`, description: text(family.summary) })
+  return pageMetadata({ path: `/products/${slug}`, title: family.seoTitle ? text(family.seoTitle) : `${text(family.name)} | MICONG`, description: family.seoDescription ? text(family.seoDescription) : text(family.summary) })
 }
 
 const requestChecklist = [

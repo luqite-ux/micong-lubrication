@@ -34,6 +34,7 @@ type ProductRow = {
   specs: Record<string, unknown> | null
   sort_order: number | null
   updated_at: string | null
+  extra_data: Record<string, unknown> | null
 }
 type ProductCategoryRow = {
   slug: string
@@ -91,7 +92,7 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
   const tenant = tenantId()
   if (!db || !tenant) return productFamilies
   const { data, error } = await db.from('products')
-    .select('id,slug,name,name_i18n,description,description_i18n,category_slug,specs,sort_order,updated_at')
+    .select('id,slug,name,name_i18n,description,description_i18n,category_slug,specs,sort_order,updated_at,extra_data')
     .eq('tenant_id', tenant).eq('is_active', true).order('sort_order', { ascending: true })
   if (error) return productFamilies
   return ((data ?? []) as ProductRow[]).map(row => {
@@ -108,6 +109,10 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
       grades: grades?.length ? grades : null,
       applicationIds: original?.applicationIds || [],
       updatedAt: row.updated_at || undefined,
+      seoTitle: typeof (row.extra_data?.seo_title_i18n as Record<string, unknown> | undefined)?.en === 'string'
+        ? { en: (row.extra_data!.seo_title_i18n as Record<string, string>).en } : undefined,
+      seoDescription: typeof (row.extra_data?.seo_description_i18n as Record<string, unknown> | undefined)?.en === 'string'
+        ? { en: (row.extra_data!.seo_description_i18n as Record<string, string>).en } : undefined,
     } satisfies ProductFamily
   })
 }
