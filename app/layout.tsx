@@ -30,6 +30,7 @@ export const metadata: Metadata = {
   },
   description:
     'MICONG (Shanghai Micong Lubrication Technology Co., Ltd.) lists industrial lubricants and metalworking fluids. Browse eleven product families and send a request for quotation.',
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
 }
 
 export const viewport: Viewport = {

@@ -37,6 +37,9 @@ export default async function HomePage() {
   const copy=pageCopy(snapshot,'/')
   if (snapshot && (!slides || !faq)) throw new Error('Published homepage content is incomplete')
   return (
+    // Blueprint IDs: hero=HeroCarousel; product-families=FamilySelector; product-pathways=Pathways;
+    // applications=ApplicationPicker; packaging-options=PackagingSection; sample-cooperation=CooperationPath;
+    // company-context=CompanyIntro; faq=FaqSection; contact=ContactCta.
     <div {...(snapshot && slides && faq ? { 'data-hq-content-version': snapshot.version } : {})}>
       <JsonLd data={[organizationSchema(), websiteSchema(locale)]} />
       <HeroCarousel slides={slides || undefined} styles={homeModule(snapshot,'hero')?.styles} />
