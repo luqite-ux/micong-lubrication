@@ -10,6 +10,15 @@ function rows(snapshot:SiteSnapshot|null,path:string,type:string):unknown[]|null
   return Array.isArray(value)?value:null
 }
 
+export function managedImage(snapshot:SiteSnapshot|null,path:string,type:string,key:string):{url:string;alt:string}|null {
+  const value=snapshot?.pages.find(page=>page.path===path)?.modules.find(module=>module.type===type)?.values[key]
+  if(value===undefined)return null
+  const image=record(value)
+  const url=nonempty(image?.url),alt=nonempty(image?.alt)
+  if(!url||!url.startsWith('https://')||!alt)throw new Error(`Invalid ${type}.${key} image`)
+  return {url,alt}
+}
+
 export function managedTextRows(snapshot:SiteSnapshot|null,path:string,type:string):Array<{id:string;body:string}>|null {
   const values=rows(snapshot,path,type)
   if(!values)return null

@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -743,6 +743,27 @@
               ]
             }
           ]
+        },
+        {
+          "key": "packaging_images",
+          "type": "packaging_images",
+          "label": "包装图",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "single",
+              "type": "image",
+              "label": "单桶图片",
+              "required": true
+            },
+            {
+              "key": "stacked",
+              "type": "image",
+              "label": "堆叠桶图片",
+              "required": true
+            }
+          ]
         }
       ]
     },
@@ -967,6 +988,21 @@
                   "required": true
                 }
               ]
+            }
+          ]
+        },
+        {
+          "key": "boundary_image",
+          "type": "boundary_image",
+          "label": "资料边界配图",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "image",
+              "type": "image",
+              "label": "工业场景示意图",
+              "required": true
             }
           ]
         }

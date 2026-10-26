@@ -9,7 +9,8 @@
         "copy",
         "process_steps",
         "buyer_services",
-        "packaging_checklist"
+        "packaging_checklist",
+        "packaging_images"
       ],
       "modules": {
         "hero": {
@@ -538,6 +539,23 @@
               }
             ]
           }
+        },
+        "packaging_images": {
+          "hidden": false,
+          "values": {
+            "single": {
+              "assetId": "0b353476-fd7d-4af1-bc8d-761e7cc57a01",
+              "alt": {
+                "en": "A single unbranded red and black steel drum, shown as generic packaging context."
+              }
+            },
+            "stacked": {
+              "assetId": "e78daa97-c83e-4751-8439-9c62b0051923",
+              "alt": {
+                "en": "Stacked unbranded red and white steel drums, shown as generic packaging context."
+              }
+            }
+          }
         }
       }
     },
@@ -547,7 +565,8 @@
         "seo",
         "copy",
         "buyer_ways",
-        "unpublished_facts"
+        "unpublished_facts",
+        "boundary_image"
       ],
       "modules": {
         "page_hero": {
@@ -725,6 +744,17 @@
                 "is_visible": true
               }
             ]
+          }
+        },
+        "boundary_image": {
+          "hidden": false,
+          "values": {
+            "image": {
+              "assetId": "f8e99eb9-5afb-4e24-94f5-d2da84d8bf8e",
+              "alt": {
+                "en": "Illustrative industrial campus at dusk with a glass office building and a warehouse."
+              }
+            }
           }
         }
       }

@@ -4,7 +4,7 @@ import { ArrowRight, Check } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { copyValue } from '@/lib/site-content/page'
-import { managedTextRows } from '@/lib/site-content/collections'
+import { managedImage, managedTextRows } from '@/lib/site-content/collections'
 import type { SiteSnapshot } from '@/lib/site-content/transport'
 
 const toSpecify = [
@@ -16,6 +16,8 @@ const toSpecify = [
 
 export function PackagingSection({copy,snapshot}:{copy?:Record<string,string>|null;snapshot?:SiteSnapshot|null}) {
   const items=managedTextRows(snapshot??null,'/','packaging_checklist')?.map(row=>row.body)??toSpecify
+  const single=managedImage(snapshot??null,'/','packaging_images','single')
+  const stacked=managedImage(snapshot??null,'/','packaging_images','stacked')
   return (
     <section id="packaging" aria-labelledby="packaging-title" className="bg-paper-2 py-20 md:py-24">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
@@ -64,8 +66,8 @@ export function PackagingSection({copy,snapshot}:{copy?:Record<string,string>|nu
             <div className="relative mx-auto aspect-[6/5] w-full max-w-xl">
               <div className="absolute bottom-0 left-0 w-[62%] overflow-hidden rounded-md shadow-xl">
                 <Image
-                  src="/images/packaging-drum-single.jpg"
-                  alt="A single red and black steel drum standing on a warehouse floor, shown in full."
+                  src={single?.url||"/images/packaging-drum-single.jpg"}
+                  alt={single?.alt||"A single red and black steel drum standing on a warehouse floor, shown in full."}
                   width={1932}
                   height={1932}
                   sizes="(min-width: 1024px) 28vw, 60vw"
@@ -74,8 +76,8 @@ export function PackagingSection({copy,snapshot}:{copy?:Record<string,string>|nu
               </div>
               <div className="absolute right-0 top-0 w-[46%] overflow-hidden rounded-md shadow-xl">
                 <Image
-                  src="/images/packaging-drums-stacked.jpg"
-                  alt="Stacked red and white steel drums in a storage area."
+                  src={stacked?.url||"/images/packaging-drums-stacked.jpg"}
+                  alt={stacked?.alt||"Stacked red and white steel drums in a storage area."}
                   width={1932}
                   height={1932}
                   sizes="(min-width: 1024px) 22vw, 45vw"

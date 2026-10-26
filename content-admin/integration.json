@@ -31,6 +31,8 @@
     "about.unpublished_facts",
     "contact.next_steps",
     "home.buyer_services",
-    "home.packaging_checklist"
+    "home.packaging_checklist",
+    "home.packaging_images",
+    "about.boundary_image"
   ]
 }

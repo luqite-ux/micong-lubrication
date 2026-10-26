@@ -15,7 +15,7 @@ import { company, illustrativeNote } from '@/lib/site-config'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { homeFaq, homeModule } from '@/lib/site-content/home'
-import { managedTextRows, managedTitledRows } from '@/lib/site-content/collections'
+import { managedImage, managedTextRows, managedTitledRows } from '@/lib/site-content/collections'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/about', title: 'About MICONG', description: 'Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/about','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
@@ -43,6 +43,7 @@ export default async function AboutPage() {
   const faq=homeFaq(homeModule(snapshot,'faq'))
   const visibleWays=managedTitledRows(snapshot,'/about','buyer_ways')??ways
   const visibleBoundaries=managedTextRows(snapshot,'/about','unpublished_facts')?.map(row=>row.body)??notPublished
+  const boundaryImage=managedImage(snapshot,'/about','boundary_image','image')
 
   return (
     <div {...pageVersion(snapshot, '/about')}>
@@ -121,8 +122,8 @@ export default async function AboutPage() {
           <Reveal>
             <figure className="overflow-hidden rounded-md bg-charcoal">
               <Image
-                src="/images/banner-3.jpg"
-                alt="Illustrated industrial campus at dusk with a glass office building and a warehouse."
+                src={boundaryImage?.url||"/images/banner-3.jpg"}
+                alt={boundaryImage?.alt||"Illustrated industrial campus at dusk with a glass office building and a warehouse."}
                 width={2560}
                 height={1060}
                 sizes="(min-width: 1024px) 560px, 100vw"
