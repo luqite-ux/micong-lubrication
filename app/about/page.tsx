@@ -29,11 +29,11 @@ const ways = [
   { icon: 'inspection', title: 'Inspection', body: 'Third-party inspection can be discussed on request.' },
 ]
 
-const notPublished = [
-  'Certificates and licences',
-  'Factory location, size or production capacity',
-  'Customer names, testimonials or case studies',
-  'Technical specifications beyond the listed grades',
+const inquiryChecklist = [
+  'Product family and listed grade, where available',
+  'Equipment, material and operating conditions',
+  'Quantity, preferred pack type and destination',
+  'Any data sheet, sample or inspection request',
 ]
 
 export default async function AboutPage() {
@@ -42,7 +42,7 @@ export default async function AboutPage() {
   const copy=pageCopy(snapshot,'/about'), sharedCopy=pageCopy(snapshot,'/')
   const faq=homeFaq(homeModule(snapshot,'faq'))
   const visibleWays=managedTitledRows(snapshot,'/about','buyer_ways')??ways
-  const visibleBoundaries=managedTextRows(snapshot,'/about','unpublished_facts')?.map(row=>row.body)??notPublished
+  const visibleBoundaries=managedTextRows(snapshot,'/about','unpublished_facts')?.map(row=>row.body)??inquiryChecklist
   const boundaryImage=managedImage(snapshot,'/about','boundary_image','image')
 
   return (
@@ -134,10 +134,10 @@ export default async function AboutPage() {
           </Reveal>
           <Reveal delay={90}>
             <h2 id="boundary-title" className="text-3xl font-bold leading-tight text-ink">
-              {copyValue(copy,'boundary_title','What this site does not claim.')}
+              {copyValue(copy,'boundary_title','Prepare a useful technical inquiry.')}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              {copyValue(copy,'boundary_description','The banner scenes are illustrations used to set the mood. They do not show a MICONG site or equipment. The following are not published until MICONG supplies and verifies them:')}
+              {copyValue(copy,'boundary_description','Share these details so MICONG can discuss a suitable product family, documents, packaging and next steps for your order:')}
             </p>
             <ul className="mt-5 grid gap-3">
               {visibleBoundaries.map((item) => (

@@ -98,7 +98,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
           <Reveal>
             <ProductTile icon={family.icon} category={family.category} size="feature" className="rounded-md" />
             <p className="mt-3 text-xs leading-relaxed text-ink-soft">
-              Neutral family illustration. No product photograph is published for this family, so nothing here shows a pack or label.
+              Product family illustration. Ask for current packaging and label details with your inquiry.
             </p>
           </Reveal>
 

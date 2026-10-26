@@ -733,10 +733,10 @@
               "en": "Each of these is raised in the inquiry. We confirm what applies to your order."
             },
             "boundary_title": {
-              "en": "What this site does not claim."
+              "en": "Prepare a useful technical inquiry."
             },
             "boundary_description": {
-              "en": "The banner scenes are illustrations used to set the mood. They do not show a MICONG site or equipment. The following are not published until MICONG supplies and verifies them:"
+              "en": "Share these details so MICONG can discuss a suitable product family, documents, packaging and next steps for your order:"
             },
             "boundary_action": {
               "en": "Ask us what you need to know"
@@ -835,28 +835,28 @@
               {
                 "id": "boundary-1",
                 "body": {
-                  "en": "Certificates and licences"
+                  "en": "Product family and listed grade, where available"
                 },
                 "is_visible": true
               },
               {
                 "id": "boundary-2",
                 "body": {
-                  "en": "Factory location, size or production capacity"
+                  "en": "Equipment, material and operating conditions"
                 },
                 "is_visible": true
               },
               {
                 "id": "boundary-3",
                 "body": {
-                  "en": "Customer names, testimonials or case studies"
+                  "en": "Quantity, preferred pack type and destination"
                 },
                 "is_visible": true
               },
               {
                 "id": "boundary-4",
                 "body": {
-                  "en": "Technical specifications beyond the listed grades"
+                  "en": "Any data sheet, sample or inspection request"
                 },
                 "is_visible": true
               }
