@@ -58,5 +58,7 @@ export function isServiceGuardExcludedPath(pathname: string): boolean {
   return pathname === '/service-expired'
     || pathname.startsWith('/admin') || pathname.startsWith('/api')
     || pathname.startsWith('/_next') || pathname === '/favicon.ico'
+    || pathname === '/icon' || pathname.startsWith('/icon/')
+    || pathname === '/apple-icon' || pathname.startsWith('/apple-icon/')
     || /\.[a-z0-9]+$/i.test(pathname)
 }
