@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -663,6 +663,86 @@
               ]
             }
           ]
+        },
+        {
+          "key": "buyer_services",
+          "type": "buyer_services",
+          "label": "采购服务卡片",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "采购服务卡片",
+              "required": true,
+              "maxItems": 10,
+              "fields": [
+                {
+                  "key": "icon",
+                  "type": "text",
+                  "label": "图标键",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "title",
+                  "type": "text",
+                  "label": "标题",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "body",
+                  "type": "textarea",
+                  "label": "说明",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 1000
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "packaging_checklist",
+          "type": "packaging_checklist",
+          "label": "包装需求清单",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "包装需求清单",
+              "required": true,
+              "maxItems": 10,
+              "fields": [
+                {
+                  "key": "body",
+                  "type": "text",
+                  "label": "条目",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -807,6 +887,86 @@
               "localized": true,
               "required": true,
               "maxLength": 1200
+            }
+          ]
+        },
+        {
+          "key": "buyer_ways",
+          "type": "buyer_ways",
+          "label": "买家服务方式",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "买家服务方式",
+              "required": true,
+              "maxItems": 10,
+              "fields": [
+                {
+                  "key": "icon",
+                  "type": "text",
+                  "label": "图标键",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "title",
+                  "type": "text",
+                  "label": "标题",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "body",
+                  "type": "textarea",
+                  "label": "说明",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 1000
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "unpublished_facts",
+          "type": "unpublished_facts",
+          "label": "待核实资料",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "待核实资料",
+              "required": true,
+              "maxItems": 10,
+              "fields": [
+                {
+                  "key": "body",
+                  "type": "text",
+                  "label": "条目",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 300
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
             }
           ]
         }
@@ -1291,6 +1451,38 @@
               "localized": true,
               "required": true,
               "maxLength": 1200
+            }
+          ]
+        },
+        {
+          "key": "next_steps",
+          "type": "next_steps",
+          "label": "联系后续步骤",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "联系后续步骤",
+              "required": true,
+              "maxItems": 10,
+              "fields": [
+                {
+                  "key": "body",
+                  "type": "textarea",
+                  "label": "步骤说明",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 1000
+                },
+                {
+                  "key": "is_visible",
+                  "type": "boolean",
+                  "label": "显示",
+                  "required": true
+                }
+              ]
             }
           ]
         }

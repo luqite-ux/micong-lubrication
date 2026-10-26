@@ -15,6 +15,7 @@ import { company, illustrativeNote } from '@/lib/site-config'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { homeFaq, homeModule } from '@/lib/site-content/home'
+import { managedTextRows, managedTitledRows } from '@/lib/site-content/collections'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/about', title: 'About MICONG', description: 'Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/about','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
@@ -40,6 +41,8 @@ export default async function AboutPage() {
   const hero = pageHero(snapshot, '/about')
   const copy=pageCopy(snapshot,'/about'), sharedCopy=pageCopy(snapshot,'/')
   const faq=homeFaq(homeModule(snapshot,'faq'))
+  const visibleWays=managedTitledRows(snapshot,'/about','buyer_ways')??ways
+  const visibleBoundaries=managedTextRows(snapshot,'/about','unpublished_facts')?.map(row=>row.body)??notPublished
 
   return (
     <div {...pageVersion(snapshot, '/about')}>
@@ -97,7 +100,7 @@ export default async function AboutPage() {
             description={copyValue(copy,'ways_description','Each of these is raised in the inquiry. We confirm what applies to your order.')}
           />
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {ways.map((way, index) => (
+            {visibleWays.map((way, index) => (
               <Reveal
                 as="li"
                 key={way.title}
@@ -136,7 +139,7 @@ export default async function AboutPage() {
               {copyValue(copy,'boundary_description','The banner scenes are illustrations used to set the mood. They do not show a MICONG site or equipment. The following are not published until MICONG supplies and verifies them:')}
             </p>
             <ul className="mt-5 grid gap-3">
-              {notPublished.map((item) => (
+              {visibleBoundaries.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-base text-ink">
                   <span aria-hidden="true" className="mt-2 size-2 shrink-0 rotate-45 bg-brand-red" />
                   {item}

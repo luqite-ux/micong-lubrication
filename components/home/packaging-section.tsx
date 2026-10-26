@@ -4,6 +4,8 @@ import { ArrowRight, Check } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { copyValue } from '@/lib/site-content/page'
+import { managedTextRows } from '@/lib/site-content/collections'
+import type { SiteSnapshot } from '@/lib/site-content/transport'
 
 const toSpecify = [
   'Pack type you want to receive',
@@ -12,7 +14,8 @@ const toSpecify = [
   'OEM or own-brand wishes, if any',
 ]
 
-export function PackagingSection({copy}:{copy?:Record<string,string>|null}) {
+export function PackagingSection({copy,snapshot}:{copy?:Record<string,string>|null;snapshot?:SiteSnapshot|null}) {
+  const items=managedTextRows(snapshot??null,'/','packaging_checklist')?.map(row=>row.body)??toSpecify
   return (
     <section id="packaging" aria-labelledby="packaging-title" className="bg-paper-2 py-20 md:py-24">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
@@ -26,7 +29,7 @@ export function PackagingSection({copy}:{copy?:Record<string,string>|null}) {
           <Reveal delay={90}>
             <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-ink-soft">{copyValue(copy,'packaging_list_title','What to tell us')}</h3>
             <ul className="mt-4 grid gap-3">
-              {toSpecify.map((item) => (
+              {items.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-base text-ink">
                   <span
                     aria-hidden="true"

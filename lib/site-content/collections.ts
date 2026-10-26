@@ -10,6 +10,26 @@ function rows(snapshot:SiteSnapshot|null,path:string,type:string):unknown[]|null
   return Array.isArray(value)?value:null
 }
 
+export function managedTextRows(snapshot:SiteSnapshot|null,path:string,type:string):Array<{id:string;body:string}>|null {
+  const values=rows(snapshot,path,type)
+  if(!values)return null
+  return values.flatMap(value=>{
+    const row=record(value)
+    if(!row||!nonempty(row.id)||!nonempty(row.body)||typeof row.is_visible!=='boolean')throw new Error(`Invalid ${type} row`)
+    return row.is_visible?[{id:row.id as string,body:row.body as string}]:[]
+  })
+}
+
+export function managedTitledRows(snapshot:SiteSnapshot|null,path:string,type:string):Array<{id:string;icon:string;title:string;body:string}>|null {
+  const values=rows(snapshot,path,type)
+  if(!values)return null
+  return values.flatMap(value=>{
+    const row=record(value)
+    if(!row||!nonempty(row.id)||!nonempty(row.icon)||!nonempty(row.title)||!nonempty(row.body)||typeof row.is_visible!=='boolean')throw new Error(`Invalid ${type} row`)
+    return row.is_visible?[{id:row.id as string,icon:row.icon as string,title:row.title as string,body:row.body as string}]:[]
+  })
+}
+
 export function managedCooperationSteps(snapshot:SiteSnapshot|null):CooperationStep[]|null {
   const values=rows(snapshot,'/','process_steps')
   if(!values)return null

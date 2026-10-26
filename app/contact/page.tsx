@@ -8,6 +8,7 @@ import { getProductFamilies, text } from '@/lib/data/repository'
 import { company } from '@/lib/site-config'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
+import { managedTextRows } from '@/lib/site-content/collections'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/contact', title: 'Contact MICONG', description: 'Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/contact','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
@@ -27,6 +28,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const [families,snapshot] = await Promise.all([getProductFamilies(),getSiteContent('en')])
   const hero = pageHero(snapshot, '/contact')
   const copy=pageCopy(snapshot,'/contact')
+  const visibleSteps=managedTextRows(snapshot,'/contact','next_steps')?.map(row=>row.body)??nextSteps
   const options: RfqFamilyOption[] = families.map((item) => ({
     slug: item.slug,
     name: text(item.name),
@@ -89,7 +91,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               {copyValue(copy,'steps_title','What happens next')}
             </h2>
             <ol className="mt-4 grid gap-4">
-              {nextSteps.map((step, index) => (
+              {visibleSteps.map((step, index) => (
                 <li key={step} className="flex gap-4 text-sm leading-relaxed text-ink-soft">
                   <span className="flex size-7 shrink-0 items-center justify-center rounded-[3px] bg-brand-yellow text-sm font-bold text-ink">
                     {index + 1}

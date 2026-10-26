@@ -7,7 +7,9 @@
         "faq",
         "seo",
         "copy",
-        "process_steps"
+        "process_steps",
+        "buyer_services",
+        "packaging_checklist"
       ],
       "modules": {
         "hero": {
@@ -442,6 +444,100 @@
               }
             ]
           }
+        },
+        "buyer_services": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "service-1",
+                "icon": {
+                  "en": "sample"
+                },
+                "title": {
+                  "en": "Samples on request"
+                },
+                "body": {
+                  "en": "Sample shipping is at the customer cost."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "service-2",
+                "icon": {
+                  "en": "document"
+                },
+                "title": {
+                  "en": "Technical data sheets"
+                },
+                "body": {
+                  "en": "Request the sheet for the family and grade you are considering."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "service-3",
+                "icon": {
+                  "en": "packaging"
+                },
+                "title": {
+                  "en": "Packaging and OEM"
+                },
+                "body": {
+                  "en": "Pack types and OEM cooperation are discussed per inquiry."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "service-4",
+                "icon": {
+                  "en": "inspection"
+                },
+                "title": {
+                  "en": "Third-party inspection"
+                },
+                "body": {
+                  "en": "Can be discussed on request."
+                },
+                "is_visible": true
+              }
+            ]
+          }
+        },
+        "packaging_checklist": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "pack-1",
+                "body": {
+                  "en": "Pack type you want to receive"
+                },
+                "is_visible": true
+              },
+              {
+                "id": "pack-2",
+                "body": {
+                  "en": "Quantity for the first order"
+                },
+                "is_visible": true
+              },
+              {
+                "id": "pack-3",
+                "body": {
+                  "en": "Destination country and port or city"
+                },
+                "is_visible": true
+              },
+              {
+                "id": "pack-4",
+                "body": {
+                  "en": "OEM or own-brand wishes, if any"
+                },
+                "is_visible": true
+              }
+            ]
+          }
         }
       }
     },
@@ -449,7 +545,9 @@
       "order": [
         "page_hero",
         "seo",
-        "copy"
+        "copy",
+        "buyer_ways",
+        "unpublished_facts"
       ],
       "modules": {
         "page_hero": {
@@ -507,6 +605,126 @@
             "boundary_action": {
               "en": "Ask us what you need to know"
             }
+          }
+        },
+        "buyer_ways": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "way-1",
+                "icon": {
+                  "en": "sample"
+                },
+                "title": {
+                  "en": "Samples"
+                },
+                "body": {
+                  "en": "Samples can be requested. Sample shipping is at the customer cost."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "way-2",
+                "icon": {
+                  "en": "document"
+                },
+                "title": {
+                  "en": "Data sheets"
+                },
+                "body": {
+                  "en": "Ask for the technical data sheet for the family and grade you are considering."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "way-3",
+                "icon": {
+                  "en": "packaging"
+                },
+                "title": {
+                  "en": "Packaging"
+                },
+                "body": {
+                  "en": "Packaging customization is discussed per inquiry."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "way-4",
+                "icon": {
+                  "en": "quote"
+                },
+                "title": {
+                  "en": "OEM"
+                },
+                "body": {
+                  "en": "OEM cooperation can be discussed. Details are agreed per project."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "way-5",
+                "icon": {
+                  "en": "shipping"
+                },
+                "title": {
+                  "en": "Lead time"
+                },
+                "body": {
+                  "en": "Lead time depends on order size and is discussed per inquiry."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "way-6",
+                "icon": {
+                  "en": "inspection"
+                },
+                "title": {
+                  "en": "Inspection"
+                },
+                "body": {
+                  "en": "Third-party inspection can be discussed on request."
+                },
+                "is_visible": true
+              }
+            ]
+          }
+        },
+        "unpublished_facts": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "boundary-1",
+                "body": {
+                  "en": "Certificates and licences"
+                },
+                "is_visible": true
+              },
+              {
+                "id": "boundary-2",
+                "body": {
+                  "en": "Factory location, size or production capacity"
+                },
+                "is_visible": true
+              },
+              {
+                "id": "boundary-3",
+                "body": {
+                  "en": "Customer names, testimonials or case studies"
+                },
+                "is_visible": true
+              },
+              {
+                "id": "boundary-4",
+                "body": {
+                  "en": "Technical specifications beyond the listed grades"
+                },
+                "is_visible": true
+              }
+            ]
           }
         }
       }
@@ -791,7 +1009,8 @@
       "order": [
         "page_hero",
         "seo",
-        "copy"
+        "copy",
+        "next_steps"
       ],
       "modules": {
         "page_hero": {
@@ -831,6 +1050,34 @@
             "form_description": {
               "en": "Fields marked with an asterisk are required. Prices, grades and lead time are confirmed by MICONG after reviewing your request."
             }
+          }
+        },
+        "next_steps": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "contact-step-1",
+                "body": {
+                  "en": "We read the family, application and destination you send."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "contact-step-2",
+                "body": {
+                  "en": "We reply by email or phone to confirm grade, pack type and what can be offered."
+                },
+                "is_visible": true
+              },
+              {
+                "id": "contact-step-3",
+                "body": {
+                  "en": "Samples and data sheets are arranged on request. Sample shipping is at the customer cost."
+                },
+                "is_visible": true
+              }
+            ]
           }
         }
       }

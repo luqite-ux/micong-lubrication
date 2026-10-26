@@ -41,9 +41,9 @@ export default async function HomePage() {
       <FamilySelector copy={copy} />
       <Pathways copy={copy} />
       <ApplicationPicker copy={copy} snapshot={snapshot} />
-      <PackagingSection copy={copy} />
+      <PackagingSection copy={copy} snapshot={snapshot} />
       <CooperationPath copy={copy} snapshot={snapshot} />
-      <CompanyIntro copy={copy} />
+      <CompanyIntro copy={copy} snapshot={snapshot} />
       <FaqSection {...(faq || {})} styles={homeModule(snapshot,'faq')?.styles} />
       <ContactCta copy={copy} />
     </div>

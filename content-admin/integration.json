@@ -26,6 +26,11 @@
     "news.copy",
     "contact.copy",
     "home.process_steps",
-    "applications.areas"
+    "applications.areas",
+    "about.buyer_ways",
+    "about.unpublished_facts",
+    "contact.next_steps",
+    "home.buyer_services",
+    "home.packaging_checklist"
   ]
 }

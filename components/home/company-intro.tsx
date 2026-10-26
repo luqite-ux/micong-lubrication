@@ -6,6 +6,8 @@ import { stagger } from '@/lib/motion'
 import { SectionHeading } from '@/components/section-heading'
 import { company } from '@/lib/site-config'
 import { copyValue } from '@/lib/site-content/page'
+import { managedTitledRows } from '@/lib/site-content/collections'
+import type { SiteSnapshot } from '@/lib/site-content/transport'
 
 const services = [
   { icon: 'sample', title: 'Samples on request', body: 'Sample shipping is at the customer cost.' },
@@ -14,7 +16,8 @@ const services = [
   { icon: 'inspection', title: 'Third-party inspection', body: 'Can be discussed on request.' },
 ]
 
-export function CompanyIntro({copy}:{copy?:Record<string,string>|null}) {
+export function CompanyIntro({copy,snapshot}:{copy?:Record<string,string>|null;snapshot?:SiteSnapshot|null}) {
+  const visibleServices=managedTitledRows(snapshot??null,'/','buyer_services')??services
   return (
     <section id="company" aria-labelledby="company-title" className="grid-lines bg-charcoal py-20 text-white md:py-24">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
@@ -55,7 +58,7 @@ export function CompanyIntro({copy}:{copy?:Record<string,string>|null}) {
             <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-white/70">{copyValue(copy,'company_services_title','How we work with buyers')}</h3>
           </Reveal>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-            {services.map((service, index) => (
+            {visibleServices.map((service, index) => (
               <Reveal
                 key={service.title}
                 as="li"
