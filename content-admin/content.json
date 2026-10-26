@@ -5,7 +5,8 @@
         "hero",
         "navigation",
         "faq",
-        "seo"
+        "seo",
+        "copy"
       ],
       "modules": {
         "hero": {
@@ -264,13 +265,118 @@
               "en": "Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination."
             }
           }
+        },
+        "copy": {
+          "hidden": false,
+          "values": {
+            "family_eyebrow": {
+              "en": "Product families"
+            },
+            "family_title": {
+              "en": "Choose a product family"
+            },
+            "family_description": {
+              "en": "Eleven families in two groups. Anti-wear hydraulic oil and slideway oil list grades 32, 46 and 68. Every other family is handled by inquiry."
+            },
+            "family_action": {
+              "en": "Full product listing"
+            },
+            "pathways_eyebrow": {
+              "en": "Two pathways"
+            },
+            "pathways_title": {
+              "en": "Lubricants or cutting fluids: start from what you run"
+            },
+            "pathways_description": {
+              "en": "The two groups are chosen differently. Use the route that matches your equipment."
+            },
+            "applications_eyebrow": {
+              "en": "Applications"
+            },
+            "applications_title": {
+              "en": "Start from the equipment"
+            },
+            "applications_description": {
+              "en": "Not sure which family you need? Pick the application and follow the link to the matching product family."
+            },
+            "applications_action": {
+              "en": "All applications"
+            },
+            "packaging_eyebrow": {
+              "en": "Packaging customization"
+            },
+            "packaging_title": {
+              "en": "Raise packaging and OEM needs in the first inquiry"
+            },
+            "packaging_description": {
+              "en": "Packaging customization and OEM cooperation can be discussed. What can be arranged is confirmed against your order, so say what you need up front."
+            },
+            "packaging_list_title": {
+              "en": "What to tell us"
+            },
+            "packaging_action": {
+              "en": "Ask about packaging"
+            },
+            "packaging_oem_action": {
+              "en": "Discuss OEM"
+            },
+            "packaging_caption": {
+              "en": "Steel drums shown as generic packaging context. These are not MICONG-branded product photographs, and pack types, sizes and labelling are agreed per order."
+            },
+            "process_eyebrow": {
+              "en": "Samples and RFQ"
+            },
+            "process_title": {
+              "en": "From first request to agreed order"
+            },
+            "process_description": {
+              "en": "Five steps. Sample shipping is at the customer cost, and lead time depends on order size."
+            },
+            "process_footer": {
+              "en": "The request form covers every step above: family, application, grade, quantity and destination."
+            },
+            "process_action": {
+              "en": "Open the request form"
+            },
+            "company_eyebrow": {
+              "en": "About MICONG"
+            },
+            "company_title": {
+              "en": "Who you are writing to"
+            },
+            "company_description": {
+              "en": "Shanghai Micong Lubrication Technology Co., Ltd. (上海米丛润滑技术有限公司) trades as MICONG / 米丛. The company lists industrial lubricants and metalworking fluids and takes buyer inquiries by form, email and phone."
+            },
+            "company_scope": {
+              "en": "11 families in industrial lubricants and metalworking fluids"
+            },
+            "company_boundary": {
+              "en": "Certificates, facility details and capacity figures are not published here until MICONG supplies and verifies them. The banner scenes on this site are illustrative imagery."
+            },
+            "company_action": {
+              "en": "More about MICONG"
+            },
+            "company_services_title": {
+              "en": "How we work with buyers"
+            },
+            "cta_title": {
+              "en": "Tell us what you need to lubricate or cut."
+            },
+            "cta_description": {
+              "en": "Send the product family, equipment, grade, quantity and destination. We reply by email or phone with next steps."
+            },
+            "cta_action": {
+              "en": "Request a quote"
+            }
+          }
         }
       }
     },
     "about": {
       "order": [
         "page_hero",
-        "seo"
+        "seo",
+        "copy"
       ],
       "modules": {
         "page_hero": {
@@ -297,13 +403,46 @@
               "en": "Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry."
             }
           }
+        },
+        "copy": {
+          "hidden": false,
+          "values": {
+            "scope_eyebrow": {
+              "en": "What MICONG lists"
+            },
+            "scope_title": {
+              "en": "Two product groups, eleven families."
+            },
+            "scope_description": {
+              "en": "Different grades inside a family are variants of that family, not separate products."
+            },
+            "ways_eyebrow": {
+              "en": "Working with MICONG"
+            },
+            "ways_title": {
+              "en": "What a buyer can ask for."
+            },
+            "ways_description": {
+              "en": "Each of these is raised in the inquiry. We confirm what applies to your order."
+            },
+            "boundary_title": {
+              "en": "What this site does not claim."
+            },
+            "boundary_description": {
+              "en": "The banner scenes are illustrations used to set the mood. They do not show a MICONG site or equipment. The following are not published until MICONG supplies and verifies them:"
+            },
+            "boundary_action": {
+              "en": "Ask us what you need to know"
+            }
+          }
         }
       }
     },
     "products": {
       "order": [
         "page_hero",
-        "seo"
+        "seo",
+        "copy"
       ],
       "modules": {
         "page_hero": {
@@ -330,13 +469,37 @@
               "en": "Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each."
             }
           }
+        },
+        "copy": {
+          "hidden": false,
+          "values": {
+            "grades_eyebrow": {
+              "en": "Grade navigation"
+            },
+            "grades_title": {
+              "en": "Go straight to a listed grade."
+            },
+            "grades_description": {
+              "en": "Anti-wear Hydraulic Oil and Slideway Oil are listed in grades 32, 46 and 68. Other families do not list grades."
+            },
+            "guide_title": {
+              "en": "Not sure which family fits?"
+            },
+            "guide_description": {
+              "en": "Start from the equipment or process instead. The application guide points each use to the families that match it."
+            },
+            "guide_action": {
+              "en": "Browse by application"
+            }
+          }
         }
       }
     },
     "applications": {
       "order": [
         "page_hero",
-        "seo"
+        "seo",
+        "copy"
       ],
       "modules": {
         "page_hero": {
@@ -363,13 +526,25 @@
               "en": "Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points."
             }
           }
+        },
+        "copy": {
+          "hidden": false,
+          "values": {
+            "cta_title": {
+              "en": "Your equipment is not listed here?"
+            },
+            "cta_description": {
+              "en": "Describe the machine, the process and the fluid you use now. We will tell you which family we can discuss."
+            }
+          }
         }
       }
     },
     "news": {
       "order": [
         "page_hero",
-        "seo"
+        "seo",
+        "copy"
       ],
       "modules": {
         "page_hero": {
@@ -396,13 +571,31 @@
               "en": "Company and product news from MICONG."
             }
           }
+        },
+        "copy": {
+          "hidden": false,
+          "values": {
+            "empty_title": {
+              "en": "No news published yet"
+            },
+            "empty_description": {
+              "en": "MICONG has not released any articles. In the meantime, the product families and the quote request are the fastest way to reach us."
+            },
+            "empty_product_action": {
+              "en": "Browse products"
+            },
+            "empty_quote_action": {
+              "en": "Request a quote"
+            }
+          }
         }
       }
     },
     "contact": {
       "order": [
         "page_hero",
-        "seo"
+        "seo",
+        "copy"
       ],
       "modules": {
         "page_hero": {
@@ -427,6 +620,20 @@
             },
             "description": {
               "en": "Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email."
+            }
+          }
+        },
+        "copy": {
+          "hidden": false,
+          "values": {
+            "steps_title": {
+              "en": "What happens next"
+            },
+            "form_title": {
+              "en": "Request a quote"
+            },
+            "form_description": {
+              "en": "Fields marked with an asterisk are required. Prices, grades and lead time are confirmed by MICONG after reviewing your request."
             }
           }
         }

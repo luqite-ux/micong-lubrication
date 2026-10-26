@@ -7,7 +7,7 @@ import { NewsCard } from '@/components/news/news-card'
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 import { getNewsArticles } from '@/lib/data/repository'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
-import { pageHero, pageVersion } from '@/lib/site-content/page'
+import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 
 export const revalidate = 60
 const fallbackMetadata: Metadata = pageMetadata({ path: '/news', title: 'MICONG news', description: 'Company and product news from MICONG.' })
@@ -17,6 +17,7 @@ export default async function NewsPage() {
   const [allArticles,snapshot] = await Promise.all([getNewsArticles(), getSiteContent('en')])
   const articles = allArticles.toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt))
   const hero = pageHero(snapshot, '/news')
+  const copy=pageCopy(snapshot,'/news')
 
   return (
     <div {...pageVersion(snapshot, '/news')}>
@@ -39,9 +40,9 @@ export default async function NewsPage() {
               <EmptyMedia variant="icon">
                 <Newspaper aria-hidden="true" />
               </EmptyMedia>
-              <EmptyTitle>No news published yet</EmptyTitle>
+              <EmptyTitle>{copyValue(copy,'empty_title','No news published yet')}</EmptyTitle>
               <EmptyDescription>
-                MICONG has not released any articles. In the meantime, the product families and the quote request are the fastest way to reach us.
+                {copyValue(copy,'empty_description','MICONG has not released any articles. In the meantime, the product families and the quote request are the fastest way to reach us.')}
               </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
@@ -50,13 +51,13 @@ export default async function NewsPage() {
                   href="/products"
                   className="inline-flex h-11 items-center justify-center rounded-md bg-charcoal px-6 text-sm font-semibold text-white transition-colors hover:bg-charcoal-3"
                 >
-                  Browse products
+                  {copyValue(copy,'empty_product_action','Browse products')}
                 </Link>
                 <Link
                   href="/contact#rfq"
                   className="inline-flex h-11 items-center justify-center rounded-md bg-brand-red px-6 text-sm font-semibold text-white transition-colors hover:bg-brand-red-deep"
                 >
-                  Request a quote
+                  {copyValue(copy,'empty_quote_action','Request a quote')}
                 </Link>
               </div>
             </EmptyContent>

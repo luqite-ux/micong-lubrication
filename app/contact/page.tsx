@@ -7,7 +7,7 @@ import { RfqForm, type RfqFamilyOption } from '@/components/rfq-form'
 import { getProductFamilies, text } from '@/lib/data/repository'
 import { company } from '@/lib/site-config'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
-import { pageHero, pageVersion } from '@/lib/site-content/page'
+import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/contact', title: 'Contact MICONG', description: 'Send MICONG your product family, equipment, grade, quantity and destination, or contact the team by phone and email.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/contact','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
@@ -26,6 +26,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const { family, grade, topic } = await searchParams
   const [families,snapshot] = await Promise.all([getProductFamilies(),getSiteContent('en')])
   const hero = pageHero(snapshot, '/contact')
+  const copy=pageCopy(snapshot,'/contact')
   const options: RfqFamilyOption[] = families.map((item) => ({
     slug: item.slug,
     name: text(item.name),
@@ -85,7 +86,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <Reveal delay={90}>
             <h2 className="flex items-center gap-2 text-lg font-bold text-ink">
               <Clock className="size-5 text-brand-red" aria-hidden="true" />
-              What happens next
+              {copyValue(copy,'steps_title','What happens next')}
             </h2>
             <ol className="mt-4 grid gap-4">
               {nextSteps.map((step, index) => (
@@ -103,10 +104,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         <section id="rfq" aria-labelledby="rfq-title" className="scroll-mt-28">
           <Reveal className="rounded-md border border-paper-line bg-white p-5 shadow-sm sm:p-8">
             <h2 id="rfq-title" className="text-2xl font-bold text-ink">
-              Request a quote
+              {copyValue(copy,'form_title','Request a quote')}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-              Fields marked with an asterisk are required. Prices, grades and lead time are confirmed by MICONG after reviewing your request.
+              {copyValue(copy,'form_description','Fields marked with an asterisk are required. Prices, grades and lead time are confirmed by MICONG after reviewing your request.')}
             </p>
             <div className="mt-8">
               <RfqForm families={options} defaultFamily={family} defaultGrade={grade} defaultTopic={topic} />

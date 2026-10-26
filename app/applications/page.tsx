@@ -8,7 +8,7 @@ import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { getApplicationAreas, getProductFamilies, text } from '@/lib/data/repository'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
-import { pageHero, pageVersion } from '@/lib/site-content/page'
+import { pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/applications','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
@@ -16,6 +16,7 @@ export async function generateMetadata(): Promise<Metadata> { const managed = aw
 export default async function ApplicationsPage() {
   const [areas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent('en')])
   const hero = pageHero(snapshot, '/applications')
+  const copy=pageCopy(snapshot,'/applications')
 
   return (
     <div {...pageVersion(snapshot, '/applications')}>
@@ -104,6 +105,7 @@ export default async function ApplicationsPage() {
       </div>
 
       <ContactCta
+        copy={copy}
         title="Your equipment is not listed here?"
         description="Describe the machine, the process and the fluid you use now. We will tell you which family we can discuss."
       />

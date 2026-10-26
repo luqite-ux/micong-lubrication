@@ -4,6 +4,7 @@ import { Marker } from '@/components/marker'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { cn } from '@/lib/utils'
+import { copyValue } from '@/lib/site-content/page'
 
 const pathways = [
   {
@@ -58,16 +59,16 @@ const pathways = [
   },
 ]
 
-export function Pathways() {
+export function Pathways({copy}:{copy?:Record<string,string>|null}) {
   return (
     <section id="pathways" aria-labelledby="pathways-title" className="grid-lines bg-charcoal py-20 text-white md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           id="pathways-title"
           tone="dark"
-          eyebrow="Two pathways"
-          title="Lubricants or cutting fluids: start from what you run"
-          description="The two groups are chosen differently. Use the route that matches your equipment."
+          eyebrow={copyValue(copy,'pathways_eyebrow','Two pathways')}
+          title={copyValue(copy,'pathways_title','Lubricants or cutting fluids: start from what you run')}
+          description={copyValue(copy,'pathways_description','The two groups are chosen differently. Use the route that matches your equipment.')}
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {pathways.map((pathway, index) => (

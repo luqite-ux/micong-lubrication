@@ -18,6 +18,12 @@
     "news.page_hero",
     "news.seo",
     "contact.page_hero",
-    "contact.seo"
+    "contact.seo",
+    "home.copy",
+    "about.copy",
+    "products.copy",
+    "applications.copy",
+    "news.copy",
+    "contact.copy"
   ]
 }

@@ -4,8 +4,9 @@ import { FamilyCard } from '@/components/family-card'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { getProductCategories, getProductFamilies, text } from '@/lib/data/repository'
+import { copyValue } from '@/lib/site-content/page'
 
-export async function FamilySelector() {
+export async function FamilySelector({copy}:{copy?:Record<string,string>|null}) {
   const [categories, families] = await Promise.all([getProductCategories(), getProductFamilies()])
 
   return (
@@ -13,15 +14,15 @@ export async function FamilySelector() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           id="families-title"
-          eyebrow="Product families"
-          title="Choose a product family"
-          description="Eleven families in two groups. Anti-wear hydraulic oil and slideway oil list grades 32, 46 and 68. Every other family is handled by inquiry."
+          eyebrow={copyValue(copy,'family_eyebrow','Product families')}
+          title={copyValue(copy,'family_title','Choose a product family')}
+          description={copyValue(copy,'family_description','Eleven families in two groups. Anti-wear hydraulic oil and slideway oil list grades 32, 46 and 68. Every other family is handled by inquiry.')}
           action={
             <Link
               href="/products"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand-red underline-offset-4 hover:underline"
             >
-              Full product listing
+              {copyValue(copy,'family_action','Full product listing')}
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           }

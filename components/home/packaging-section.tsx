@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, Check } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { copyValue } from '@/lib/site-content/page'
 
 const toSpecify = [
   'Pack type you want to receive',
@@ -11,19 +12,19 @@ const toSpecify = [
   'OEM or own-brand wishes, if any',
 ]
 
-export function PackagingSection() {
+export function PackagingSection({copy}:{copy?:Record<string,string>|null}) {
   return (
     <section id="packaging" aria-labelledby="packaging-title" className="bg-paper-2 py-20 md:py-24">
       <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div>
           <SectionHeading
             id="packaging-title"
-            eyebrow="Packaging customization"
-            title="Raise packaging and OEM needs in the first inquiry"
-            description="Packaging customization and OEM cooperation can be discussed. What can be arranged is confirmed against your order, so say what you need up front."
+            eyebrow={copyValue(copy,'packaging_eyebrow','Packaging customization')}
+            title={copyValue(copy,'packaging_title','Raise packaging and OEM needs in the first inquiry')}
+            description={copyValue(copy,'packaging_description','Packaging customization and OEM cooperation can be discussed. What can be arranged is confirmed against your order, so say what you need up front.')}
           />
           <Reveal delay={90}>
-            <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-ink-soft">What to tell us</h3>
+            <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-ink-soft">{copyValue(copy,'packaging_list_title','What to tell us')}</h3>
             <ul className="mt-4 grid gap-3">
               {toSpecify.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-base text-ink">
@@ -42,14 +43,14 @@ export function PackagingSection() {
                 href="/contact?topic=packaging#rfq"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-brand-red px-6 text-base font-semibold text-white transition-colors hover:bg-brand-red-deep"
               >
-                Ask about packaging
+                {copyValue(copy,'packaging_action','Ask about packaging')}
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
                 href="/contact?topic=oem#rfq"
                 className="inline-flex h-12 items-center justify-center rounded-md border border-charcoal px-6 text-base font-semibold text-charcoal transition-colors hover:bg-charcoal hover:text-white"
               >
-                Discuss OEM
+                {copyValue(copy,'packaging_oem_action','Discuss OEM')}
               </Link>
             </div>
           </Reveal>
@@ -80,8 +81,7 @@ export function PackagingSection() {
               </div>
             </div>
             <figcaption className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-ink-soft">
-              Steel drums shown as generic packaging context. These are not MICONG-branded product photographs, and pack
-              types, sizes and labelling are agreed per order.
+              {copyValue(copy,'packaging_caption','Steel drums shown as generic packaging context. These are not MICONG-branded product photographs, and pack types, sizes and labelling are agreed per order.')}
             </figcaption>
           </figure>
         </Reveal>

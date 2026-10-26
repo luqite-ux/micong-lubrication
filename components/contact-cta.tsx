@@ -2,29 +2,32 @@ import Link from 'next/link'
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { company } from '@/lib/site-config'
+import { copyValue } from '@/lib/site-content/page'
 
 type ContactCtaProps = {
   title?: string
   description?: string
+  copy?:Record<string,string>|null
 }
 
 export function ContactCta({
   title = 'Tell us what you need to lubricate or cut.',
   description = 'Send the product family, equipment, grade, quantity and destination. We reply by email or phone with next steps.',
+  copy,
 }: ContactCtaProps) {
   return (
     <section aria-labelledby="contact-cta-title" className="bg-brand-red text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:py-20">
         <Reveal>
           <h2 id="contact-cta-title" className="text-3xl font-bold leading-tight sm:text-4xl">
-            {title}
+            {copyValue(copy,'cta_title',title)}
           </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90">{description}</p>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90">{copyValue(copy,'cta_description',description)}</p>
           <Link
             href="/contact#rfq"
             className="mt-8 inline-flex h-12 items-center gap-2 rounded-md bg-charcoal px-7 text-base font-semibold text-white transition-colors hover:bg-black"
           >
-            Request a quote
+            {copyValue(copy,'cta_action','Request a quote')}
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </Reveal>

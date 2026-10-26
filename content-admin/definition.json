@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -342,6 +342,279 @@
               "maxLength": 500
             }
           ]
+        },
+        {
+          "key": "copy",
+          "type": "copy",
+          "label": "页面固定文案",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "family_eyebrow",
+              "type": "textarea",
+              "label": "family eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "family_title",
+              "type": "textarea",
+              "label": "family title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "family_description",
+              "type": "textarea",
+              "label": "family description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "family_action",
+              "type": "textarea",
+              "label": "family action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "pathways_eyebrow",
+              "type": "textarea",
+              "label": "pathways eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "pathways_title",
+              "type": "textarea",
+              "label": "pathways title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "pathways_description",
+              "type": "textarea",
+              "label": "pathways description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "applications_eyebrow",
+              "type": "textarea",
+              "label": "applications eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "applications_title",
+              "type": "textarea",
+              "label": "applications title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "applications_description",
+              "type": "textarea",
+              "label": "applications description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "applications_action",
+              "type": "textarea",
+              "label": "applications action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_eyebrow",
+              "type": "textarea",
+              "label": "packaging eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_title",
+              "type": "textarea",
+              "label": "packaging title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_description",
+              "type": "textarea",
+              "label": "packaging description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_list_title",
+              "type": "textarea",
+              "label": "packaging list title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_action",
+              "type": "textarea",
+              "label": "packaging action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_oem_action",
+              "type": "textarea",
+              "label": "packaging oem action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "packaging_caption",
+              "type": "textarea",
+              "label": "packaging caption",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "process_eyebrow",
+              "type": "textarea",
+              "label": "process eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "process_title",
+              "type": "textarea",
+              "label": "process title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "process_description",
+              "type": "textarea",
+              "label": "process description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "process_footer",
+              "type": "textarea",
+              "label": "process footer",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "process_action",
+              "type": "textarea",
+              "label": "process action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_eyebrow",
+              "type": "textarea",
+              "label": "company eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_title",
+              "type": "textarea",
+              "label": "company title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_description",
+              "type": "textarea",
+              "label": "company description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_scope",
+              "type": "textarea",
+              "label": "company scope",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_boundary",
+              "type": "textarea",
+              "label": "company boundary",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_action",
+              "type": "textarea",
+              "label": "company action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "company_services_title",
+              "type": "textarea",
+              "label": "company services title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "cta_title",
+              "type": "textarea",
+              "label": "cta title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "cta_description",
+              "type": "textarea",
+              "label": "cta description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "cta_action",
+              "type": "textarea",
+              "label": "cta action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            }
+          ]
         }
       ]
     },
@@ -405,6 +678,87 @@
               "localized": true,
               "required": true,
               "maxLength": 500
+            }
+          ]
+        },
+        {
+          "key": "copy",
+          "type": "copy",
+          "label": "页面固定文案",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "scope_eyebrow",
+              "type": "textarea",
+              "label": "scope eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "scope_title",
+              "type": "textarea",
+              "label": "scope title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "scope_description",
+              "type": "textarea",
+              "label": "scope description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "ways_eyebrow",
+              "type": "textarea",
+              "label": "ways eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "ways_title",
+              "type": "textarea",
+              "label": "ways title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "ways_description",
+              "type": "textarea",
+              "label": "ways description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "boundary_title",
+              "type": "textarea",
+              "label": "boundary title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "boundary_description",
+              "type": "textarea",
+              "label": "boundary description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "boundary_action",
+              "type": "textarea",
+              "label": "boundary action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
             }
           ]
         }
@@ -472,6 +826,63 @@
               "maxLength": 500
             }
           ]
+        },
+        {
+          "key": "copy",
+          "type": "copy",
+          "label": "页面固定文案",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "grades_eyebrow",
+              "type": "textarea",
+              "label": "grades eyebrow",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "grades_title",
+              "type": "textarea",
+              "label": "grades title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "grades_description",
+              "type": "textarea",
+              "label": "grades description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "guide_title",
+              "type": "textarea",
+              "label": "guide title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "guide_description",
+              "type": "textarea",
+              "label": "guide description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "guide_action",
+              "type": "textarea",
+              "label": "guide action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            }
+          ]
         }
       ]
     },
@@ -535,6 +946,31 @@
               "localized": true,
               "required": true,
               "maxLength": 500
+            }
+          ]
+        },
+        {
+          "key": "copy",
+          "type": "copy",
+          "label": "页面固定文案",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "cta_title",
+              "type": "textarea",
+              "label": "cta title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "cta_description",
+              "type": "textarea",
+              "label": "cta description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
             }
           ]
         }
@@ -602,6 +1038,47 @@
               "maxLength": 500
             }
           ]
+        },
+        {
+          "key": "copy",
+          "type": "copy",
+          "label": "页面固定文案",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "empty_title",
+              "type": "textarea",
+              "label": "empty title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "empty_description",
+              "type": "textarea",
+              "label": "empty description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "empty_product_action",
+              "type": "textarea",
+              "label": "empty product action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "empty_quote_action",
+              "type": "textarea",
+              "label": "empty quote action",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            }
+          ]
         }
       ]
     },
@@ -665,6 +1142,39 @@
               "localized": true,
               "required": true,
               "maxLength": 500
+            }
+          ]
+        },
+        {
+          "key": "copy",
+          "type": "copy",
+          "label": "页面固定文案",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "steps_title",
+              "type": "textarea",
+              "label": "steps title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "form_title",
+              "type": "textarea",
+              "label": "form title",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
+            },
+            {
+              "key": "form_description",
+              "type": "textarea",
+              "label": "form description",
+              "localized": true,
+              "required": true,
+              "maxLength": 1200
             }
           ]
         }

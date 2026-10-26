@@ -6,8 +6,9 @@ import { stagger } from '@/lib/motion'
 import { SectionHeading } from '@/components/section-heading'
 import { getCooperationSteps, text } from '@/lib/data/repository'
 import { cn } from '@/lib/utils'
+import { copyValue } from '@/lib/site-content/page'
 
-export async function CooperationPath() {
+export async function CooperationPath({copy}:{copy?:Record<string,string>|null}) {
   const steps = await getCooperationSteps()
 
   return (
@@ -15,9 +16,9 @@ export async function CooperationPath() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           id="process-title"
-          eyebrow="Samples and RFQ"
-          title="From first request to agreed order"
-          description="Five steps. Sample shipping is at the customer cost, and lead time depends on order size."
+          eyebrow={copyValue(copy,'process_eyebrow','Samples and RFQ')}
+          title={copyValue(copy,'process_title','From first request to agreed order')}
+          description={copyValue(copy,'process_description','Five steps. Sample shipping is at the customer cost, and lead time depends on order size.')}
         />
         <ol className="mt-14 grid gap-10 lg:grid-cols-5 lg:gap-6">
           {steps.map((step, index) => (
@@ -49,13 +50,13 @@ export async function CooperationPath() {
         </ol>
         <Reveal className="mt-14 flex flex-col gap-4 rounded-md bg-paper p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <p className="max-w-xl text-base text-ink">
-            The request form covers every step above: family, application, grade, quantity and destination.
+            {copyValue(copy,'process_footer','The request form covers every step above: family, application, grade, quantity and destination.')}
           </p>
           <Link
             href="/contact#rfq"
             className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-md bg-charcoal px-6 text-base font-semibold text-white transition-colors hover:bg-black"
           >
-            Open the request form
+            {copyValue(copy,'process_action','Open the request form')}
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </Reveal>

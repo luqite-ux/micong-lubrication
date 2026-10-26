@@ -12,6 +12,7 @@ import { JsonLd } from '@/components/json-ld'
 import { organizationSchema, websiteSchema } from '@/lib/schema'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
 import { homeFaq, homeHeroSlides, homeModule } from '@/lib/site-content/home'
+import { pageCopy } from '@/lib/site-content/page'
 import type { Metadata } from 'next'
 
 export const revalidate = 60
@@ -31,19 +32,20 @@ export default async function HomePage() {
   const snapshot = await getSiteContent('en')
   const slides = homeHeroSlides(homeModule(snapshot, 'hero'))
   const faq = homeFaq(homeModule(snapshot, 'faq'))
+  const copy=pageCopy(snapshot,'/')
   if (snapshot && (!slides || !faq)) throw new Error('Published homepage content is incomplete')
   return (
     <div {...(snapshot && slides && faq ? { 'data-hq-content-version': snapshot.version } : {})}>
       <JsonLd data={[organizationSchema(), websiteSchema()]} />
       <HeroCarousel slides={slides || undefined} styles={homeModule(snapshot,'hero')?.styles} />
-      <FamilySelector />
-      <Pathways />
-      <ApplicationPicker />
-      <PackagingSection />
-      <CooperationPath />
-      <CompanyIntro />
+      <FamilySelector copy={copy} />
+      <Pathways copy={copy} />
+      <ApplicationPicker copy={copy} />
+      <PackagingSection copy={copy} />
+      <CooperationPath copy={copy} />
+      <CompanyIntro copy={copy} />
       <FaqSection {...(faq || {})} styles={homeModule(snapshot,'faq')?.styles} />
-      <ContactCta />
+      <ContactCta copy={copy} />
     </div>
   )
 }

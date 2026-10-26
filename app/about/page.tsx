@@ -13,7 +13,8 @@ import { SectionHeading } from '@/components/section-heading'
 import { getProductCategories, getProductFamilies, text } from '@/lib/data/repository'
 import { company, illustrativeNote } from '@/lib/site-config'
 import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-content'
-import { pageHero, pageVersion } from '@/lib/site-content/page'
+import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
+import { homeFaq, homeModule } from '@/lib/site-content/home'
 
 const fallbackMetadata: Metadata = pageMetadata({ path: '/about', title: 'About MICONG', description: 'Learn about Shanghai Micong Lubrication Technology Co., Ltd., its listed lubricant families and how to send a technical inquiry.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/about','en'); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
@@ -37,6 +38,8 @@ const notPublished = [
 export default async function AboutPage() {
   const [categories, families, snapshot] = await Promise.all([getProductCategories(), getProductFamilies(), getSiteContent('en')])
   const hero = pageHero(snapshot, '/about')
+  const copy=pageCopy(snapshot,'/about'), sharedCopy=pageCopy(snapshot,'/')
+  const faq=homeFaq(homeModule(snapshot,'faq'))
 
   return (
     <div {...pageVersion(snapshot, '/about')}>
@@ -50,9 +53,9 @@ export default async function AboutPage() {
       <section aria-labelledby="scope-title" className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20">
         <SectionHeading
           id="scope-title"
-          eyebrow="What MICONG lists"
-          title="Two product groups, eleven families."
-          description="Different grades inside a family are variants of that family, not separate products."
+          eyebrow={copyValue(copy,'scope_eyebrow','What MICONG lists')}
+          title={copyValue(copy,'scope_title','Two product groups, eleven families.')}
+          description={copyValue(copy,'scope_description','Different grades inside a family are variants of that family, not separate products.')}
         />
         <ul className="mt-10 grid gap-5 md:grid-cols-2">
           {categories.map((category, index) => {
@@ -89,9 +92,9 @@ export default async function AboutPage() {
           <SectionHeading
             id="ways-title"
             tone="dark"
-            eyebrow="Working with MICONG"
-            title="What a buyer can ask for."
-            description="Each of these is raised in the inquiry. We confirm what applies to your order."
+            eyebrow={copyValue(copy,'ways_eyebrow','Working with MICONG')}
+            title={copyValue(copy,'ways_title','What a buyer can ask for.')}
+            description={copyValue(copy,'ways_description','Each of these is raised in the inquiry. We confirm what applies to your order.')}
           />
           <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {ways.map((way, index) => (
@@ -127,10 +130,10 @@ export default async function AboutPage() {
           </Reveal>
           <Reveal delay={90}>
             <h2 id="boundary-title" className="text-3xl font-bold leading-tight text-ink">
-              What this site does not claim.
+              {copyValue(copy,'boundary_title','What this site does not claim.')}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-soft">
-              The banner scenes are illustrations used to set the mood. They do not show a MICONG site or equipment. The following are not published until MICONG supplies and verifies them:
+              {copyValue(copy,'boundary_description','The banner scenes are illustrations used to set the mood. They do not show a MICONG site or equipment. The following are not published until MICONG supplies and verifies them:')}
             </p>
             <ul className="mt-5 grid gap-3">
               {notPublished.map((item) => (
@@ -144,15 +147,15 @@ export default async function AboutPage() {
               href="/contact#rfq"
               className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-brand-red underline underline-offset-4"
             >
-              Ask us what you need to know
+              {copyValue(copy,'boundary_action','Ask us what you need to know')}
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </Reveal>
         </div>
       </section>
 
-      <FaqSection />
-      <ContactCta />
+      <FaqSection {...(faq||{})} styles={homeModule(snapshot,'faq')?.styles} />
+      <ContactCta copy={sharedCopy} />
     </div>
   )
 }

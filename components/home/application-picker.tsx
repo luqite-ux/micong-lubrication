@@ -5,8 +5,9 @@ import { Reveal } from '@/components/reveal'
 import { stagger } from '@/lib/motion'
 import { SectionHeading } from '@/components/section-heading'
 import { getApplicationAreas, getProductFamilies, text } from '@/lib/data/repository'
+import { copyValue } from '@/lib/site-content/page'
 
-export async function ApplicationPicker() {
+export async function ApplicationPicker({copy}:{copy?:Record<string,string>|null}) {
   const [areas, families] = await Promise.all([getApplicationAreas(), getProductFamilies()])
   const nameBySlug = new Map(families.map((family) => [family.slug, text(family.name)]))
 
@@ -15,15 +16,15 @@ export async function ApplicationPicker() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           id="applications-title"
-          eyebrow="Applications"
-          title="Start from the equipment"
-          description="Not sure which family you need? Pick the application and follow the link to the matching product family."
+          eyebrow={copyValue(copy,'applications_eyebrow','Applications')}
+          title={copyValue(copy,'applications_title','Start from the equipment')}
+          description={copyValue(copy,'applications_description','Not sure which family you need? Pick the application and follow the link to the matching product family.')}
           action={
             <Link
               href="/applications"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand-red underline-offset-4 hover:underline"
             >
-              All applications
+              {copyValue(copy,'applications_action','All applications')}
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           }
