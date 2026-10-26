@@ -2,9 +2,14 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { SESSION_COOKIE } from '@/lib/admin-session'
 import { PREVIEW_COOKIE } from '@/lib/site-content/preview-cookie'
 import { protectPreviewResponse } from '@/lib/site-content/preview-protection'
+import { isServiceGuardExcludedPath, isWebsiteServiceAvailable } from '@/lib/service-status'
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  if (!isServiceGuardExcludedPath(pathname)) {
+    const available = await isWebsiteServiceAvailable(request)
+    if (!available) return NextResponse.rewrite(new URL('/service-expired', request.url))
+  }
   const forwarded = new Headers(request.headers)
   forwarded.set('x-hq-pathname', pathname)
   const isPublic = pathname.startsWith('/admin/login') || pathname.startsWith('/admin/logout')
