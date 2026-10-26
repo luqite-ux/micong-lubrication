@@ -145,7 +145,7 @@ async function main() {
       image_url: null,
       specs: product.grades?.length ? { listed_grades: product.grades } : {},
       model: '',
-      extra_data: { source_cells: product.source?.cells ?? [], source_workbook: product.source?.workbook ?? '', image_status: product.image_status, minimum_order: product.minimum_order ?? null, grade_discrepancy: product.company_overview_variant_pending_review ?? null },
+      extra_data: { source_cells: product.source?.cells ?? [], source_workbook: product.source?.workbook ?? '', image_status: product.image_status, minimum_order: product.minimum_order ?? null, source_notes: product.source_notes ?? [], grade_discrepancy: product.company_overview_variant_pending_review ?? null },
       sort_order: index + 1,
       is_active: true,
     }

@@ -128,7 +128,9 @@ export async function getProductFamilies(locale: Locale = 'en'): Promise<Product
       icon: original?.icon || 'hydraulic',
       grades: grades?.length ? grades : null,
       minimumOrder: typeof row.extra_data?.minimum_order === 'string' ? row.extra_data.minimum_order : undefined,
-      sourceNotes: sourceNotes(row.slug),
+      sourceNotes: Array.isArray(row.extra_data?.source_notes)
+        ? row.extra_data.source_notes.filter((note): note is string => typeof note === 'string')
+        : undefined,
       applicationIds: original?.applicationIds || [],
       updatedAt: row.updated_at || undefined,
       seoTitle: typeof (row.extra_data?.seo_title_i18n as Record<string, unknown> | undefined)?.en === 'string'
