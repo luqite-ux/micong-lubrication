@@ -1,4 +1,5 @@
 import { Marker } from '@/components/marker'
+import { getIcon } from '@/lib/icon-map'
 import { cn } from '@/lib/utils'
 
 type ProductTileProps = {
@@ -10,11 +11,12 @@ type ProductTileProps = {
 
 /**
  * Neutral family illustration. No customer photo exists for these families, so
- * the tile uses the logo droplet and the family marker instead of invented
+ * the tile uses a distinct semantic family icon instead of invented
  * packaging or product shots.
  */
 export function ProductTile({ icon, category, className, size = 'card' }: ProductTileProps) {
   const industrial = category === 'industrial-lubricants'
+  const FamilyIcon = getIcon(icon)
   return (
     <div
       aria-hidden="true"
@@ -34,17 +36,10 @@ export function ProductTile({ icon, category, className, size = 'card' }: Produc
         <Marker icon={icon} size={size === 'card' ? 'md' : 'lg'} tone="ondark" />
       </div>
       <div className="absolute inset-y-0 right-0 flex w-1/2 items-center justify-center">
-        <span
-          className={cn(
-            'block rotate-45 rounded-[0_50%_50%_50%] bg-gradient-to-br from-brand-yellow to-brand-red',
-            size === 'card' ? 'size-16' : 'size-28',
-          )}
-        />
-        <span
-          className={cn(
-            'absolute rotate-45 rounded-[0_50%_50%_50%] border border-white/15',
-            size === 'card' ? 'size-24' : 'size-44',
-          )}
+        <span className={cn('absolute rounded-full border border-white/10',size === 'card' ? 'size-28' : 'size-48')} />
+        <FamilyIcon
+          strokeWidth={1.35}
+          className={cn('relative drop-shadow-[0_0_18px_rgba(255,184,0,0.28)]',industrial?'text-brand-yellow':'text-brand-red',size === 'card' ? 'size-20' : 'size-36')}
         />
       </div>
       <p className="absolute bottom-3 left-5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55">
