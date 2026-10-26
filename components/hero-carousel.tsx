@@ -140,6 +140,7 @@ export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: 
                   alt={slide.alt}
                   fill
                   priority={i === 0}
+                  fetchPriority={i === 0 ? 'high' : undefined}
                   sizes="100vw"
                   className={cn('hero-img object-cover', slide.mobileSrc && 'hidden xl:block')}
                 />
@@ -148,6 +149,7 @@ export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: 
                   alt={slide.mobileAlt || slide.alt}
                   fill
                   priority={i === 0}
+                  fetchPriority={i === 0 ? 'high' : undefined}
                   sizes="100vw"
                   className="hero-img object-cover xl:hidden"
                 /> : null}
