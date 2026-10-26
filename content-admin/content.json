@@ -293,6 +293,15 @@
                 }
               },
               {
+                "id": "faq-20",
+                "question": {
+                  "en": "Will a sample represent the larger order?"
+                },
+                "answer": {
+                  "en": "Sample size and what it should represent depend on your requirements. Some buyers request a small sample; confirm the comparison and approval criteria before the larger order."
+                }
+              },
+              {
                 "id": "faq-21",
                 "question": {
                   "en": "What is the lead time after ordering?"

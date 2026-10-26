@@ -6,7 +6,7 @@ import type { FaqItem } from '@/lib/data/types'
 export function FaqList({ items }: { items: FaqItem[] }) {
   const sections = [
     { title: 'Products and cooperation', ids: ['faq-5', 'faq-6', 'faq-7', 'faq-8', 'faq-9'] },
-    { title: 'Pricing and samples', ids: ['faq-13', 'faq-14', 'faq-15', 'faq-16', 'faq-17', 'faq-18', 'faq-19'] },
+    { title: 'Pricing and samples', ids: ['faq-13', 'faq-14', 'faq-15', 'faq-16', 'faq-17', 'faq-18', 'faq-19', 'faq-20'] },
     { title: 'Timing and delivery', ids: ['faq-21', 'faq-22', 'faq-23', 'faq-24', 'faq-25'] },
     { title: 'Inspection and reports', ids: ['faq-26', 'faq-27', 'faq-28'] },
   ]
