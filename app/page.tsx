@@ -35,14 +35,14 @@ export default async function HomePage() {
   return (
     <div {...(snapshot && slides && faq ? { 'data-hq-content-version': snapshot.version } : {})}>
       <JsonLd data={[organizationSchema(), websiteSchema()]} />
-      <HeroCarousel slides={slides || undefined} />
+      <HeroCarousel slides={slides || undefined} styles={homeModule(snapshot,'hero')?.styles} />
       <FamilySelector />
       <Pathways />
       <ApplicationPicker />
       <PackagingSection />
       <CooperationPath />
       <CompanyIntro />
-      <FaqSection {...(faq || {})} />
+      <FaqSection {...(faq || {})} styles={homeModule(snapshot,'faq')?.styles} />
       <ContactCta />
     </div>
   )

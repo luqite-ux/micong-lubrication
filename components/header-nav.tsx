@@ -17,15 +17,19 @@ import {
 import { Marker } from '@/components/marker'
 import { cn } from '@/lib/utils'
 import { company, mainNav } from '@/lib/site-config'
+import { siteTypographyStyle } from '@/lib/site-content/typography'
+import type { SiteSnapshot } from '@/lib/site-content/transport'
 
 export type NavFamily = { slug: string; name: string; icon: string; category: string }
+type NavStyles = SiteSnapshot['pages'][number]['modules'][number]['styles']
+const fontMap = {'site-sans':'var(--font-plex)','site-display':'var(--font-archivo)'}
 
 function isActive(pathname: string, href: string) {
   if (href === '/') return pathname === '/'
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-export function DesktopNav({ families, navigation = mainNav }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}> }) {
+export function DesktopNav({ families, navigation = mainNav, styles }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}>; styles?: NavStyles }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -40,17 +44,17 @@ export function DesktopNav({ families, navigation = mainNav }: { families: NavFa
   return (
     <nav aria-label="Primary" className="hidden self-stretch lg:block">
       <ul className="flex h-full items-center gap-1">
-        {navigation.map((item) => {
+        {navigation.map((item, index) => {
           const active = isActive(pathname, item.href)
           const linkClass = cn(
-            'relative inline-flex h-11 items-center px-3 text-[15px] font-medium text-ink transition-colors hover:text-brand-red',
+            'hq-typography relative inline-flex h-11 items-center px-3 text-[15px] font-medium text-ink transition-colors hover:text-brand-red',
             active &&
               'text-brand-red after:absolute after:inset-x-3 after:bottom-1 after:h-0.5 after:bg-brand-red',
           )
           if (item.href !== '/products') {
             return (
               <li key={item.href}>
-                <Link href={item.href} aria-current={active ? 'page' : undefined} className={linkClass}>
+                <Link href={item.href} aria-current={active ? 'page' : undefined} className={linkClass} style={siteTypographyStyle(styles,`items.nav-${index}.label`,fontMap)}>
                   {item.label}
                 </Link>
               </li>
@@ -72,7 +76,7 @@ export function DesktopNav({ families, navigation = mainNav }: { families: NavFa
               }}
               className="flex h-full items-center"
             >
-              <Link href={item.href} aria-current={active ? 'page' : undefined} className={cn(linkClass, 'pr-1')}>
+              <Link href={item.href} aria-current={active ? 'page' : undefined} className={cn(linkClass, 'pr-1')} style={siteTypographyStyle(styles,`items.nav-${index}.label`,fontMap)}>
                 {item.label}
               </Link>
               <button
@@ -151,7 +155,7 @@ export function DesktopNav({ families, navigation = mainNav }: { families: NavFa
   )
 }
 
-export function MobileNav({ families, navigation = mainNav }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}> }) {
+export function MobileNav({ families, navigation = mainNav, styles }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}>; styles?: NavStyles }) {
   const pathname = usePathname()
   return (
     <Sheet>
@@ -167,16 +171,17 @@ export function MobileNav({ families, navigation = mainNav }: { families: NavFam
         </SheetHeader>
         <nav aria-label="Mobile" className="px-5 py-4">
           <ul className="grid">
-            {navigation.map((item) => {
+            {navigation.map((item, index) => {
               const active = isActive(pathname, item.href)
               return (
                 <li key={item.href} className="border-b border-paper-line last:border-0">
                   <SheetClose asChild>
                     <Link
                       href={item.href}
+                      style={siteTypographyStyle(styles,`items.nav-${index}.label`,fontMap)}
                       aria-current={active ? 'page' : undefined}
                       className={cn(
-                        'flex min-h-12 items-center text-lg font-semibold text-ink',
+                        'hq-typography flex min-h-12 items-center text-lg font-semibold text-ink',
                         active && 'text-brand-red',
                       )}
                     >

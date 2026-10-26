@@ -3,9 +3,13 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { BrandLogo } from '@/components/brand-logo'
 import { getProductFamilies, text } from '@/lib/data/repository'
 import { company, mainNav } from '@/lib/site-config'
+import { getSiteContent } from '@/lib/site-content/site-content'
+import { homeModule, siteNavigation } from '@/lib/site-content/home'
 
 export async function SiteFooter() {
-  const families = await getProductFamilies()
+  const [families, snapshot] = await Promise.all([getProductFamilies(), getSiteContent('en')])
+  const navigation = siteNavigation(homeModule(snapshot, 'navigation')) ?? mainNav
+  if (snapshot && navigation === mainNav) throw new Error('Published footer navigation content is incomplete')
 
   return (
     <footer className="bg-charcoal text-white/80">
@@ -23,7 +27,7 @@ export async function SiteFooter() {
         <nav aria-label="Footer">
           <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-brand-yellow">Navigate</h2>
           <ul className="mt-4 grid gap-1">
-            {mainNav.map((item) => (
+            {navigation.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="inline-flex min-h-9 items-center text-sm hover:text-white">
                   {item.label}

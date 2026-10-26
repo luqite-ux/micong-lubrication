@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { Reveal } from '@/components/reveal'
 
@@ -10,6 +10,8 @@ type SectionHeadingProps = {
   action?: ReactNode
   id?: string
   className?: string
+  titleStyle?: CSSProperties
+  descriptionStyle?: CSSProperties
 }
 
 export function SectionHeading({
@@ -20,6 +22,8 @@ export function SectionHeading({
   action,
   id,
   className,
+  titleStyle,
+  descriptionStyle,
 }: SectionHeadingProps) {
   const dark = tone === 'dark'
   return (
@@ -36,15 +40,16 @@ export function SectionHeading({
         </p>
         <h2
           id={id}
+          style={titleStyle}
           className={cn(
-            'mt-4 text-3xl font-bold leading-tight sm:text-4xl',
+            'hq-typography mt-4 text-3xl font-bold leading-tight sm:text-4xl',
             dark ? 'text-white' : 'text-ink',
           )}
         >
           {title}
         </h2>
         {description ? (
-          <p className={cn('mt-4 text-base leading-relaxed', dark ? 'text-white/75' : 'text-ink-soft')}>
+          <p style={descriptionStyle} className={cn('hq-typography mt-4 text-base leading-relaxed', dark ? 'text-white/75' : 'text-ink-soft')}>
             {description}
           </p>
         ) : null}

@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "fontFamilies": [
     {
       "key": "site-sans",
@@ -56,7 +56,30 @@
                   "label": "眉题",
                   "localized": true,
                   "required": true,
-                  "maxLength": 300
+                  "maxLength": 300,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans",
+                      "site-display"
+                    ],
+                    "fontWeights": [
+                      400,
+                      500,
+                      600,
+                      700,
+                      800
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 72
+                    },
+                    "defaults": {
+                      "fontFamily": "site-sans",
+                      "fontWeight": 600,
+                      "fontSizeDesktop": 12,
+                      "fontSizeMobile": 12
+                    }
+                  }
                 },
                 {
                   "key": "title",
@@ -64,7 +87,30 @@
                   "label": "主标题",
                   "localized": true,
                   "required": true,
-                  "maxLength": 300
+                  "maxLength": 300,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans",
+                      "site-display"
+                    ],
+                    "fontWeights": [
+                      400,
+                      500,
+                      600,
+                      700,
+                      800
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 72
+                    },
+                    "defaults": {
+                      "fontFamily": "site-display",
+                      "fontWeight": 800,
+                      "fontSizeDesktop": 42,
+                      "fontSizeMobile": 28
+                    }
+                  }
                 },
                 {
                   "key": "body",
@@ -72,7 +118,30 @@
                   "label": "说明",
                   "localized": true,
                   "required": true,
-                  "maxLength": 1000
+                  "maxLength": 1000,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans",
+                      "site-display"
+                    ],
+                    "fontWeights": [
+                      400,
+                      500,
+                      600,
+                      700,
+                      800
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 72
+                    },
+                    "defaults": {
+                      "fontFamily": "site-sans",
+                      "fontWeight": 400,
+                      "fontSizeDesktop": 16,
+                      "fontSizeMobile": 15
+                    }
+                  }
                 },
                 {
                   "key": "primary_label",
@@ -126,7 +195,22 @@
                   "label": "文字",
                   "localized": true,
                   "required": true,
-                  "maxLength": 300
+                  "maxLength": 300,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans",
+                      "site-display"
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 32
+                    },
+                    "defaults": {
+                      "fontFamily": "site-sans",
+                      "fontSizeDesktop": 15,
+                      "fontSizeMobile": 18
+                    }
+                  }
                 },
                 {
                   "key": "href",
@@ -151,7 +235,30 @@
               "label": "标题",
               "localized": true,
               "required": true,
-              "maxLength": 300
+              "maxLength": 300,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans",
+                  "site-display"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700,
+                  800
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 72
+                },
+                "defaults": {
+                  "fontFamily": "site-display",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
             },
             {
               "key": "description",
@@ -159,7 +266,30 @@
               "label": "说明",
               "localized": true,
               "required": true,
-              "maxLength": 600
+              "maxLength": 600,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans",
+                  "site-display"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700,
+                  800
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 72
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
             },
             {
               "key": "items",

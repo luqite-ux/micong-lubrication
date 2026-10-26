@@ -10,6 +10,7 @@ import { homeModule, siteNavigation } from '@/lib/site-content/home'
 export async function SiteHeader() {
   const [families, snapshot] = await Promise.all([getProductFamilies(), getSiteContent('en')])
   const navigation = siteNavigation(homeModule(snapshot, 'navigation')) ?? undefined
+  const navigationStyles = homeModule(snapshot,'navigation')?.styles
   if (snapshot && !navigation) throw new Error('Published navigation content is incomplete')
   const navFamilies = families.map((family) => ({
     slug: family.slug,
@@ -38,7 +39,7 @@ export async function SiteHeader() {
       <header className="sticky top-0 z-50 border-b border-paper-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <BrandLogo />
-          <DesktopNav families={navFamilies} navigation={navigation} />
+          <DesktopNav families={navFamilies} navigation={navigation} styles={navigationStyles} />
           <div className="flex items-center gap-3">
             <Link
               href="/contact#rfq"
@@ -46,7 +47,7 @@ export async function SiteHeader() {
             >
               Request a quote
             </Link>
-            <MobileNav families={navFamilies} navigation={navigation} />
+            <MobileNav families={navFamilies} navigation={navigation} styles={navigationStyles} />
           </div>
         </div>
       </header>

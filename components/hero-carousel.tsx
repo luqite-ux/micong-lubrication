@@ -6,11 +6,13 @@ import Link from 'next/link'
 import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { heroSlides as defaultHeroSlides, type HeroSlide } from '@/lib/hero-slides'
+import { siteTypographyStyle } from '@/lib/site-content/typography'
+import type { SiteSnapshot } from '@/lib/site-content/transport'
 
 const INTERVAL = 8000
 const SWIPE_DISTANCE = 48
 
-export function HeroCarousel({ slides = defaultHeroSlides }: { slides?: HeroSlide[] }) {
+export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: HeroSlide[]; styles?: SiteSnapshot['pages'][number]['modules'][number]['styles'] }) {
   const [index, setIndex] = useState(0)
   const [userPlaying, setUserPlaying] = useState(true)
   const [reducedMotion, setReducedMotion] = useState(false)
@@ -160,21 +162,21 @@ export function HeroCarousel({ slides = defaultHeroSlides }: { slides?: HeroSlid
                 <div className="hero-copy mx-auto w-full max-w-7xl xl:px-6">
                   <div className="max-w-[30rem] xl:max-w-[29rem]">
                     <p
-                      style={{ '--i': 0 } as CSSProperties}
-                      className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-yellow"
+                      style={{ '--i': 0, ...siteTypographyStyle(styles,`slides.${slide.id}.eyebrow`,{'site-sans':'var(--font-plex)','site-display':'var(--font-archivo)'}) } as CSSProperties}
+                      className="hq-typography flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-yellow"
                     >
                       <span aria-hidden="true" className="h-0.5 w-8 shrink-0 bg-brand-yellow" />
                       {slide.eyebrow}
                     </p>
                     <Heading
-                      style={{ '--i': 1 } as CSSProperties}
-                      className="mt-4 font-display text-[1.75rem] font-extrabold leading-[1.12] text-white sm:text-4xl xl:text-[2.6rem]"
+                      style={{ '--i': 1, ...siteTypographyStyle(styles,`slides.${slide.id}.title`,{'site-sans':'var(--font-plex)','site-display':'var(--font-archivo)'}) } as CSSProperties}
+                      className="hq-typography mt-4 font-display text-[1.75rem] font-extrabold leading-[1.12] text-white sm:text-4xl xl:text-[42px]"
                     >
                       {slide.title}
                     </Heading>
                     <p
-                      style={{ '--i': 2 } as CSSProperties}
-                      className="mt-4 text-[15px] leading-relaxed text-white/85 sm:text-base"
+                      style={{ '--i': 2, ...siteTypographyStyle(styles,`slides.${slide.id}.body`,{'site-sans':'var(--font-plex)','site-display':'var(--font-archivo)'}) } as CSSProperties}
+                      className="hq-typography mt-4 text-[15px] leading-relaxed text-white/85 sm:text-base"
                     >
                       {slide.body}
                     </p>
