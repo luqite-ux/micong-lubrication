@@ -18,7 +18,7 @@ export async function FamilySelector({copy}:{copy?:Record<string,string>|null}) 
           id="families-title"
           eyebrow={copyValue(copy,'family_eyebrow','Product families')}
           title={copyValue(copy,'family_title','Choose a product family')}
-          description={copyValue(copy,'family_description','Eleven families in two customer-supplied groups. Five have detailed product introductions; technical details for the other six are confirmed by inquiry.')}
+          description={copyValue(copy,'family_description','Explore eleven product families across industrial lubricants and metalworking fluids. Five have detailed introductions; ask MICONG for technical details on the others.')}
           action={
             <Link
               href="/products"

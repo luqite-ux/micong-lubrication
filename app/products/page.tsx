@@ -15,7 +15,7 @@ import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-con
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { requestLocale } from '@/lib/i18n'
 
-const fallbackMetadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Explore 11 product families in the customer-supplied industrial lubricants and metalworking fluids categories.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Explore 11 MICONG product families across industrial lubricants and metalworking fluids.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/products',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 type ProductsPageProps = {

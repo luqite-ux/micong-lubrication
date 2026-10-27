@@ -6,14 +6,14 @@ import { X } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 
 const packaging = [
-  { src: '/images/product-packaging-1.jpg', alt: 'Red and white steel drums from the supplied packaging photographs' },
-  { src: '/images/product-packaging-2.jpg', alt: 'Black and red steel drum from the supplied packaging photographs' },
-  { src: '/images/product-packaging-3.jpg', alt: 'Yellow pail from the supplied packaging photographs' },
-  { src: '/images/product-packaging-4.jpg', alt: 'Black and yellow steel drums from the supplied packaging photographs' },
-  { src: '/images/product-packaging-5.jpg', alt: 'Rows of red steel drums from the supplied packaging photographs' },
-  { src: '/images/product-packaging-6.jpg', alt: 'Blue pails from the supplied packaging photographs' },
-  { src: '/images/product-packaging-7.jpg', alt: 'Red pail from the supplied packaging photographs' },
-  { src: '/images/product-packaging-8.jpg', alt: 'Red steel drums from the supplied packaging photographs' },
+  { src: '/images/product-packaging-1.jpg', alt: 'Red and white steel drums' },
+  { src: '/images/product-packaging-2.jpg', alt: 'Black and red steel drum' },
+  { src: '/images/product-packaging-3.jpg', alt: 'Yellow pail' },
+  { src: '/images/product-packaging-4.jpg', alt: 'Black and yellow steel drums' },
+  { src: '/images/product-packaging-5.jpg', alt: 'Rows of red steel drums' },
+  { src: '/images/product-packaging-6.jpg', alt: 'Blue pails' },
+  { src: '/images/product-packaging-7.jpg', alt: 'Red pail' },
+  { src: '/images/product-packaging-8.jpg', alt: 'Red steel drums' },
 ]
 
 export function PackagingGallery() {
@@ -28,7 +28,7 @@ export function PackagingGallery() {
   return (
     <>
       <Reveal className="overflow-hidden rounded-md border border-paper-line bg-white">
-        <div className="packaging-marquee overflow-hidden" aria-label="Customer-supplied packaging photographs">
+        <div className="packaging-marquee overflow-hidden" aria-label="MICONG packaging photographs">
           <div className="packaging-marquee-track flex w-max">
             {[0, 1].map((copy) => (
               <div key={copy} className="packaging-marquee-group flex shrink-0" aria-hidden={copy === 1 ? true : undefined}>
