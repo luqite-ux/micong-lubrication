@@ -28,7 +28,7 @@ export const heroSlides: HeroSlide[] = [
     alt: 'Illustrative scene: red and orange drums, clear jugs, black canisters and small pails in a dark industrial hall beside filtration equipment.',
     eyebrow: 'Industrial lubricants and metalworking fluids',
     title: 'Find the lubricant or cutting fluid you need.',
-    body: 'Explore five source-documented product lines. Share your equipment, grade needs and quantity for a quote or data sheet.',
+    body: 'Explore eleven product families from the customer category list. Share your equipment, grade needs and quantity for a quote or data sheet.',
     primary: { label: 'Browse products', href: '/products' },
     secondary: { label: 'Request a quote', href: '/contact#rfq' },
     position: { mobile: '100% 50%', tablet: '100% 50%', desktop: '100% 50%' },

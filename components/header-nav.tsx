@@ -121,7 +121,7 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                   </div>
                   <div className="mt-5 flex gap-8 border-b border-paper-line" aria-label="Product categories">
                     {([
-                      ['industrial-lubricants', 'Hydraulic & slideway oils'],
+                      ['industrial-lubricants', 'Industrial lubricants'],
                       ['metalworking-fluids', 'Metalworking fluids'],
                     ] as const).map(([group, label]) => (
                       <button
@@ -203,7 +203,7 @@ export function MobileNav({ families, navigation = mainNav, styles }: { families
         </nav>
         <div className="border-t border-paper-line bg-paper px-5 py-5">
           {([
-            ['industrial-lubricants', 'Hydraulic & slideway oils'],
+            ['industrial-lubricants', 'Industrial lubricants'],
             ['metalworking-fluids', 'Metalworking fluids'],
           ] as const).map(([group, label]) => (
             <div key={group} className="mb-5 last:mb-0">

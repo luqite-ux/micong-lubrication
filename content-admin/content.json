@@ -41,7 +41,7 @@
                   "en": "Find the lubricant or cutting fluid you need."
                 },
                 "body": {
-                  "en": "Explore source-documented hydraulic oil, slideway oil and cutting fluids. Ask for a grade, data sheet or sample."
+                  "en": "Explore the 11 product families in the supplied category list. Ask for a grade, data sheet or sample."
                 },
                 "primary_label": {
                   "en": "Browse products"
@@ -383,7 +383,7 @@
               "en": "MICONG industrial lubricants and metalworking fluids"
             },
             "description": {
-              "en": "Browse five MICONG product lines documented in customer materials, then ask about grades, data sheets and availability."
+              "en": "Browse 11 MICONG product families in industrial lubricants and metalworking fluids. Ask for grades, data sheets and availability."
             }
           }
         },
@@ -397,7 +397,7 @@
               "en": "Choose a product family"
             },
             "family_description": {
-              "en": "Five documented product lines in two groups. Hydraulic and slideway oils list grades 32, 46 and 68; cutting-fluid grades are confirmed by inquiry."
+              "en": "Eleven families in two customer-supplied groups. Five have detailed product introductions; technical details for the other six are confirmed by inquiry."
             },
             "family_action": {
               "en": "Full product listing"
@@ -469,7 +469,7 @@
               "en": "Shanghai Micong Lubrication Technology Co., Ltd. trades as MICONG. The company lists industrial lubricants and metalworking fluids and takes buyer inquiries by form, email and phone."
             },
             "company_scope": {
-              "en": "Five documented product lines in lubricants and cutting fluids"
+              "en": "Eleven listed product families in lubricants and cutting fluids"
             },
             "company_boundary": {
               "en": "Tell us what product details or documents you need for your evaluation. Banner scenes on this site are illustrative imagery."
@@ -718,7 +718,7 @@
               "en": "What MICONG lists"
             },
             "scope_title": {
-              "en": "Two product groups, five documented lines."
+              "en": "Two product groups, eleven listed families."
             },
             "scope_description": {
               "en": "Different grades inside a family are variants of that family, not separate products."
@@ -890,7 +890,7 @@
               "en": "Products"
             },
             "title": {
-              "en": "Five documented product lines, grouped by use."
+              "en": "Eleven product families, grouped by use."
             },
             "description": {
               "en": "MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request."
@@ -904,7 +904,7 @@
               "en": "MICONG products"
             },
             "description": {
-              "en": "Five MICONG product lines documented in customer materials, grouped into hydraulic and slideway oils and metalworking fluids."
+              "en": "Eleven MICONG product families listed in the customer category sheet, grouped into industrial lubricants and metalworking fluids."
             }
           }
         },
@@ -918,7 +918,7 @@
               "en": "Go straight to a listed grade."
             },
             "grades_description": {
-              "en": "Anti-wear Hydraulic Oil and Slideway Oil are listed in grades 32, 46 and 68. Other families do not list grades."
+              "en": "Anti-wear Hydraulic Oil lists grades 32, 46 and 68; Slideway Oil lists 32, 46, 68 and 100. Grades for other families need confirmation."
             },
             "guide_title": {
               "en": "Not sure which family fits?"

@@ -53,9 +53,10 @@
       "grades": [
         "32",
         "46",
-        "68"
+        "68",
+        "100"
       ],
-      "company_overview_variant_pending_review": "100# listed in 企业资料 C8 but not in 产品信息 A5/F5",
+      "company_overview_variant_pending_review": null,
       "minimum_order": "One metric ton or 5 drums",
       "source": {
         "workbook": "企业资料&产品&FAQ问题收集表(10).xlsx",

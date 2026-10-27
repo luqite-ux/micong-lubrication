@@ -36,10 +36,9 @@ async function preflight() {
 }
 
 const categoryRows = [
-  { slug: 'industrial-lubricants', name: { en: 'Hydraulic & slideway oils', zh: '液压油与导轨油' }, description: { en: 'Anti-wear hydraulic oil and slideway oil with source-listed grades.' } },
-  { slug: 'metalworking-fluids', name: { en: 'Metalworking fluids', zh: '金属加工液' }, description: { en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids.' } },
+  { slug: 'industrial-lubricants', name: { en: 'Industrial lubricants', zh: '工业润滑油系列' }, description: { en: 'Hydraulic and slideway oils, engine oil, gear oil, vacuum pump oil and grease, as listed in the customer category sheet.' } },
+  { slug: 'metalworking-fluids', name: { en: 'Metalworking fluids', zh: '加工切削液系列' }, description: { en: 'Synthetic and semi-synthetic cutting fluids, micro-emulsion cutting fluid, industrial white oil and cutting oil.' } },
 ]
-const detailedProductSlugs = new Set(['anti-wear-hydraulic-oil','slideway-oil','fully-synthetic-cutting-fluid','semi-synthetic-cutting-fluid','micro-emulsion-cutting-fluid'])
 const categorySlug = (category) => category === 'Metalworking Fluids' ? 'metalworking-fluids' : 'industrial-lubricants'
 
 async function readInitialPassword() {
@@ -148,7 +147,7 @@ async function main() {
       model: '',
       extra_data: { source_cells: product.source?.cells ?? [], source_workbook: product.source?.workbook ?? '', image_status: product.image_status, minimum_order: product.minimum_order ?? null, source_notes: product.source_notes ?? [], grade_discrepancy: product.company_overview_variant_pending_review ?? null },
       sort_order: index + 1,
-      is_active: detailedProductSlugs.has(product.slug),
+      is_active: true,
     }
     const old = await expect(db.from('products').select('id').eq('tenant_id', tenantId).eq('slug', product.slug).maybeSingle(), 'product lookup')
     await expect(old ? db.from('products').update(row).eq('tenant_id', tenantId).eq('id', old.id) : db.from('products').insert(row), 'product write')
@@ -160,7 +159,7 @@ async function main() {
   const tenantCheck = await expect(db.from('tenants').select('id,domain,display_name,admin_group,logo_url,favicon_url,default_language,supported_languages,contact_email,extra_settings').eq('id', tenantId).single(), 'tenant readback')
   const products = await expect(db.from('products').select('slug,image_url').eq('tenant_id', tenantId).eq('is_active', true), 'product readback')
   const adminCheck = await expect(db.from('admin_users').select('email,tenant_id,admin_group,must_change_password').eq('tenant_id', tenantId).eq('email', adminEmail).single(), 'admin readback')
-  if (tenantCheck.admin_group !== 2 || products.length !== detailedProductSlugs.size || adminCheck.must_change_password !== false) throw new Error('Readback mismatch')
+  if (tenantCheck.admin_group !== 2 || products.length !== content.items.length || adminCheck.must_change_password !== false) throw new Error('Readback mismatch')
   console.log(JSON.stringify({ result: 'PASS', tenantId, domain: tenantCheck.domain, adminGroup: tenantCheck.admin_group, productCount: products.length, adminEmail: adminCheck.email, logoUrlConfigured: !!tenantCheck.logo_url, faviconUrlConfigured: !!tenantCheck.favicon_url, seoEnabled: false }))
 }
 

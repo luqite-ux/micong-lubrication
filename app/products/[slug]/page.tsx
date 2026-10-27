@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, FileText, Mail, PackageCheck, Phone } from 'lucide-react'
 import { Marker } from '@/components/marker'
 import { PageHero } from '@/components/page-hero'
-import { PackagingGallery } from '@/components/products/packaging-gallery'
+import { ApplicationImage } from '@/components/products/application-image'
 import { Reveal } from '@/components/reveal'
 import {
   getApplicationAreas,
@@ -49,6 +49,7 @@ const requestChecklist = [
   'Quantity and pack type',
   'Destination',
 ]
+const detailedProductSlugs = new Set(['anti-wear-hydraulic-oil', 'slideway-oil', 'fully-synthetic-cutting-fluid', 'semi-synthetic-cutting-fluid', 'micro-emulsion-cutting-fluid'])
 
 export default async function ProductFamilyPage({ params, searchParams }: ProductPageProps) {
   const { slug } = await params
@@ -64,6 +65,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
   ])
 
   const name = text(family.name)
+  const hasDetailedSource = detailedProductSlugs.has(slug)
   const category = categories.find((item) => item.id === family.category)
   const selectedGrade = family.grades?.includes(grade ?? '') ? grade : undefined
   const siblings = families.filter((item) => item.category === family.category && item.id !== family.id)
@@ -98,16 +100,16 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:py-20">
         <div className="grid gap-14">
-          <section aria-label="Packaging examples from customer materials">
-            <PackagingGallery />
+          <section aria-label="Illustrative application scene">
+            <ApplicationImage slug={slug} name={name} className="aspect-[16/9] w-full rounded-md" />
           </section>
 
           <section aria-labelledby="product-description-title">
             <Reveal>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">Source-documented product line</p>
-              <h2 id="product-description-title" className="mt-2 text-2xl font-bold text-ink">Product overview</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">{hasDetailedSource ? 'Customer-supplied product information' : 'Listed in the customer product category sheet'}</p>
+              <h2 id="product-description-title" className="mt-2 text-2xl font-bold text-ink">{hasDetailedSource ? 'Product overview' : 'Technical details by inquiry'}</h2>
               <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">
-                {text(family.description || family.summary)}
+                {hasDetailedSource ? text(family.description || family.summary) : `The supplied category sheet names ${name}, but does not provide product-specific grades, specifications or a data sheet. Please ask MICONG to confirm the suitable product for your application.`}
               </p>
             </Reveal>
           </section>
@@ -184,7 +186,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
               <Reveal delay={70} className="mt-5 rounded-md border border-dashed border-input bg-white p-6">
                 <p className="text-base font-semibold text-ink">Grade to be confirmed</p>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
-                  {`The supplied product information describes ${name} but gives no grade or measured specification. Share your process and current fluid when requesting the technical data sheet.`}
+                  {hasDetailedSource ? `The supplied product information describes ${name} but gives no grade or measured specification. Share your process and current fluid when requesting the technical data sheet.` : `The supplied category sheet lists ${name} without grades or measured specifications. Ask MICONG for the relevant technical data sheet.`}
                 </p>
               </Reveal>
             )}

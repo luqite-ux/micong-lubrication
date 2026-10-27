@@ -11,16 +11,16 @@ const pathways = [
     id: 'industrial',
     icon: 'hydraulic',
     accent: 'bg-brand-yellow',
-    title: 'Hydraulic & slideway oils',
-    lead: 'For hydraulic systems and machine-tool slideways.',
+    title: 'Industrial lubricants',
+    lead: 'Six product families listed in the customer category sheet.',
     steps: [
       {
         title: 'Pick the family',
-        body: 'Anti-wear hydraulic oil or slideway oil.',
+        body: 'Hydraulic oil, slideway oil, engine oil, gear oil, vacuum pump oil or grease.',
       },
       {
         title: 'Choose a grade where one is listed',
-        body: 'Anti-wear hydraulic oil and slideway oil are listed in 32, 46 and 68.',
+        body: 'Hydraulic oil lists 32, 46 and 68; slideway oil also lists 100.',
       },
       {
         title: 'Ask for a data sheet or sample',
@@ -28,7 +28,7 @@ const pathways = [
       },
     ],
     links: [
-      { label: 'Browse hydraulic & slideway oils', href: '/products?category=industrial-lubricants#listing' },
+      { label: 'Browse industrial lubricants', href: '/products?category=industrial-lubricants#listing' },
       { label: 'Quote hydraulic oil', href: '/contact?family=anti-wear-hydraulic-oil#rfq' },
     ],
   },
@@ -37,11 +37,11 @@ const pathways = [
     icon: 'cutting',
     accent: 'bg-brand-red',
     title: 'Metalworking fluids',
-    lead: 'For machining and metal cutting, where the fluid type is the first decision.',
+    lead: 'Five product families listed under the supplied metalworking category.',
     steps: [
       {
         title: 'Choose the fluid type',
-        body: 'Fully synthetic, semi-synthetic or micro-emulsion cutting fluid.',
+        body: 'Fully synthetic, semi-synthetic, micro-emulsion or cutting oil, plus industrial white oil.',
       },
       {
         title: 'Describe the machining',

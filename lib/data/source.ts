@@ -3,7 +3,7 @@
  *
  * Everything here is either taken from the customer workbook or is neutral
  * navigation copy. Rules that must survive the move to Supabase / R2:
- *  - Grades appear only where the workbook lists them (hydraulic and slideway: 32 / 46 / 68).
+ *  - Grades appear only where the workbook lists them (hydraulic: 32 / 46 / 68; slideway: 32 / 46 / 68 / 100).
  *  - Workbook rows H5 to H8 repeat the hydraulic specifications by mistake, so no
  *    specification numbers are attached to any other family.
  *  - No licence, capacity, certificate or quality-period content is published.
@@ -21,21 +21,22 @@ import sourcedFaq from '@/data/faq-source.json'
 export const productCategories: ProductCategory[] = [
   {
     id: 'industrial-lubricants',
-    name: { en: 'Hydraulic & slideway oils' },
+    name: { en: 'Industrial lubricants' },
     description: {
-      en: 'Anti-wear hydraulic oil and slideway oil with source-listed grades.',
+      en: 'Hydraulic and slideway oils, engine oil, gear oil, vacuum pump oil and grease, as listed in the customer category sheet.',
     },
   },
   {
     id: 'metalworking-fluids',
     name: { en: 'Metalworking fluids' },
     description: {
-      en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids.',
+      en: 'Synthetic and semi-synthetic cutting fluids, micro-emulsion cutting fluid, industrial white oil and cutting oil.',
     },
   },
 ]
 
-const gradesListed = ['32', '46', '68']
+const hydraulicGrades = ['32', '46', '68']
+const slidewayGrades = ['32', '46', '68', '100']
 
 export const productFamilies: ProductFamily[] = [
   {
@@ -45,7 +46,7 @@ export const productFamilies: ProductFamily[] = [
     category: 'industrial-lubricants',
     summary: { en: 'Anti-wear hydraulic oil for hydraulic equipment, listed in grades 32, 46 and 68.' },
     icon: 'hydraulic',
-    grades: gradesListed,
+    grades: hydraulicGrades,
     applicationIds: ['hydraulic-equipment'],
   },
   {
@@ -53,9 +54,9 @@ export const productFamilies: ProductFamily[] = [
     slug: 'slideway-oil',
     name: { en: 'Slideway Oil' },
     category: 'industrial-lubricants',
-    summary: { en: 'Slideway oil for machine-tool slideways, listed in grades 32, 46 and 68.' },
+    summary: { en: 'Slideway oil for machine-tool slideways, listed in grades 32, 46, 68 and 100.' },
     icon: 'slideway',
-    grades: gradesListed,
+    grades: slidewayGrades,
     applicationIds: ['machine-tool-slideways'],
   },
   {
@@ -88,6 +89,18 @@ export const productFamilies: ProductFamily[] = [
     grades: null,
     applicationIds: ['cnc-machining'],
   },
+  ...[
+    ['automotive-engine-oil', 'Automotive Engine Oil', 'industrial-lubricants', 'engine', 'automotive-engines'],
+    ['gear-oil', 'Gear Oil', 'industrial-lubricants', 'gear', 'industrial-gearboxes'],
+    ['vacuum-pump-oil', 'Vacuum Pump Oil', 'industrial-lubricants', 'pump', 'vacuum-pumps'],
+    ['lubricating-grease', 'Lubricating Grease', 'industrial-lubricants', 'grease', 'bearings'],
+    ['industrial-white-oil', 'Industrial White Oil', 'metalworking-fluids', 'white-oil', 'metalworking'],
+    ['cutting-oil', 'Cutting Oil', 'metalworking-fluids', 'cutting', 'metalworking'],
+  ].map(([slug, name, category, icon, applicationId]) => ({
+    id: `pf-${slug}`, slug, name: { en: name }, category: category as ProductFamily['category'],
+    summary: { en: 'Listed in the customer product category sheet. Grades and technical details are available by inquiry.' },
+    icon, grades: null, applicationIds: [applicationId],
+  })),
 ]
 
 export const applicationAreas: ApplicationArea[] = [
