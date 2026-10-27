@@ -3,6 +3,7 @@ import Link from '@/components/localized-link'
 import { ContactCta } from '@/components/contact-cta'
 import { FamilyCard } from '@/components/family-card'
 import { PackagingGallery } from '@/components/products/packaging-gallery'
+import { ApplicationImage } from '@/components/products/application-image'
 import { PageHero } from '@/components/page-hero'
 import { GradeMatrix } from '@/components/products/grade-matrix'
 import { Reveal } from '@/components/reveal'
@@ -80,12 +81,20 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             aria-labelledby={`group-${group.id}`}
             className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:py-20"
           >
-            <SectionHeading
-              id={`group-${group.id}`}
-              eyebrow={`${groupFamilies.length} families`}
-              title={text(group.name)}
-              description={text(group.description)}
-            />
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading
+                id={`group-${group.id}`}
+                eyebrow={`${groupFamilies.length} families`}
+                title={text(group.name)}
+                description={text(group.description)}
+                className="flex-1"
+              />
+              <ApplicationImage
+                slug={group.id === 'industrial-lubricants' ? 'anti-wear-hydraulic-oil' : 'fully-synthetic-cutting-fluid'}
+                name={text(group.name)}
+                className="aspect-[4/3] w-36 shrink-0 rounded-sm sm:w-44"
+              />
+            </div>
             <ul className="mt-10 grid border-t border-paper-line bg-white sm:grid-cols-2 sm:[&>li:nth-child(odd)]:border-r sm:[&>li:nth-child(odd)]:border-paper-line">
               {groupFamilies.map((family, index) => (
                 <FamilyCard key={family.id} family={family} index={index} />

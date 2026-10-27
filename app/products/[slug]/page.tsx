@@ -100,17 +100,18 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:py-20">
         <div className="grid gap-14">
-          <section aria-label="Illustrative application scene">
-            <ApplicationImage slug={slug} name={name} className="aspect-[4/3] w-full rounded-md" />
-          </section>
-
           <section aria-labelledby="product-description-title">
             <Reveal>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">{hasDetailedSource ? 'Customer-supplied product information' : 'Listed in the customer product category sheet'}</p>
-              <h2 id="product-description-title" className="mt-2 text-2xl font-bold text-ink">{hasDetailedSource ? 'Product overview' : 'Technical details by inquiry'}</h2>
-              <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">
-                {hasDetailedSource ? text(family.description || family.summary) : `The supplied category sheet names ${name}, but does not provide product-specific grades, specifications or a data sheet. Please ask MICONG to confirm the suitable product for your application.`}
-              </p>
+              <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_180px]">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">{hasDetailedSource ? 'Customer-supplied product information' : 'Listed in the customer product category sheet'}</p>
+                  <h2 id="product-description-title" className="mt-2 text-2xl font-bold text-ink">{hasDetailedSource ? 'Product overview' : 'Technical details by inquiry'}</h2>
+                  <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">
+                    {hasDetailedSource ? text(family.description || family.summary) : `The supplied category sheet names ${name}, but does not provide product-specific grades, specifications or a data sheet. Please ask MICONG to confirm the suitable product for your application.`}
+                  </p>
+                </div>
+                {hasDetailedSource ? <ApplicationImage slug={slug} name={name} className="aspect-[4/3] w-44 rounded-sm" /> : null}
+              </div>
             </Reveal>
           </section>
 
