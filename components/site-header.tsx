@@ -19,6 +19,7 @@ export async function SiteHeader() {
     name: text(family.name),
     icon: family.icon,
     category: family.category,
+    grades: family.grades,
   }))
 
   return (

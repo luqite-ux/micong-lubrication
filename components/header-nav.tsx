@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from '@/components/localized-link'
 import { usePathname } from 'next/navigation'
-import { ChevronDown, Menu, Phone } from 'lucide-react'
+import { ArrowRight, ChevronDown, Menu, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -14,13 +14,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Marker } from '@/components/marker'
 import { cn } from '@/lib/utils'
 import { company, mainNav } from '@/lib/site-config'
 import { siteTypographyStyle } from '@/lib/site-content/typography'
 import type { SiteSnapshot } from '@/lib/site-content/transport'
 
-export type NavFamily = { slug: string; name: string; icon: string; category: string }
+export type NavFamily = { slug: string; name: string; icon: string; category: string; grades: string[] | null }
 type NavStyles = SiteSnapshot['pages'][number]['modules'][number]['styles']
 const fontMap = {'site-sans':'var(--font-plex)','site-display':'var(--font-archivo)'}
 
@@ -32,6 +31,7 @@ function isActive(pathname: string, href: string) {
 export function DesktopNav({ families, navigation = mainNav, styles }: { families: NavFamily[]; navigation?: ReadonlyArray<{href:string;label:string}>; styles?: NavStyles }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [activeGroup, setActiveGroup] = useState<'industrial-lubricants' | 'metalworking-fluids'>('industrial-lubricants')
   const toggleRef = useRef<HTMLButtonElement>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -109,54 +109,50 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                 onMouseLeave={closeAfterPointerLeaves}
                 className="absolute inset-x-0 top-full border-b border-paper-line bg-white shadow-xl"
               >
-                <div className="mx-auto grid max-w-7xl grid-cols-[1fr_1.4fr_1fr] gap-10 px-6 py-8">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-red">Products</p>
-                    <p className="mt-3 text-xl font-bold text-ink">Five documented product lines</p>
-                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                      Pick a family, then ask for a grade, data sheet or sample in one request.
-                    </p>
-                    <Link
-                      href="/products"
-                      className="mt-5 inline-flex items-center text-sm font-semibold text-brand-red underline-offset-4 hover:underline"
-                    >
-                      View all products
+                <div className="mx-auto max-w-7xl px-6 py-6">
+                  <div className="flex items-baseline justify-between gap-6">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-red">Product catalogue</p>
+                      <p className="mt-2 text-lg font-bold text-ink">Choose a category, then a product line</p>
+                    </div>
+                    <Link href="/products" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-red underline-offset-4 hover:underline">
+                      View all products <ArrowRight className="size-4" aria-hidden="true" />
                     </Link>
                   </div>
-                  <div>
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                      Hydraulic & slideway oils
-                    </p>
-                    <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
-                      {industrial.map((family) => (
-                        <li key={family.slug}>
-                          <Link
-                            href={`/products/${family.slug}`}
-                            className="flex items-center gap-3 rounded-md p-2 text-sm font-medium text-ink hover:bg-paper"
-                          >
-                            {family.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="mt-5 flex gap-8 border-b border-paper-line" aria-label="Product categories">
+                    {([
+                      ['industrial-lubricants', 'Hydraulic & slideway oils'],
+                      ['metalworking-fluids', 'Metalworking fluids'],
+                    ] as const).map(([group, label]) => (
+                      <button
+                        key={group}
+                        type="button"
+                        aria-pressed={activeGroup === group}
+                        onMouseEnter={() => setActiveGroup(group)}
+                        onFocus={() => setActiveGroup(group)}
+                        onClick={() => setActiveGroup(group)}
+                        className={cn('border-b-[3px] px-1 pb-3 text-sm font-semibold transition-colors', activeGroup === group ? 'border-brand-red text-ink' : 'border-transparent text-ink-soft hover:text-ink')}
+                      >
+                        {label}
+                      </button>
+                    ))}
                   </div>
-                  <div>
-                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                      Metalworking fluids
-                    </p>
-                    <ul className="grid gap-1">
-                      {metalworking.map((family) => (
-                        <li key={family.slug}>
-                          <Link
-                            href={`/products/${family.slug}`}
-                            className="flex items-center gap-3 rounded-md p-2 text-sm font-medium text-ink hover:bg-paper"
-                          >
-                            {family.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="grid min-h-28 grid-cols-3 gap-5 py-6">
+                    {(activeGroup === 'industrial-lubricants' ? industrial : metalworking).map((family) => (
+                      <li key={family.slug}>
+                        <Link href={`/products/${family.slug}`} className="group inline-flex items-center gap-2 text-base font-semibold text-ink hover:text-brand-red">
+                          {family.name}<ArrowRight className="size-4 text-brand-red transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                        </Link>
+                        {family.grades?.length ? (
+                          <div className="mt-3 flex gap-2" aria-label={`${family.name} listed grades`}>
+                            {family.grades.map(grade => <Link key={grade} href={`/products/${family.slug}?grade=${grade}`} className="inline-flex h-8 min-w-12 items-center justify-center border border-paper-line px-2 text-xs font-medium text-ink-soft hover:border-brand-red hover:text-brand-red">{grade}</Link>)}
+                          </div>
+                        ) : (
+                          <p className="mt-2 text-xs text-ink-soft">Details by inquiry</p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </li>
@@ -206,22 +202,23 @@ export function MobileNav({ families, navigation = mainNav, styles }: { families
           </ul>
         </nav>
         <div className="border-t border-paper-line bg-paper px-5 py-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-soft">Product families</p>
-          <ul className="mt-3 grid grid-cols-1 gap-1">
-            {families.map((family) => (
-              <li key={family.slug}>
-                <SheetClose asChild>
-                  <Link
-                    href={`/products/${family.slug}`}
-                    className="flex min-h-11 items-center gap-3 text-[15px] font-medium text-ink"
-                  >
-                    <Marker icon={family.icon} size="sm" />
-                    {family.name}
-                  </Link>
-                </SheetClose>
-              </li>
-            ))}
-          </ul>
+          {([
+            ['industrial-lubricants', 'Hydraulic & slideway oils'],
+            ['metalworking-fluids', 'Metalworking fluids'],
+          ] as const).map(([group, label]) => (
+            <div key={group} className="mb-5 last:mb-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink-soft">{label}</p>
+              <ul className="mt-2 grid">
+                {families.filter(family => family.category === group).map(family => (
+                  <li key={family.slug}>
+                    <SheetClose asChild>
+                      <Link href={`/products/${family.slug}`} className="flex min-h-11 items-center text-[15px] font-medium text-ink">{family.name}</Link>
+                    </SheetClose>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
         <div className="grid gap-3 border-t border-paper-line p-5">
           <SheetClose asChild>
