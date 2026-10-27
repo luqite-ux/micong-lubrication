@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from '@/components/localized-link'
 import { ContactCta } from '@/components/contact-cta'
 import { FamilyCard } from '@/components/family-card'
+import { PackagingGallery } from '@/components/products/packaging-gallery'
 import { PageHero } from '@/components/page-hero'
 import { GradeMatrix } from '@/components/products/grade-matrix'
 import { Reveal } from '@/components/reveal'
@@ -46,6 +47,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         description={hero?.description || 'MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request.'}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
       />
+
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6"><PackagingGallery /></div>
 
       <nav aria-label="Product categories" className="border-b border-paper-line bg-white">
         <ul className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 sm:px-6">

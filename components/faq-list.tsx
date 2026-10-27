@@ -16,23 +16,32 @@ export function FaqList({ items }: { items: FaqItem[] }) {
     { title: 'More questions', items: items.filter(item => !assigned.has(item.id)) },
   ].filter(group => group.items.length)
 
+  const columns = [
+    groups.filter(group => ['Products and cooperation', 'Timing and delivery'].includes(group.title)),
+    groups.filter(group => !['Products and cooperation', 'Timing and delivery'].includes(group.title)),
+  ]
+
   return (
-    <Reveal delay={80} className="grid gap-8 md:grid-cols-2">
-      {groups.map(group => <div key={group.title}>
-        <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-brand-red">{group.title}</h3>
-        <Accordion type="single" collapsible className="border-t border-paper-line">
-          {group.items.map((item) => (
-            <AccordionItem key={item.id} value={item.id} className="border-paper-line">
-              <AccordionTrigger className="py-4 text-left text-sm font-semibold leading-snug text-ink hover:no-underline">
-                {text(item.question)}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm leading-relaxed text-ink-soft">
-                {text(item.answer)}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>)}
+    <Reveal delay={80} className="grid items-start gap-x-8 gap-y-10 md:grid-cols-2">
+      {columns.map((column, index) => (
+        <div key={index} className="grid content-start gap-10">
+          {column.map(group => <div key={group.title}>
+            <h3 className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-brand-red">{group.title}</h3>
+            <Accordion type="single" collapsible className="border-t border-paper-line">
+              {group.items.map((item) => (
+                <AccordionItem key={item.id} value={item.id} className="border-paper-line">
+                  <AccordionTrigger className="py-4 text-left text-sm font-semibold leading-snug text-ink hover:no-underline">
+                    {text(item.question)}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-ink-soft">
+                    {text(item.answer)}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>)}
+        </div>
+      ))}
     </Reveal>
   )
 }

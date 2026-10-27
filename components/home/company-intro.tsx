@@ -27,7 +27,7 @@ export function CompanyIntro({copy,snapshot}:{copy?:Record<string,string>|null;s
             tone="dark"
             eyebrow={copyValue(copy,'company_eyebrow','About MICONG')}
             title={copyValue(copy,'company_title','Who you are writing to')}
-            description={copyValue(copy,'company_description',`${company.legalName} (${company.legalNameZh}) trades as ${company.brand} / ${company.brandZh}. The company lists industrial lubricants and metalworking fluids and takes buyer inquiries by form, email and phone.`)}
+            description={copyValue(copy,'company_description',`${company.legalName} trades as ${company.brand}. The company lists industrial lubricants and metalworking fluids and takes buyer inquiries by form, email and phone.`)}
           />
           <Reveal delay={90}>
             <dl className="mt-8 grid gap-4 border-l-2 border-brand-red pl-6 text-sm">

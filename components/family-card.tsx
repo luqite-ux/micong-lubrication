@@ -1,6 +1,6 @@
 import Link from '@/components/localized-link'
 import { ArrowUpRight } from 'lucide-react'
-import { ProductTile } from '@/components/product-tile'
+import { Marker } from '@/components/marker'
 import { Reveal } from '@/components/reveal'
 import { stagger } from '@/lib/motion'
 import { text } from '@/lib/data/repository'
@@ -17,10 +17,15 @@ export function FamilyCard({ family, index = 0 }: FamilyCardProps) {
     <Reveal
       as="li"
       delay={stagger(index)}
-      className="group relative flex flex-col overflow-hidden rounded-md border border-paper-line bg-white transition-shadow hover:shadow-lg focus-within:shadow-lg"
+      className="group relative flex flex-col rounded-md border border-paper-line bg-white p-5 transition-shadow hover:shadow-lg focus-within:shadow-lg"
     >
-      <ProductTile icon={family.icon} category={family.category} />
-      <div className="flex flex-1 flex-col gap-3 p-5">
+      <div className="flex flex-1 flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <Marker icon={family.icon} size="sm" />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-soft">
+            {family.category === 'industrial-lubricants' ? 'Industrial lubricant' : 'Metalworking fluid'}
+          </span>
+        </div>
         <h3 className="text-lg font-bold leading-snug text-ink">
           <Link
             href={`/products/${family.slug}`}

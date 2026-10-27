@@ -33,9 +33,21 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const keepOpen = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = null
+    setOpen(true)
+  }
+  const closeAfterPointerLeaves = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setOpen(false), 220)
+  }
 
   useEffect(() => {
     setOpen(false)
+    return () => { if (closeTimer.current) clearTimeout(closeTimer.current) }
   }, [pathname])
 
   const industrial = families.filter((f) => f.category === 'industrial-lubricants')
@@ -63,8 +75,8 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
           return (
             <li
               key={item.href}
-              onMouseEnter={() => setOpen(true)}
-              onMouseLeave={() => setOpen(false)}
+              onMouseEnter={keepOpen}
+              onMouseLeave={closeAfterPointerLeaves}
               onBlur={(event) => {
                 if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false)
               }}
@@ -93,6 +105,8 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
               <div
                 id="products-menu"
                 hidden={!open}
+                onMouseEnter={keepOpen}
+                onMouseLeave={closeAfterPointerLeaves}
                 className="absolute inset-x-0 top-full border-b border-paper-line bg-white shadow-xl"
               >
                 <div className="mx-auto grid max-w-7xl grid-cols-[1fr_1.4fr_1fr] gap-10 px-6 py-8">

@@ -51,7 +51,7 @@ export default async function AboutPage() {
       <PageHero
         eyebrow={hero?.eyebrow || 'About MICONG'}
         title={hero?.title || 'Industrial lubricants and metalworking fluids, handled by inquiry.'}
-        description={hero?.description || `${company.legalName} (${company.legalNameZh}) trades as ${company.brand} / ${company.brandZh}.`}
+        description={hero?.description || `${company.legalName} trades as ${company.brand}.`}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 

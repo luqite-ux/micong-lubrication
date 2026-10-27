@@ -1,6 +1,7 @@
 import Link from '@/components/localized-link'
 import { ArrowRight } from 'lucide-react'
 import { FamilyCard } from '@/components/family-card'
+import { PackagingGallery } from '@/components/products/packaging-gallery'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { getProductCategories, getProductFamilies, text } from '@/lib/data/repository'
@@ -27,6 +28,8 @@ export async function FamilySelector({copy}:{copy?:Record<string,string>|null}) 
             </Link>
           }
         />
+
+        <div className="mt-10"><PackagingGallery /></div>
 
         {categories.map((category) => {
           const items = families.filter((family) => family.category === category.id)
