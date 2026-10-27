@@ -17,7 +17,7 @@ import type { Metadata } from 'next'
 import { requestLocale } from '@/lib/i18n'
 
 export const revalidate = 60
-const fallbackMetadata = pageMetadata({ path: '/', title: 'MICONG industrial lubricants and metalworking fluids', description: 'Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination.' })
+const fallbackMetadata = pageMetadata({ path: '/', title: 'MICONG industrial lubricants and metalworking fluids', description: 'Browse five MICONG product lines documented in customer materials, then ask about grades, data sheets and availability.' })
 export async function generateMetadata(): Promise<Metadata> {
   const managed = await siteContentMetadata('/', await requestLocale())
   const title = managed.title || fallbackMetadata.title

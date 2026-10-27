@@ -38,10 +38,10 @@
                   "en": "Industrial lubricants and metalworking fluids"
                 },
                 "title": {
-                  "en": "Eleven product families. One request for quotation."
+                  "en": "Find the lubricant or cutting fluid you need."
                 },
                 "body": {
-                  "en": "From anti-wear hydraulic oil to cutting oil. Choose a family, pick a grade where one is listed, and ask for a data sheet or sample."
+                  "en": "Explore source-documented hydraulic oil, slideway oil and cutting fluids. Ask for a grade, data sheet or sample."
                 },
                 "primary_label": {
                   "en": "Browse products"
@@ -383,7 +383,7 @@
               "en": "MICONG industrial lubricants and metalworking fluids"
             },
             "description": {
-              "en": "Browse eleven MICONG industrial lubricant and metalworking-fluid families, then send an inquiry with equipment, grade, quantity and destination."
+              "en": "Browse five MICONG product lines documented in customer materials, then ask about grades, data sheets and availability."
             }
           }
         },
@@ -397,7 +397,7 @@
               "en": "Choose a product family"
             },
             "family_description": {
-              "en": "Eleven families in two groups. Anti-wear hydraulic oil and slideway oil list grades 32, 46 and 68. Every other family is handled by inquiry."
+              "en": "Five documented product lines in two groups. Hydraulic and slideway oils list grades 32, 46 and 68; cutting-fluid grades are confirmed by inquiry."
             },
             "family_action": {
               "en": "Full product listing"
@@ -469,7 +469,7 @@
               "en": "Shanghai Micong Lubrication Technology Co., Ltd. trades as MICONG. The company lists industrial lubricants and metalworking fluids and takes buyer inquiries by form, email and phone."
             },
             "company_scope": {
-              "en": "11 families in industrial lubricants and metalworking fluids"
+              "en": "Five documented product lines in lubricants and cutting fluids"
             },
             "company_boundary": {
               "en": "Tell us what product details or documents you need for your evaluation. Banner scenes on this site are illustrative imagery."
@@ -718,7 +718,7 @@
               "en": "What MICONG lists"
             },
             "scope_title": {
-              "en": "Two product groups, eleven families."
+              "en": "Two product groups, five documented lines."
             },
             "scope_description": {
               "en": "Different grades inside a family are variants of that family, not separate products."
@@ -890,7 +890,7 @@
               "en": "Products"
             },
             "title": {
-              "en": "Eleven product families, two ways to choose."
+              "en": "Five documented product lines, grouped by use."
             },
             "description": {
               "en": "MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request."
@@ -904,7 +904,7 @@
               "en": "MICONG products"
             },
             "description": {
-              "en": "Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each."
+              "en": "Five MICONG product lines documented in customer materials, grouped into hydraulic and slideway oils and metalworking fluids."
             }
           }
         },
@@ -962,7 +962,7 @@
               "en": "MICONG applications"
             },
             "description": {
-              "en": "Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points."
+              "en": "Find the source-documented hydraulic oil, slideway oil and cutting fluids by equipment or process."
             }
           }
         },
@@ -1018,7 +1018,7 @@
                   "en": "CNC machining and metal cutting"
                 },
                 "summary": {
-                  "en": "Choose between water-miscible fluids (fully synthetic, semi-synthetic, micro-emulsion) and cutting oil."
+                  "en": "Compare the listed fully synthetic, semi-synthetic and micro-emulsion cutting fluids."
                 },
                 "is_visible": true,
                 "product_1": "4e79fedb-46ee-4007-98fc-d76f209901fd",

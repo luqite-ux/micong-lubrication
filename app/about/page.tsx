@@ -59,7 +59,7 @@ export default async function AboutPage() {
         <SectionHeading
           id="scope-title"
           eyebrow={copyValue(copy,'scope_eyebrow','What MICONG lists')}
-          title={copyValue(copy,'scope_title','Two product groups, eleven families.')}
+          title={copyValue(copy,'scope_title','Two product groups, five documented lines.')}
           description={copyValue(copy,'scope_description','Different grades inside a family are variants of that family, not separate products.')}
         />
         <ul className="mt-10 grid gap-5 md:grid-cols-2">

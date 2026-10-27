@@ -12,12 +12,12 @@ import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-con
 import { pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { managedApplicationAreas } from '@/lib/site-content/collections'
 
-const fallbackMetadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Start from the equipment or process: hydraulic systems, machine-tool slideways, CNC machining, gearboxes, vacuum pumps, engines and grease points.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/applications', title: 'MICONG applications', description: 'Find the source-documented hydraulic oil, slideway oil and cutting fluids by equipment or process.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/applications',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 export default async function ApplicationsPage() {
   const [fallbackAreas, families, snapshot] = await Promise.all([getApplicationAreas(), getProductFamilies(), getSiteContent(await requestLocale())])
-  const areas=managedApplicationAreas(snapshot,families)??fallbackAreas
+  const areas=(managedApplicationAreas(snapshot,families)??fallbackAreas).filter(area=>area.familySlugs.length>0)
   const hero = pageHero(snapshot, '/applications')
   const copy=pageCopy(snapshot,'/applications')
 

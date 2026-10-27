@@ -11,7 +11,7 @@ import type { SiteSnapshot } from '@/lib/site-content/transport'
 
 export async function ApplicationPicker({copy,snapshot}:{copy?:Record<string,string>|null;snapshot?:SiteSnapshot|null}) {
   const [fallbackAreas, families] = await Promise.all([getApplicationAreas(), getProductFamilies()])
-  const areas=managedApplicationAreas(snapshot||null,families)??fallbackAreas
+  const areas=(managedApplicationAreas(snapshot||null,families)??fallbackAreas).filter(area=>area.familySlugs.length>0)
   const nameBySlug = new Map(families.map((family) => [family.slug, text(family.name)]))
 
   return (

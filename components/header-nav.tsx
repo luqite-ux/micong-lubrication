@@ -112,7 +112,7 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                 <div className="mx-auto grid max-w-7xl grid-cols-[1fr_1.4fr_1fr] gap-10 px-6 py-8">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-red">Products</p>
-                    <p className="mt-3 text-xl font-bold text-ink">Eleven product families</p>
+                    <p className="mt-3 text-xl font-bold text-ink">Five documented product lines</p>
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                       Pick a family, then ask for a grade, data sheet or sample in one request.
                     </p>
@@ -125,7 +125,7 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                   </div>
                   <div>
                     <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                      Industrial lubricants
+                      Hydraulic & slideway oils
                     </p>
                     <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
                       {industrial.map((family) => (
@@ -134,7 +134,6 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                             href={`/products/${family.slug}`}
                             className="flex items-center gap-3 rounded-md p-2 text-sm font-medium text-ink hover:bg-paper"
                           >
-                            <Marker icon={family.icon} size="sm" />
                             {family.name}
                           </Link>
                         </li>
@@ -152,7 +151,6 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                             href={`/products/${family.slug}`}
                             className="flex items-center gap-3 rounded-md p-2 text-sm font-medium text-ink hover:bg-paper"
                           >
-                            <Marker icon={family.icon} size="sm" />
                             {family.name}
                           </Link>
                         </li>

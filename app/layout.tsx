@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: '%s | MICONG',
   },
   description:
-    'MICONG (Shanghai Micong Lubrication Technology Co., Ltd.) lists industrial lubricants and metalworking fluids. Browse eleven product families and send a request for quotation.',
+    'MICONG (Shanghai Micong Lubrication Technology Co., Ltd.) lists five source-documented lubricant and cutting-fluid product lines. Send a request for quotation.',
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
 }
 

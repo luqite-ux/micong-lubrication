@@ -21,16 +21,16 @@ import sourcedFaq from '@/data/faq-source.json'
 export const productCategories: ProductCategory[] = [
   {
     id: 'industrial-lubricants',
-    name: { en: 'Industrial lubricants' },
+    name: { en: 'Hydraulic & slideway oils' },
     description: {
-      en: 'Hydraulic, slideway, engine, gear and vacuum pump oils, and grease.',
+      en: 'Anti-wear hydraulic oil and slideway oil with source-listed grades.',
     },
   },
   {
     id: 'metalworking-fluids',
     name: { en: 'Metalworking fluids' },
     description: {
-      en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids, industrial white oil, and cutting oil.',
+      en: 'Fully synthetic, semi-synthetic and micro-emulsion cutting fluids.',
     },
   },
 ]
@@ -57,56 +57,6 @@ export const productFamilies: ProductFamily[] = [
     icon: 'slideway',
     grades: gradesListed,
     applicationIds: ['machine-tool-slideways'],
-  },
-  {
-    id: 'pf-engine',
-    slug: 'automotive-engine-oil',
-    name: { en: 'Automotive Engine Oil' },
-    category: 'industrial-lubricants',
-    summary: { en: 'Automotive engine oil family. Grades and specifications are confirmed by inquiry.' },
-    icon: 'engine',
-    grades: null,
-    applicationIds: ['engines'],
-  },
-  {
-    id: 'pf-gear',
-    slug: 'gear-oil',
-    name: { en: 'Gear Oil' },
-    category: 'industrial-lubricants',
-    summary: { en: 'Gear oil family for gearboxes and geared drives. Grades are confirmed by inquiry.' },
-    icon: 'gear',
-    grades: null,
-    applicationIds: ['gearboxes'],
-  },
-  {
-    id: 'pf-vacuum',
-    slug: 'vacuum-pump-oil',
-    name: { en: 'Vacuum Pump Oil' },
-    category: 'industrial-lubricants',
-    summary: { en: 'Vacuum pump oil family for vacuum pump lubrication. Grades are confirmed by inquiry.' },
-    icon: 'vacuum',
-    grades: null,
-    applicationIds: ['vacuum-pumps'],
-  },
-  {
-    id: 'pf-grease',
-    slug: 'lubricating-grease',
-    name: { en: 'Lubricating Grease' },
-    category: 'industrial-lubricants',
-    summary: { en: 'Lubricating grease family for grease-lubricated points. Types are confirmed by inquiry.' },
-    icon: 'grease',
-    grades: null,
-    applicationIds: ['grease-points'],
-  },
-  {
-    id: 'pf-white-oil',
-    slug: 'industrial-white-oil',
-    name: { en: 'Industrial White Oil' },
-    category: 'metalworking-fluids',
-    summary: { en: 'Industrial white oil family. Describe your use in the inquiry to discuss the right grade.' },
-    icon: 'white',
-    grades: null,
-    applicationIds: ['other-industrial'],
   },
   {
     id: 'pf-fully-synthetic',
@@ -138,16 +88,6 @@ export const productFamilies: ProductFamily[] = [
     grades: null,
     applicationIds: ['cnc-machining'],
   },
-  {
-    id: 'pf-cutting-oil',
-    slug: 'cutting-oil',
-    name: { en: 'Cutting Oil' },
-    category: 'metalworking-fluids',
-    summary: { en: 'Cutting oil for metal cutting, supplied as an oil rather than a water-mixed fluid.' },
-    icon: 'cutting',
-    grades: null,
-    applicationIds: ['cnc-machining'],
-  },
 ]
 
 export const applicationAreas: ApplicationArea[] = [
@@ -168,49 +108,13 @@ export const applicationAreas: ApplicationArea[] = [
   {
     id: 'cnc-machining',
     name: { en: 'CNC machining and metal cutting' },
-    summary: { en: 'Choose between water-miscible fluids (fully synthetic, semi-synthetic, micro-emulsion) and cutting oil.' },
+    summary: { en: 'Compare the listed fully synthetic, semi-synthetic and micro-emulsion cutting fluids.' },
     icon: 'cutting',
     familySlugs: [
       'fully-synthetic-cutting-fluid',
       'semi-synthetic-cutting-fluid',
       'micro-emulsion-cutting-fluid',
-      'cutting-oil',
     ],
-  },
-  {
-    id: 'gearboxes',
-    name: { en: 'Gearboxes' },
-    summary: { en: 'Geared drives and gearboxes. Include the gearbox type and current oil in your inquiry.' },
-    icon: 'gear',
-    familySlugs: ['gear-oil'],
-  },
-  {
-    id: 'vacuum-pumps',
-    name: { en: 'Vacuum pumps' },
-    summary: { en: 'Vacuum pump lubrication. Name the pump model so the right oil can be discussed.' },
-    icon: 'vacuum',
-    familySlugs: ['vacuum-pump-oil'],
-  },
-  {
-    id: 'engines',
-    name: { en: 'Engines' },
-    summary: { en: 'Automotive engines. Send the engine details and the oil specification you need.' },
-    icon: 'engine',
-    familySlugs: ['automotive-engine-oil'],
-  },
-  {
-    id: 'grease-points',
-    name: { en: 'Grease-lubricated points' },
-    summary: { en: 'Bearings and other points lubricated with grease. Describe the point and operating conditions.' },
-    icon: 'grease',
-    familySlugs: ['lubricating-grease'],
-  },
-  {
-    id: 'other-industrial',
-    name: { en: 'Other industrial uses' },
-    summary: { en: 'Industrial white oil and uses not listed here. Describe your process and we will point to a family.' },
-    icon: 'white',
-    familySlugs: ['industrial-white-oil'],
   },
 ]
 

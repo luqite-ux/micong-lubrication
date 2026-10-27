@@ -37,7 +37,7 @@ export function CompanyIntro({copy,snapshot}:{copy?:Record<string,string>|null;s
               </div>
               <div>
                 <dt className="text-white/60">Product scope</dt>
-                <dd className="mt-0.5 text-base">{copyValue(copy,'company_scope','11 families in industrial lubricants and metalworking fluids')}</dd>
+                <dd className="mt-0.5 text-base">{copyValue(copy,'company_scope','Five documented product lines in lubricants and cutting fluids')}</dd>
               </div>
             </dl>
             <p className="mt-6 max-w-lg text-sm leading-relaxed text-white/70">

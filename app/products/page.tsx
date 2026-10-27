@@ -14,7 +14,7 @@ import { getSiteContent, siteContentMetadata } from '@/lib/site-content/site-con
 import { copyValue, pageCopy, pageHero, pageVersion } from '@/lib/site-content/page'
 import { requestLocale } from '@/lib/i18n'
 
-const fallbackMetadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Eleven MICONG product families across industrial lubricants and metalworking fluids, with grade navigation and a quote request for each.' })
+const fallbackMetadata: Metadata = pageMetadata({ path: '/products', title: 'MICONG products', description: 'Five MICONG product lines documented in customer materials, grouped by application and grade availability.' })
 export async function generateMetadata(): Promise<Metadata> { const managed = await siteContentMetadata('/products',await requestLocale()); return {...fallbackMetadata,...managed,openGraph:{...fallbackMetadata.openGraph,...(typeof managed.title==='string'?{title:managed.title}:{}),...(typeof managed.description==='string'?{description:managed.description}:{})}} }
 
 type ProductsPageProps = {
@@ -43,7 +43,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     <div {...pageVersion(snapshot, '/products')}>
       <PageHero
         eyebrow={hero?.eyebrow || 'Products'}
-        title={hero?.title || 'Eleven product families, two ways to choose.'}
+        title={hero?.title || 'Five documented product lines, grouped by use.'}
         description={hero?.description || 'MICONG lists industrial lubricants and metalworking fluids. Open a family to see its grades and send a quote request.'}
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
       />
@@ -94,6 +94,16 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           </section>
         )
       })}
+
+      <section aria-labelledby="other-range-title" className="border-t border-paper-line bg-paper py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 id="other-range-title" className="text-xl font-bold text-ink">Other names in the company overview</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-soft">
+            The supplied company overview also mentions engine oil, gear oil, vacuum pump oil, grease, industrial white oil and cutting oil. It does not give product-specific grades or data for these names, so they are handled by inquiry rather than presented as detailed products.
+          </p>
+          <Link href="/contact#rfq" className="mt-5 inline-flex text-sm font-semibold text-brand-red underline underline-offset-4">Ask about another oil or grease</Link>
+        </div>
+      </section>
 
       <section aria-labelledby="grade-nav-title" className="bg-white py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">

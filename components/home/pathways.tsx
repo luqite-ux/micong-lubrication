@@ -11,12 +11,12 @@ const pathways = [
     id: 'industrial',
     icon: 'hydraulic',
     accent: 'bg-brand-yellow',
-    title: 'Industrial lubricants',
-    lead: 'For machines, drives and systems that run on an oil or a grease.',
+    title: 'Hydraulic & slideway oils',
+    lead: 'For hydraulic systems and machine-tool slideways.',
     steps: [
       {
         title: 'Pick the family',
-        body: 'Hydraulic, slideway, engine, gear, vacuum pump or grease.',
+        body: 'Anti-wear hydraulic oil or slideway oil.',
       },
       {
         title: 'Choose a grade where one is listed',
@@ -28,7 +28,7 @@ const pathways = [
       },
     ],
     links: [
-      { label: 'Browse industrial lubricants', href: '/products?category=industrial-lubricants#listing' },
+      { label: 'Browse hydraulic & slideway oils', href: '/products?category=industrial-lubricants#listing' },
       { label: 'Quote hydraulic oil', href: '/contact?family=anti-wear-hydraulic-oil#rfq' },
     ],
   },
@@ -41,7 +41,7 @@ const pathways = [
     steps: [
       {
         title: 'Choose the fluid type',
-        body: 'Fully synthetic, semi-synthetic or micro-emulsion cutting fluid, industrial white oil, or cutting oil.',
+        body: 'Fully synthetic, semi-synthetic or micro-emulsion cutting fluid.',
       },
       {
         title: 'Describe the machining',
