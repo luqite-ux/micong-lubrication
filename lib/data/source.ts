@@ -23,7 +23,7 @@ export const productCategories: ProductCategory[] = [
     id: 'industrial-lubricants',
     name: { en: 'Industrial lubricants' },
     description: {
-      en: 'Hydraulic and slideway oils, engine oil, gear oil, vacuum pump oil and grease, as listed in the customer category sheet.',
+      en: 'Hydraulic and slideway oils, engine oil, gear oil, vacuum pump oil and grease.',
     },
   },
   {

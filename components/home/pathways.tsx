@@ -12,7 +12,7 @@ const pathways = [
     icon: 'hydraulic',
     accent: 'bg-brand-yellow',
     title: 'Industrial lubricants',
-    lead: 'Six product families listed in the customer category sheet.',
+    lead: 'Six product families for industrial lubrication.',
     steps: [
       {
         title: 'Pick the family',
@@ -37,7 +37,7 @@ const pathways = [
     icon: 'cutting',
     accent: 'bg-brand-red',
     title: 'Metalworking fluids',
-    lead: 'Five product families listed under the supplied metalworking category.',
+    lead: 'Five product families for machining and metalworking.',
     steps: [
       {
         title: 'Choose the fluid type',

@@ -37,7 +37,7 @@ async function preflight() {
 }
 
 const categoryRows = [
-  { slug: 'industrial-lubricants', name: { en: 'Industrial lubricants', zh: '工业润滑油系列' }, description: { en: 'Hydraulic and slideway oils, engine oil, gear oil, vacuum pump oil and grease, as listed in the customer category sheet.' } },
+  { slug: 'industrial-lubricants', name: { en: 'Industrial lubricants', zh: '工业润滑油系列' }, description: { en: 'Hydraulic and slideway oils, engine oil, gear oil, vacuum pump oil and grease.' } },
   { slug: 'metalworking-fluids', name: { en: 'Metalworking fluids', zh: '加工切削液系列' }, description: { en: 'Synthetic and semi-synthetic cutting fluids, micro-emulsion cutting fluid, industrial white oil and cutting oil.' } },
 ]
 const categorySlug = (category) => category === 'Metalworking Fluids' ? 'metalworking-fluids' : 'industrial-lubricants'

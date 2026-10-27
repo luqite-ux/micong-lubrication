@@ -221,7 +221,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
               <Reveal delay={70} className="mt-5 rounded-md border border-dashed border-input bg-white p-6">
                 <p className="text-base font-semibold text-ink">Grade to be confirmed</p>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
-                  {hasDetailedSource ? `The supplied product information describes ${name} but gives no grade or measured specification. Share your process and current fluid when requesting the technical data sheet.` : `The supplied category sheet lists ${name} without grades or measured specifications. Ask MICONG for the relevant technical data sheet.`}
+                  {hasDetailedSource ? `For ${name}, grade and measured specifications are confirmed on request. Share your process and current fluid when requesting the technical data sheet.` : `For ${name}, grades and measured specifications are confirmed on request. Ask MICONG for the relevant technical data sheet.`}
                 </p>
               </Reveal>
             )}
