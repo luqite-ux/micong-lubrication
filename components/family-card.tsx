@@ -1,6 +1,5 @@
 import Link from '@/components/localized-link'
 import { ArrowUpRight } from 'lucide-react'
-import { Marker } from '@/components/marker'
 import { Reveal } from '@/components/reveal'
 import { stagger } from '@/lib/motion'
 import { text } from '@/lib/data/repository'
@@ -17,15 +16,9 @@ export function FamilyCard({ family, index = 0 }: FamilyCardProps) {
     <Reveal
       as="li"
       delay={stagger(index)}
-      className="group relative flex flex-col rounded-md border border-paper-line bg-white p-5 transition-shadow hover:shadow-lg focus-within:shadow-lg"
+      className="group relative flex flex-col border-b border-paper-line bg-white px-5 py-6 transition-colors hover:bg-paper-2 focus-within:bg-paper-2"
     >
-      <div className="flex flex-1 flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <Marker icon={family.icon} size="sm" />
-          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-soft">
-            {family.category === 'industrial-lubricants' ? 'Industrial lubricant' : 'Metalworking fluid'}
-          </span>
-        </div>
+      <div className="flex flex-1 flex-col gap-2">
         <h3 className="text-lg font-bold leading-snug text-ink">
           <Link
             href={`/products/${family.slug}`}
@@ -34,8 +27,8 @@ export function FamilyCard({ family, index = 0 }: FamilyCardProps) {
             {name}
           </Link>
         </h3>
-        <p className="text-sm leading-relaxed text-ink-soft">{text(family.summary)}</p>
-        <div className="mt-auto flex items-center justify-between gap-3 pt-2">
+        <p className="line-clamp-2 text-sm leading-relaxed text-ink-soft">{text(family.summary)}</p>
+        <div className="mt-auto flex items-center justify-between gap-3 pt-3">
           {family.grades ? (
             <ul className="flex flex-wrap gap-1.5" aria-label={`${name} listed grades`}>
               {family.grades.map((grade) => (

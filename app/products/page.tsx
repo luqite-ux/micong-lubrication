@@ -86,7 +86,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               title={text(group.name)}
               description={text(group.description)}
             />
-            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-10 grid border-t border-paper-line bg-white sm:grid-cols-2 sm:[&>li:nth-child(odd)]:border-r sm:[&>li:nth-child(odd)]:border-paper-line">
               {groupFamilies.map((family, index) => (
                 <FamilyCard key={family.id} family={family} index={index} />
               ))}

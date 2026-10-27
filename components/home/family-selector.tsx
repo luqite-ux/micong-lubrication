@@ -42,7 +42,7 @@ export async function FamilySelector({copy}:{copy?:Record<string,string>|null}) 
                 </h3>
                 <p className="max-w-xl text-sm text-ink-soft">{text(category.description)}</p>
               </Reveal>
-              <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <ul className="grid border-t border-paper-line bg-white sm:grid-cols-2 sm:[&>li:nth-child(odd)]:border-r sm:[&>li:nth-child(odd)]:border-paper-line">
                 {items.map((family, index) => (
                   <FamilyCard key={family.id} family={family} index={index} />
                 ))}

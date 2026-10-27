@@ -97,7 +97,7 @@ export function DesktopNav({ families, navigation = mainNav, styles }: { familie
                 aria-expanded={open}
                 aria-controls="products-menu"
                 aria-label="Show product families"
-                onClick={() => setOpen((value) => !value)}
+                onClick={keepOpen}
                 className="inline-flex size-8 items-center justify-center text-ink hover:text-brand-red"
               >
                 <ChevronDown className={cn('size-4 transition-transform', open && 'rotate-180')} aria-hidden="true" />
