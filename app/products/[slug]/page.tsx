@@ -101,7 +101,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:py-20">
         <div className="grid gap-14">
           <section aria-label="Illustrative application scene">
-            <ApplicationImage slug={slug} name={name} className="aspect-[16/9] w-full rounded-md" />
+            <ApplicationImage slug={slug} name={name} className="aspect-[4/3] w-full rounded-md" />
           </section>
 
           <section aria-labelledby="product-description-title">

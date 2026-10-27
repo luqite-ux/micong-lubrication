@@ -25,7 +25,9 @@ export function ApplicationImage({ slug, name, className = '' }: { slug: string;
         className="absolute inset-0 bg-no-repeat transition-transform duration-500 group-hover:scale-[1.025]"
         style={{
           backgroundImage: `url(/images/${scene.sheet}-applications-ai.png)`,
-          backgroundSize: '300% 200%',
+          // Each source panel is square. Scale by panel width, then crop vertically
+          // inside the card; scaling width and height independently distorts machinery.
+          backgroundSize: '300% auto',
           backgroundPosition: `${scene.column * 50}% ${scene.row * 100}%`,
         }}
       />

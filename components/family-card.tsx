@@ -19,7 +19,7 @@ export function FamilyCard({ family, index = 0 }: FamilyCardProps) {
       delay={stagger(index)}
       className="group relative flex flex-col border-b border-paper-line bg-white transition-colors hover:bg-paper-2 focus-within:bg-paper-2"
     >
-      <ApplicationImage slug={family.slug} name={name} className="aspect-[16/9] w-full" />
+      <ApplicationImage slug={family.slug} name={name} className="aspect-[4/3] w-full" />
       <div className="flex flex-1 flex-col gap-2 px-5 py-6">
         <h3 className="text-lg font-bold leading-snug text-ink">
           <Link
