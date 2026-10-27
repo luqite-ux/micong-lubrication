@@ -213,7 +213,7 @@ export function RfqForm({ families, defaultFamily, defaultGrade, defaultTopic }:
             </select>
             <FieldDescription id={`${id('grade')}-help`}>
               {gradeOptions
-                ? 'Grades 32, 46 and 68 are listed for this family.'
+                ? `Grades ${gradeOptions.join(', ')} are listed for this family.`
                 : 'Only grades listed for a family can be picked here. Others are confirmed after your inquiry.'}
             </FieldDescription>
           </Field>
