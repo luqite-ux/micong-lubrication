@@ -18,6 +18,10 @@ export type ProductFamily = {
   category: ProductCategoryId
   summary: LocalizedText
   description?: LocalizedText
+  overview?: LocalizedText
+  features?: string[]
+  applications?: string[]
+  useNotes?: string[]
   /** Marker icon key resolved by `lib/icon-map.ts`. */
   icon: string
   /**

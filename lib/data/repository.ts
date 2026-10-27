@@ -23,6 +23,7 @@ import type {
 } from './types'
 import { getSupabaseClient, tenantId } from '@/lib/supabase'
 import { requestLocale } from '@/lib/i18n'
+import productSections from '@/data/product-sections.json'
 
 type ProductRow = {
   id: string
@@ -31,6 +32,9 @@ type ProductRow = {
   name_i18n: Record<string, string> | null
   description: string | null
   description_i18n: Record<string, string> | null
+  overview_i18n: Record<string, string> | null
+  features_i18n: Record<string, string[]> | null
+  applications_i18n: Record<string, string[]> | null
   category_slug: string | null
   specs: Record<string, unknown> | null
   sort_order: number | null
@@ -73,6 +77,16 @@ function productSummary(description: string): string {
   return `${preview}…`
 }
 
+function listForLocale(value: Record<string, string[]> | null, locale: Locale): string[] {
+  if (!value || typeof value !== 'object') return []
+  const list = value[locale] || value.en || Object.values(value).find(Array.isArray)
+  return Array.isArray(list) ? list.filter((item): item is string => typeof item === 'string' && !!item.trim()) : []
+}
+
+function sourceSections(slug: string) {
+  return productSections[slug as keyof typeof productSections]
+}
+
 export function text(value: LocalizedText, locale: Locale = 'en'): string {
   return value[locale]?.trim() || value.en?.trim() || Object.values(value).find(item => typeof item === 'string' && item.trim()) || ''
 }
@@ -110,8 +124,13 @@ function sourceNotes(slug: string): string[] | undefined {
 }
 
 function withSourceFacts(family: ProductFamily): ProductFamily {
+  const sections = sourceSections(family.slug)
   return {
     ...family,
+    overview: sections ? { en: sections.overview } : undefined,
+    features: sections?.features,
+    applications: sections?.applications,
+    useNotes: sections?.useNotes,
     minimumOrder: sourceMinimumOrderSlugs.has(family.slug) ? 'One metric ton or 5 drums' : undefined,
     sourceNotes: sourceNotes(family.slug),
   }
@@ -123,11 +142,12 @@ export async function getProductFamilies(locale?: Locale): Promise<ProductFamily
   const tenant = tenantId()
   if (!db || !tenant) return productFamilies.map(withSourceFacts)
   const { data, error } = await db.from('products')
-    .select('id,slug,name,name_i18n,description,description_i18n,category_slug,specs,sort_order,updated_at,extra_data')
+    .select('id,slug,name,name_i18n,description,description_i18n,overview_i18n,features_i18n,applications_i18n,category_slug,specs,sort_order,updated_at,extra_data')
     .eq('tenant_id', tenant).eq('is_active', true).order('sort_order', { ascending: true })
   if (error) return productFamilies.map(withSourceFacts)
   return ((data ?? []) as ProductRow[]).map(row => {
     const original = productFamilies.find(item => item.slug === row.slug)
+    const sections = sourceSections(row.slug)
     const grades = Array.isArray(row.specs?.listed_grades) ? row.specs.listed_grades.filter((item): item is string => typeof item === 'string') : null
     return {
       id: row.id,
@@ -136,6 +156,10 @@ export async function getProductFamilies(locale?: Locale): Promise<ProductFamily
       category: row.category_slug === 'metalworking-fluids' ? 'metalworking-fluids' : 'industrial-lubricants',
       summary: { en: productSummary(selectLocale(row.description_i18n, row.description || '', requestedLocale)) },
       description: { ...row.description_i18n, en: selectLocale(row.description_i18n, row.description || '', requestedLocale) },
+      overview: sections ? { en: selectLocale(row.overview_i18n, sections.overview, requestedLocale) } : undefined,
+      features: sections ? listForLocale(row.features_i18n, requestedLocale) : undefined,
+      applications: sections ? listForLocale(row.applications_i18n, requestedLocale) : undefined,
+      useNotes: sections?.useNotes,
       icon: original?.icon || 'hydraulic',
       grades: grades?.length ? grades : null,
       minimumOrder: typeof row.extra_data?.minimum_order === 'string' ? row.extra_data.minimum_order : undefined,

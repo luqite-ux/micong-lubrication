@@ -104,16 +104,42 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
             <Reveal>
               <div className="grid gap-6 sm:grid-cols-[minmax(0,1fr)_180px]">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">{hasDetailedSource ? 'Customer-supplied product information' : 'Listed in the customer product category sheet'}</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">{hasDetailedSource ? 'Product information' : 'Product family'}</p>
                   <h2 id="product-description-title" className="mt-2 text-2xl font-bold text-ink">{hasDetailedSource ? 'Product overview' : 'Technical details by inquiry'}</h2>
                   <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">
-                    {hasDetailedSource ? text(family.description || family.summary) : `The supplied category sheet names ${name}, but does not provide product-specific grades, specifications or a data sheet. Please ask MICONG to confirm the suitable product for your application.`}
+                    {hasDetailedSource ? text(family.overview || family.description || family.summary) : `For ${name}, please contact MICONG to confirm the available grade, specifications and suitable use for your equipment or process.`}
                   </p>
                 </div>
                 {hasDetailedSource ? <ApplicationImage slug={slug} name={name} className="aspect-[4/3] w-44 rounded-sm" /> : null}
               </div>
             </Reveal>
           </section>
+
+          {hasDetailedSource && (family.applications?.length || family.features?.length) ? (
+            <section aria-label="Application and product characteristics" className="grid gap-8 sm:grid-cols-2">
+              {family.applications?.length ? <Reveal className="border-t-2 border-brand-red pt-5">
+                <h2 className="text-xl font-bold text-ink">Applications</h2>
+                <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink-soft">
+                  {family.applications.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </Reveal> : null}
+              {family.features?.length ? <Reveal delay={70} className="border-t-2 border-brand-yellow pt-5">
+                <h2 className="text-xl font-bold text-ink">Key characteristics</h2>
+                <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-ink-soft">
+                  {family.features.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rotate-45 bg-brand-red" />{item}</li>)}
+                </ul>
+              </Reveal> : null}
+            </section>
+          ) : null}
+
+          {hasDetailedSource && family.useNotes?.length ? <section aria-labelledby="use-notes-title">
+            <Reveal className="border border-paper-line bg-white p-5 sm:p-6">
+              <h2 id="use-notes-title" className="text-lg font-bold text-ink">Selection notes</h2>
+              <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-ink-soft">
+                {family.useNotes.map((note) => <li key={note}>{note}</li>)}
+              </ul>
+            </Reveal>
+          </section> : null}
 
           {(family.minimumOrder || family.sourceNotes?.length) ? (
             <section aria-labelledby="source-details-title">
@@ -193,7 +219,7 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
             )}
           </section>
 
-          {usedFor.length > 0 ? (
+          {!hasDetailedSource && usedFor.length > 0 ? (
             <section aria-labelledby="used-for-title">
               <Reveal>
                 <h2 id="used-for-title" className="text-2xl font-bold text-ink">

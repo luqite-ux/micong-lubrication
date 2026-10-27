@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs'
 
 const root = path.resolve(import.meta.dirname, '..')
 const content = JSON.parse(readFileSync(path.join(root, 'data/seed-products.json'), 'utf8'))
+const sections = JSON.parse(readFileSync(path.join(root, 'data/product-sections.json'), 'utf8'))
 const settings = JSON.parse(readFileSync(path.join(root, 'data/seed-site-settings.json'), 'utf8'))
 const assets = JSON.parse(readFileSync(path.join(root, 'data/seed-assets.json'), 'utf8'))
 const need = (key) => {
@@ -124,6 +125,7 @@ async function main() {
     await expect(old ? db.from('product_categories').update(row).eq('tenant_id', tenantId).eq('id', old.id) : db.from('product_categories').insert(row), 'category write')
   }
   for (const [index, product] of content.items.entries()) {
+    const section = sections[product.slug]
     const description = product.description_i18n?.en || `${product.name_i18n.en} is in the MICONG product range. Grades and specifications are confirmed by inquiry.`
     const row = {
       tenant_id: tenantId,
@@ -136,11 +138,11 @@ async function main() {
       description,
       description_en: description,
       description_i18n: product.description_i18n || { en: description, zh: product.name_i18n.zh },
-      overview: description,
-      overview_en: description,
-      overview_i18n: product.description_i18n || { en: description, zh: product.name_i18n.zh },
-      features: [], features_i18n: { en: [] },
-      applications: [], applications_i18n: { en: [] },
+      overview: section?.overview || description,
+      overview_en: section?.overview || description,
+      overview_i18n: section ? { en: section.overview } : product.description_i18n || { en: description, zh: product.name_i18n.zh },
+      features: section?.features || [], features_i18n: { en: section?.features || [] },
+      applications: section?.applications || [], applications_i18n: { en: section?.applications || [] },
       advantages: [], advantages_i18n: { en: [] },
       image_url: null,
       specs: product.grades?.length ? { listed_grades: product.grades } : {},
