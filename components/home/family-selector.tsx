@@ -30,7 +30,11 @@ export async function FamilySelector({copy}:{copy?:Record<string,string>|null}) 
           }
         />
 
-        <div className="mt-10"><PackagingGallery /></div>
+        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-ink-soft sm:text-base">
+          The containers have no visible product labels; please confirm the family, grade and pack with MICONG for your order.
+        </p>
+
+        <div className="mt-8"><PackagingGallery /></div>
 
         {categories.map((category) => {
           const items = families.filter((family) => family.category === category.id)

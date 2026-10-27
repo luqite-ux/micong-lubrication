@@ -49,7 +49,10 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         crumbs={[{ label: 'Home', href: '/' }, { label: 'Products' }]}
       />
 
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6"><PackagingGallery /></div>
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        <p className="mb-5 max-w-3xl text-sm leading-relaxed text-ink-soft sm:text-base">The containers have no visible product labels; please confirm the family, grade and pack with MICONG for your order.</p>
+        <PackagingGallery />
+      </div>
 
       <nav aria-label="Product categories" className="border-b border-paper-line bg-white">
         <ul className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 sm:px-6">

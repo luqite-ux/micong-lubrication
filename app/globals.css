@@ -145,6 +145,23 @@
   }
 }
 
+/* Two identical photo groups make the leftward loop seamless. */
+@keyframes packaging-scroll {
+  to { transform: translateX(-50%); }
+}
+.packaging-marquee-track {
+  animation: packaging-scroll 48s linear infinite;
+}
+.packaging-marquee:hover .packaging-marquee-track,
+.packaging-marquee:focus-within .packaging-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .packaging-marquee { overflow-x: auto; }
+  .packaging-marquee-track { animation: none; }
+  .packaging-marquee-group[aria-hidden='true'] { display: none; }
+}
+
 /* ---------- Hero ---------- */
 .hero-img {
   object-position: var(--pos-m, 50% 50%);
