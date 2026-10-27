@@ -141,6 +141,14 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
             </Reveal>
           </section> : null}
 
+          {hasDetailedSource && family.description ? <section aria-labelledby="full-description-title">
+            <Reveal className="border-t border-paper-line pt-6">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">Product details</p>
+              <h2 id="full-description-title" className="mt-2 text-2xl font-bold text-ink">Detailed product description</h2>
+              <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">{text(family.description)}</p>
+            </Reveal>
+          </section> : null}
+
           {(family.minimumOrder || family.sourceNotes?.length) ? (
             <section aria-labelledby="source-details-title">
               <Reveal>
