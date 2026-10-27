@@ -3,30 +3,30 @@
     "overview": "Blended from refined base oil with anti-wear, anti-oxidation, anti-rust and anti-foam additives.",
     "applications": ["Medium- and high-pressure hydraulic systems in injection-molding machines, CNC machine tools and construction machinery."],
     "features": ["Forms an oil film on pumps, valves and cylinders to reduce wear under pressure.", "Oxidation resistance, anti-foam and air-release properties support stable operation.", "Helps protect metal parts against rust, including during equipment shutdown."],
-    "useNotes": ["The supplied sheet lists 32, 46 and 68 viscosity grades. Ask for the grade-specific technical data sheet before selection."]
+    "useNotes": ["Available viscosity grades listed for this family: 32, 46 and 68. Ask for the grade-specific technical data sheet before selection."]
   },
   "slideway-oil": {
     "overview": "Machine-tool slideway lubricant made from refined base oil with anti-wear, anti-stick-slip, anti-rust and demulsifying additives.",
     "applications": ["Slideways on lathes, milling machines, grinders and other machining equipment."],
     "features": ["Adheres to sliding surfaces and helps reduce low-speed stick-slip and wear.", "Demulsibility helps separate the oil from cutting fluid.", "Provides oxidation resistance and rust protection for machine-tool guideways."],
-    "useNotes": ["The category sheet lists grades 32, 46, 68 and 100; the product description names 32, 46 and 68. Confirm grade 100 availability and request the current data sheet."]
+    "useNotes": ["Grades 32, 46 and 68 are named in the detailed product information; grade 100 also appears in the category list. Confirm grade 100 availability and request the current data sheet."]
   },
   "fully-synthetic-cutting-fluid": {
     "overview": "Water-miscible cutting fluid formulated with water-soluble additives and no mineral oil.",
     "applications": ["Turning, milling and grinding of carbon steel, cast iron and aluminium alloy."],
-    "features": ["Cooling and cleaning action helps carry away cutting heat and metal chips.", "The supplied description lists rust protection and a low-foam formula for high-pressure fluid systems.", "Used after dilution with water."],
+    "features": ["Cooling and cleaning action helps carry away cutting heat and metal chips.", "Rust protection and a low-foam formula for high-pressure fluid systems.", "Used after dilution with water."],
     "useNotes": ["Ask MICONG for the dilution guidance and technical data sheet for the intended process."]
   },
   "semi-synthetic-cutting-fluid": {
     "overview": "Water-miscible cutting fluid containing a small amount of mineral oil, combining lubrication and cooling.",
     "applications": ["Turning, milling and drilling of carbon steel, cast iron and aluminium alloy."],
-    "features": ["Helps reduce tool wear while removing heat and chips from the cutting area.", "The supplied description lists inter-process rust protection, hard-water resistance and low foaming.", "Used after dilution with water."],
+    "features": ["Helps reduce tool wear while removing heat and chips from the cutting area.", "Inter-process rust protection, hard-water resistance and low foaming.", "Used after dilution with water."],
     "useNotes": ["Ask MICONG for the dilution guidance and technical data sheet for the intended process."]
   },
   "micro-emulsion-cutting-fluid": {
     "overview": "Semi-synthetic cutting fluid whose base oil forms fine dispersed particles in water; the diluted fluid appears translucent.",
     "applications": ["Turning, milling and drilling of carbon steel, cast iron and aluminium alloy."],
-    "features": ["The supplied description compares its lubrication with fully synthetic fluid and lists cooling and cleaning performance.", "It lists rust protection, hard-water stability and low foaming for high-pressure fluid systems.", "Used after dilution with water."],
+    "features": ["Lubrication, cooling and cleaning characteristics for metal cutting.", "Rust protection, hard-water stability and low foaming for high-pressure fluid systems.", "Used after dilution with water."],
     "useNotes": ["Ask MICONG for the dilution guidance and technical data sheet for the intended process."]
   }
 }

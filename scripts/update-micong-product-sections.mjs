@@ -18,6 +18,11 @@ if (!url || !key) throw new Error('Supabase service credentials missing')
 const db = createClient(url, key, { auth: { persistSession: false } })
 const sections = JSON.parse(readFileSync(new URL('../data/product-sections.json', import.meta.url), 'utf8'))
 const slugs = Object.keys(sections)
+const previousFeatures = {
+  'fully-synthetic-cutting-fluid': ["Cooling and cleaning action helps carry away cutting heat and metal chips.", "The supplied description lists rust protection and a low-foam formula for high-pressure fluid systems.", "Used after dilution with water."],
+  'semi-synthetic-cutting-fluid': ["Helps reduce tool wear while removing heat and chips from the cutting area.", "The supplied description lists inter-process rust protection, hard-water resistance and low foaming.", "Used after dilution with water."],
+  'micro-emulsion-cutting-fluid': ["The supplied description compares its lubrication with fully synthetic fluid and lists cooling and cleaning performance.", "It lists rust protection, hard-water stability and low foaming for high-pressure fluid systems.", "Used after dilution with water."],
+}
 
 const { data, error } = await db.from('products')
   .select('id,slug,overview_i18n,features_i18n,applications_i18n')
@@ -29,14 +34,24 @@ const changes = data.map(row => ({
   existingFeatureCount: Array.isArray(row.features_i18n?.en) ? row.features_i18n.en.length : 0,
   existingApplicationCount: Array.isArray(row.applications_i18n?.en) ? row.applications_i18n.en.length : 0,
 }))
-if (changes.some(item => item.existingFeatureCount || item.existingApplicationCount)) {
-  throw new Error('Structured product content already exists; review manually before updating')
+for (const row of data) {
+  const hasContent = changes.find(item => item.slug === row.slug).existingFeatureCount > 0
+  if (!hasContent) continue
+  const expected = sections[row.slug]
+  const matchesCurrent = JSON.stringify(row.features_i18n?.en) === JSON.stringify(expected.features)
+  const matchesPrevious = JSON.stringify(row.features_i18n?.en) === JSON.stringify(previousFeatures[row.slug])
+  if (row.overview_i18n?.en !== expected.overview ||
+      JSON.stringify(row.applications_i18n?.en) !== JSON.stringify(expected.applications) ||
+      (!matchesCurrent && !matchesPrevious)) {
+    throw new Error(`Structured product content changed after initial adoption: ${row.slug}`)
+  }
 }
 console.log(JSON.stringify({ mode: process.argv.includes('--apply') ? 'apply' : 'dry-run', tenant, changes }))
 if (!process.argv.includes('--apply')) process.exit(0)
 
 for (const row of data) {
   const section = sections[row.slug]
+  if (JSON.stringify(row.features_i18n?.en) === JSON.stringify(section.features)) continue
   const { error: updateError } = await db.from('products').update({
     overview: section.overview,
     overview_en: section.overview,
