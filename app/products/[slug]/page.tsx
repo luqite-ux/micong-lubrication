@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowRight, FileText, Mail, PackageCheck, Phone } from 'lucide-react'
 import { Marker } from '@/components/marker'
 import { PageHero } from '@/components/page-hero'
-import { ProductTile } from '@/components/product-tile'
+import { PackagingGallery } from '@/components/products/packaging-gallery'
 import { Reveal } from '@/components/reveal'
 import {
   getApplicationAreas,
@@ -98,23 +98,19 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_340px] lg:py-20">
         <div className="grid gap-14">
-          <Reveal>
-            <ProductTile icon={family.icon} category={family.category} size="feature" className="rounded-md" />
-            <p className="mt-3 text-xs leading-relaxed text-ink-soft">
-              Product family illustration. Ask for current packaging and label details with your inquiry.
-            </p>
-          </Reveal>
+          <section aria-label="Packaging examples from customer materials">
+            <PackagingGallery />
+          </section>
 
-          {family.description && text(family.description) !== text(family.summary) ? (
-            <section aria-labelledby="product-description-title">
-              <Reveal>
-                <h2 id="product-description-title" className="text-2xl font-bold text-ink">Product information</h2>
-                <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">
-                  {text(family.description)}
-                </p>
-              </Reveal>
-            </section>
-          ) : null}
+          <section aria-labelledby="product-description-title">
+            <Reveal>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-red">Source-documented product line</p>
+              <h2 id="product-description-title" className="mt-2 text-2xl font-bold text-ink">Product overview</h2>
+              <p className="mt-5 max-w-[74ch] whitespace-pre-line text-base leading-relaxed text-ink-soft">
+                {text(family.description || family.summary)}
+              </p>
+            </Reveal>
+          </section>
 
           {(family.minimumOrder || family.sourceNotes?.length) ? (
             <section aria-labelledby="source-details-title">
@@ -186,9 +182,9 @@ export default async function ProductFamilyPage({ params, searchParams }: Produc
               </Reveal>
             ) : (
               <Reveal delay={70} className="mt-5 rounded-md border border-dashed border-input bg-white p-6">
-                <p className="text-base font-semibold text-ink">Listed by name</p>
+                <p className="text-base font-semibold text-ink">Grade to be confirmed</p>
                 <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
-                  {`${name} is part of the MICONG range. Grades and specifications are not published here; tell us your use in the quote request and we will confirm what can be offered.`}
+                  {`The supplied product information describes ${name} but gives no grade or measured specification. Share your process and current fluid when requesting the technical data sheet.`}
                 </p>
               </Reveal>
             )}
