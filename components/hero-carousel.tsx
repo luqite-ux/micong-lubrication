@@ -166,8 +166,8 @@ export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: 
                 )}
               />
 
-              <div className={cn('relative z-10 -mt-6 px-4 pb-6 sm:px-6 xl:absolute xl:inset-0 xl:mt-0 xl:flex xl:items-center xl:pb-0', copyRight && 'xl:justify-end')}>
-                <div className="hero-copy mx-auto w-full max-w-7xl xl:px-6">
+              <div className="relative z-10 -mt-6 px-4 pb-6 sm:px-6 xl:absolute xl:inset-0 xl:mt-0 xl:flex xl:items-center xl:pb-0">
+                <div className={cn('hero-copy mx-auto w-full max-w-7xl xl:px-6', copyRight && 'xl:flex xl:justify-end')}>
                   <div className="max-w-[30rem] xl:max-w-[29rem]">
                     <p
                       style={{ '--i': 0, ...siteTypographyStyle(styles,`slides.${slide.id}.eyebrow`,{'site-sans':'var(--font-plex)','site-display':'var(--font-archivo)'}) } as CSSProperties}
