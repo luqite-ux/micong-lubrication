@@ -110,6 +110,7 @@ export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: 
         {heroSlides.map((slide, i) => {
           const active = i === index
           const Heading = 'p'
+          const copyRight = slide.copySide === 'right'
           return (
             <div
               key={slide.id}
@@ -142,7 +143,7 @@ export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: 
                   priority={i === 0}
                   fetchPriority={i === 0 ? 'high' : undefined}
                   sizes="100vw"
-                  className={cn('hero-img object-cover', slide.mobileSrc && 'hidden xl:block')}
+                  className={cn('hero-img object-cover', slide.desktopFit === 'contain' && 'xl:object-contain', slide.mobileSrc && 'hidden xl:block')}
                 />
                 {slide.mobileSrc ? <Image
                   src={slide.mobileSrc}
@@ -157,10 +158,15 @@ export function HeroCarousel({ slides = defaultHeroSlides, styles }: { slides?: 
 
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 left-0 hidden w-[55%] bg-gradient-to-r from-[#06070a]/85 via-[#06070a]/45 to-transparent xl:block"
+                className={cn(
+                  'pointer-events-none absolute inset-y-0 hidden w-[55%] xl:block',
+                  copyRight
+                    ? 'right-0 bg-gradient-to-l from-[#06070a]/85 via-[#06070a]/45 to-transparent'
+                    : 'left-0 bg-gradient-to-r from-[#06070a]/85 via-[#06070a]/45 to-transparent',
+                )}
               />
 
-              <div className="relative z-10 -mt-6 px-4 pb-6 sm:px-6 xl:absolute xl:inset-0 xl:mt-0 xl:flex xl:items-center xl:pb-0">
+              <div className={cn('relative z-10 -mt-6 px-4 pb-6 sm:px-6 xl:absolute xl:inset-0 xl:mt-0 xl:flex xl:items-center xl:pb-0', copyRight && 'xl:justify-end')}>
                 <div className="hero-copy mx-auto w-full max-w-7xl xl:px-6">
                   <div className="max-w-[30rem] xl:max-w-[29rem]">
                     <p

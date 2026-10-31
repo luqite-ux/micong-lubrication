@@ -14,6 +14,10 @@ export type HeroSlide = {
   position: { mobile: string; tablet: string; desktop: string }
   /** Desktop-only wrapper placement for the image (slide 2 is moved right to free the copy side). */
   desktopWrapClass: string
+  /** Which side the copy column sits on at xl. Defaults to left. */
+  copySide?: 'left' | 'right'
+  /** Desktop fit: 'contain' keeps the supplied image's full composition visible. */
+  desktopFit?: 'cover' | 'contain'
 }
 
 /**
@@ -44,9 +48,10 @@ export const heroSlides: HeroSlide[] = [
     body: 'Packaging customization and OEM cooperation can be discussed. Tell us the pack type, quantity and destination.',
     primary: { label: 'See packaging options', href: '/#packaging' },
     secondary: { label: 'Ask about OEM', href: '/contact?topic=oem#rfq' },
-    position: { mobile: '22% 60%', tablet: '20% 50%', desktop: '0% 50%' },
-    desktopWrapClass:
-      'xl:absolute xl:inset-y-0 xl:left-[26%] xl:right-0 xl:w-auto xl:aspect-auto xl:[mask-image:linear-gradient(to_right,transparent,black_20%)]',
+    position: { mobile: '22% 60%', tablet: '20% 50%', desktop: '50% 50%' },
+    desktopWrapClass: 'xl:absolute xl:inset-0 xl:aspect-auto',
+    copySide: 'right',
+    desktopFit: 'contain',
   },
   {
     id: 'inquiry',
