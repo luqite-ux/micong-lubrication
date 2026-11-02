@@ -6,14 +6,12 @@ import { X } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 
 const packaging = [
-  { src: '/images/product-packaging-1.jpg', alt: 'Red and white steel drums' },
-  { src: '/images/product-packaging-2.jpg', alt: 'Black and red steel drum' },
-  { src: '/images/product-packaging-3.jpg', alt: 'Yellow pail' },
-  { src: '/images/product-packaging-4.jpg', alt: 'Black and yellow steel drums' },
-  { src: '/images/product-packaging-5.jpg', alt: 'Rows of red steel drums' },
-  { src: '/images/product-packaging-6.jpg', alt: 'Blue pails' },
-  { src: '/images/product-packaging-7.jpg', alt: 'Red pail' },
-  { src: '/images/product-packaging-8.jpg', alt: 'Red steel drums' },
+  { src: '/images/product-packaging-jieshilong-20261102-1.jpg', alt: 'JIESHILONG black and red steel lubricant drum, front view' },
+  { src: '/images/product-packaging-jieshilong-20261102-2.jpg', alt: 'JIESHILONG black and red steel lubricant drum, top view' },
+  { src: '/images/product-packaging-jieshilong-20261102-3.jpg', alt: 'JIESHILONG red steel lubricant drum, front view' },
+  { src: '/images/product-packaging-jieshilong-20261102-4.jpg', alt: 'JIESHILONG red steel lubricant drum, top view' },
+  { src: '/images/product-packaging-jieshilong-20261102-5.jpg', alt: 'JIESHILONG red lubricant pail with carrying handle' },
+  { src: '/images/product-packaging-jieshilong-20261102-6.jpg', alt: 'JIESHILONG stacked red lubricant pails' },
 ]
 
 export function PackagingGallery() {
