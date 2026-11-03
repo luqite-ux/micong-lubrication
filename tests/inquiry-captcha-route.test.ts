@@ -5,24 +5,24 @@ import ts from 'typescript'
 
 import * as captcha from '../lib/inquiry-captcha.ts'
 
-const routeSource = readFileSync(
-  new URL('../app/api/captcha/route.ts', import.meta.url),
+const handlerSource = readFileSync(
+  new URL('../lib/captcha-route-handler.ts', import.meta.url),
   'utf8',
 )
-const routeModule = { exports: {} as Record<string, unknown> }
-const routeJavaScript = ts.transpileModule(routeSource, {
+const handlerModule = { exports: {} as Record<string, unknown> }
+const handlerJavaScript = ts.transpileModule(handlerSource, {
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText
-const loadRoute = new Function('require', 'exports', 'module', routeJavaScript)
-loadRoute(
+const loadHandler = new Function('require', 'exports', 'module', handlerJavaScript)
+loadHandler(
   (specifier: string) => {
-    if (specifier.endsWith('/lib/inquiry-captcha')) return captcha
+    if (specifier.endsWith('/lib/inquiry-captcha') || specifier === './inquiry-captcha') return captcha
     throw new Error(`Unexpected route dependency: ${specifier}`)
   },
-  routeModule.exports,
-  routeModule,
+  handlerModule.exports,
+  handlerModule,
 )
-const route = routeModule.exports
+const handler = handlerModule.exports
 
 const tenantId = '11111111-1111-4111-8111-111111111111'
 const scope = 'captcha_form_scope_A_123456'
@@ -40,7 +40,7 @@ type StoreRecord = {
 }
 
 function routeFactory() {
-  const candidate = (route as Record<string, unknown>).createCaptchaGetHandler
+  const candidate = (handler as Record<string, unknown>).createCaptchaGetHandler
   assert.equal(typeof candidate, 'function', 'createCaptchaGetHandler must be exported')
   return candidate as (dependencies: Record<string, unknown>) => (request: Request) => Promise<Response>
 }

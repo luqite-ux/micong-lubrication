@@ -19,7 +19,7 @@ export function BrandLogo({ className, imageClassName }: BrandLogoProps) {
         src="/images/micong-logo.jpg"
         alt="MICONG 米丛 logo"
         className={cn('h-12 w-auto object-contain sm:h-14', imageClassName)}
-        style={{ aspectRatio: '1200 / 780' }}
+        style={{ aspectRatio: '1447 / 771' }}
       />
     </Link>
   )
