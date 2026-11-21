@@ -9,8 +9,8 @@ export const company = {
   legalNameZh: '上海米丛润滑技术有限公司',
   phone: '+86 138 5896 2788',
   phoneHref: 'tel:+8613858962788',
-  email: '13858962788@139.com',
-  emailHref: 'mailto:13858962788@139.com',
+  email: 'info@jieshilongglobal.com',
+  emailHref: 'mailto:info@jieshilongglobal.com',
   addressLines: ['No. 2218 Hunan Road', 'Pudong New Area', 'Shanghai, China'],
   addressOneLine: 'No. 2218 Hunan Road, Pudong New Area, Shanghai, China',
 } as const
