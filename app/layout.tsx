@@ -58,6 +58,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        <script
+          async
+          src={`https://admin.globle-trade.com/api/public/analytics.js?tenantId=${encodeURIComponent(process.env.NEXT_PUBLIC_TENANT_ID || "2cbb206f-5be6-4434-a148-3ddf0b285159")}`}
+        />
       </body>
     </html>
   )
